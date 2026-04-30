@@ -1,0 +1,161 @@
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { label: 'Services', href: '/services', type: 'route' as const },
+    { label: 'Our Work', href: '#work', type: 'anchor' as const },
+    { label: 'Pricing', href: '#pricing', type: 'anchor' as const },
+    { label: 'Gallery', href: '#gallery', type: 'anchor' as const },
+    { label: 'Contact', href: '#contact', type: 'anchor' as const },
+  ];
+
+  const handleNavClick = (link: typeof navLinks[0]) => {
+    setIsMobileMenuOpen(false);
+    
+    if (link.type === 'route') {
+      // Let Link component handle routing
+      return;
+    }
+    
+    // For anchor links
+    if (isHomePage) {
+      const element = document.querySelector(link.href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Navigate to home page with hash
+      window.location.href = '/' + link.href;
+    }
+  };
+
+  return (
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-premium",
+          isScrolled
+            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border"
+            : "py-6 bg-transparent"
+        )}
+      >
+        <div className="section-container flex items-center justify-between px-4 sm:px-6">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-1 sm:gap-2">
+            <span className="text-lg sm:text-xl font-bold">
+              <span className="text-gold-gradient">HydroWash</span>
+              <span className="text-foreground hidden sm:inline"> Studio</span>
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              link.type === 'route' ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-sm uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
+                  className="text-sm uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
+                >
+                  {link.label}
+                </button>
+              )
+            ))}
+            <a
+              href="https://wa.me/918123456789"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 rounded-full border border-gold/30 text-gold text-sm uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300"
+            >
+              Book Now
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden w-10 h-10 flex items-center justify-center text-foreground"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={cn(
+          "fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-premium md:hidden",
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-6 sm:gap-8 pt-16">
+          {navLinks.map((link, index) => (
+            link.type === 'route' ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-xl sm:text-2xl font-bold text-foreground hover:text-gold transition-all duration-300 active:scale-95",
+                  isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <button
+                key={link.label}
+                onClick={() => handleNavClick(link)}
+                className={cn(
+                  "text-xl sm:text-2xl font-bold text-foreground hover:text-gold transition-all duration-300 active:scale-95",
+                  isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {link.label}
+              </button>
+            )
+          ))}
+          <a
+            href="https://wa.me/918123456789"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              "btn-gold mt-2 sm:mt-4 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 transition-all duration-300",
+              isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{ transitionDelay: '400ms' }}
+          >
+            Book Now
+          </a>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
