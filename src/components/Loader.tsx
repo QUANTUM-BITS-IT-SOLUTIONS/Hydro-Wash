@@ -30,9 +30,11 @@ const Loader = () => {
       {/* Logo Animation */}
       <div className="relative">
         <div className="animate-logo-reveal">
-          <h1 className="text-5xl md:text-7xl font-bold">
-            <span className="text-gold-gradient">HydroWash</span>
-          </h1>
+          <img 
+            src="/Logo.png" 
+            alt="HydroWash Car Wash & Detailing Studio" 
+            className="h-20 md:h-28 w-auto object-contain"
+          />
         </div>
         
         {/* Metallic Sweep Effect */}
@@ -40,10 +42,7 @@ const Loader = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full animate-[shimmer_1.5s_ease-in-out_0.5s_forwards]" />
         </div>
 
-        {/* Subtitle */}
-        <p className="text-center mt-4 text-muted-foreground text-sm uppercase tracking-[0.3em] opacity-0 animate-[fade-in_0.6s_ease-out_1s_forwards]">
-          Car Wash & Detailing Studio
-        </p>
+      
 
         {/* Loading Bar */}
         <div className="mt-8 w-48 h-[2px] bg-border mx-auto overflow-hidden rounded-full">

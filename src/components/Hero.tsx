@@ -180,7 +180,7 @@ const Hero = () => {
             transform: `rotate(180deg) translateY(${-scrollY * 0.2}px)` 
           }}
         >
-          Alwar, India
+          India
         </span>
       </div>
 
@@ -206,7 +206,7 @@ const Hero = () => {
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          <span className="micro-label text-[10px] sm:text-xs">Premium Automotive Care</span>
+          <span className="micro-label text-[10px] sm:text-xs">Contact Us, When Cleaning Isn't Enough</span>
         </div>
 
         {/* Main Headline with Parallax - GPU Accelerated */}

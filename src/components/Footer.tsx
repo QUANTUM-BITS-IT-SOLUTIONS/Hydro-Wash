@@ -13,8 +13,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://instagram.com/hydrowashcarwash', label: 'Instagram' },
-    { icon: Facebook, href: 'https://facebook.com/hydrowashcarwash', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/share/1JRg7C1eYW/', label: 'Facebook' },
     { icon: Youtube, href: 'https://youtube.com/hydrowashcarwash', label: 'YouTube' },
     { icon: MapPin, href: 'https://maps.app.goo.gl/NnZwDGryAvLZ5FvEA', label: 'Google Maps' },
   ];
@@ -39,8 +39,7 @@ const Footer = () => {
               <span className="text-gold-gradient">HydroWash</span> Car Wash
             </h3>
             <p className="text-muted-foreground max-w-md mb-5 sm:mb-6 mx-auto sm:mx-0 text-sm sm:text-base">
-              Alwar's premier destination for luxury automotive care.
-              Where precision meets perfection.
+             Because exceptional machines deserve nothing less.
             </p>
 
             {/* Social Links */}
@@ -108,7 +107,21 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-          <p>© 2026 HydroWash Car Wash & Detailing Studio. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p>
+              Powered by{' '}
+              <a
+                href="https://qbits-main.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold hover:text-gold/80 transition-colors duration-300"
+              >
+                Qbits
+              </a>
+            </p>
+            <span className="hidden sm:inline text-border">|</span>
+            <p>© 2026 HydroWash Car Wash & Detailing Studio. All rights reserved.</p>
+          </div>
           <p>
             Crafted with precision in{' '}
             <span className="text-gold">Alwar, Rajasthan</span>

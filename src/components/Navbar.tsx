@@ -56,11 +56,12 @@ const Navbar = () => {
       >
         <div className="section-container flex items-center justify-between px-4 sm:px-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1 sm:gap-2">
-            <span className="text-lg sm:text-xl font-bold">
-              <span className="text-gold-gradient">HydroWash</span>
-              <span className="text-foreground hidden sm:inline"> Studio</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/Logo.png" 
+              alt="HydroWash Car Wash & Detailing Studio" 
+              className="h-10 sm:h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
