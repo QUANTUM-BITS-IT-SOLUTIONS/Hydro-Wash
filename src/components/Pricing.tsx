@@ -20,7 +20,7 @@ const Pricing = () => {
     {
       name: 'Express Wash',
       icon: Star,
-      description: 'Quick exterior clean for busy schedules',
+      description: 'Efficient exterior cleaning service',
       price: '₹399',
       priceNote: 'Sedan • SUV +₹100',
       features: [
@@ -36,7 +36,7 @@ const Pricing = () => {
     {
       name: 'Premium Detail',
       icon: Crown,
-      description: 'Complete interior & exterior rejuvenation',
+      description: 'Comprehensive interior and exterior restoration',
       price: '₹1,499',
       priceNote: 'Sedan • SUV +₹300',
       features: [
@@ -55,7 +55,7 @@ const Pricing = () => {
     {
       name: 'Ceramic Shield',
       icon: Shield,
-      description: 'Professional ceramic coating protection',
+      description: 'Advanced ceramic coating system',
       price: '₹8,999',
       priceNote: 'Sedan • SUV +₹2,000',
       features: [
@@ -87,13 +87,12 @@ const Pricing = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="micro-label mb-4 block">Investment</span>
+          <span className="micro-label mb-4 block">Service Packages</span>
           <h2 className="headline-lg mb-4">
-            <span className="text-gold-gradient">Transparent</span> Pricing
+            <span className="text-gold-gradient">Professional</span> Pricing
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Professional car care services at transparent prices. Prices vary by vehicle type 
-            and specific requirements. Contact us for custom packages.
+            Expert car care services with clear, upfront pricing. Vehicle type and specific requirements may affect final cost. Custom packages available upon request.
           </p>
         </div>
 
@@ -180,7 +179,7 @@ const Pricing = () => {
           )}
           style={{ transitionDelay: '500ms' }}
         >
-          * Prices shown for sedan vehicles. SUV pricing +₹100-₹2,000 based on package. Luxury vehicles may require custom quotes.
+          * Base pricing for sedan vehicles. SUV surcharge: +₹100-₹2,000 depending on package. Luxury vehicles require custom quotation.
         </p>
       </div>
     </section>

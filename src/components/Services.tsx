@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Droplets, Sparkles, ArrowRight, ChevronLeft, ChevronRight, Hand, Layers, Sun, Car, Brush, Gem, SprayCan } from 'lucide-react';
+import { Shield, Droplets, Sparkles, ArrowRight, ChevronLeft, ChevronRight, Hand, Layers, Sun, Car, Brush, Gem, SprayCan, RotateCw, Waves, CircleDot, Wind } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
 import {
@@ -23,42 +23,41 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ id, icon: Icon, title, description, features, price }: ServiceCardProps) => {
   return (
-    <Link to={`/services/${id}`} className="group block h-full p-6 sm:p-8 rounded-xl border border-border/50 bg-card/50 transition-all duration-500 hover:border-gold/30 hover:bg-card hover-lift gpu-accelerate">
+    <Link to={`/services/${id}`} className="group block h-full p-4 sm:p-6 lg:p-8 rounded-lg sm:rounded-xl border border-border/50 bg-card/50 transition-all duration-300 hover:border-gold/30 hover:bg-card hover-lift">
       {/* Icon & Price Row */}
-      <div className="flex items-start justify-between mb-6">
-        <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-all duration-500 group-hover:scale-110">
-          <Icon className="w-6 h-6 text-gold" />
+      <div className="flex items-start justify-between mb-4 sm:mb-6">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-all duration-300">
+          <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
         </div>
         <div className="text-right">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider">Starting from</p>
-          <p className="text-lg font-semibold text-gold group-hover:scale-105 transition-transform duration-300">{price}</p>
+          <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">From</p>
+          <p className="text-base sm:text-lg font-semibold text-gold transition-transform duration-300">{price}</p>
         </div>
       </div>
 
       {/* Title */}
-      <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-gold transition-colors duration-500">{title}</h3>
+      <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2 sm:mb-3 group-hover:text-gold transition-colors duration-300">{title}</h3>
       
       {/* Description */}
-      <p className="text-muted-foreground text-sm leading-relaxed mb-6">{description}</p>
+      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3">{description}</p>
 
       {/* Features */}
-      <ul className="space-y-2 mb-6">
-        {features.map((feature, index) => (
+      <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+        {features.slice(0, 3).map((feature, index) => (
           <li 
             key={feature} 
-            className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-foreground/80 transition-all duration-300"
-            style={{ transitionDelay: `${index * 50}ms` }}
+            className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground group-hover:text-foreground/80 transition-all duration-300"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-gold group-hover:scale-125 transition-transform duration-300" />
-            {feature}
+            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gold" />
+            <span className="line-clamp-1">{feature}</span>
           </li>
         ))}
       </ul>
 
       {/* CTA */}
-      <span className="inline-flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-4 transition-all duration-500">
+      <span className="inline-flex items-center gap-1.5 sm:gap-2 text-gold text-xs sm:text-sm font-medium group-hover:gap-3 transition-all duration-300">
         View Details
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-500" />
+        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
       </span>
     </Link>
   );
@@ -174,6 +173,38 @@ const Services = () => {
       description: "The ultimate all-inclusive package combining full interior and exterior detailing with paint correction and protective coating. This comprehensive service transforms your vehicle to showroom or better-than-new condition in every aspect.",
       features: ["Full interior deep clean", "Paint correction & polishing", "Engine bay detailing", "Protective coating application", "Final quality inspection"],
       price: "₹8,999",
+    },
+    {
+      id: "rubbing-polishing",
+      icon: RotateCw,
+      title: "Rubbing & Polishing",
+      description: "Professional paint correction service using multi-stage machine polishing to remove swirl marks, light scratches, oxidation, and holograms. Restores your paint's original depth, clarity, and showroom gloss.",
+      features: ["Multi-stage machine polishing", "Swirl mark removal", "Paint oxidation repair", "Gloss restoration", "Paint thickness safety check"],
+      price: "₹1,999",
+    },
+    {
+      id: "hydrowash-wax",
+      icon: Waves,
+      title: "Premium Hydrowash & Wax",
+      description: "Thorough hand wash using high-pressure rinse with premium carnauba wax application. Creates a hydrophobic barrier that protects your paint, enhances gloss, and makes future cleaning easier for up to 3 months.",
+      features: ["High-pressure pre-rinse", "Two-bucket hand wash", "Premium carnauba wax", "Hydrophobic protection", "UV damage prevention"],
+      price: "₹599",
+    },
+    {
+      id: "anti-rust-alloy",
+      icon: CircleDot,
+      title: "Anti Rust Coating & Alloy Treatment",
+      description: "Comprehensive protection combining rubberized underbody rust coating with ceramic alloy wheel treatment. Prevents corrosion, resists brake dust buildup, and makes wheel cleaning effortless.",
+      features: ["Rubberized underbody coating", "Alloy wheel ceramic coat", "Brake dust resistance", "5-year rust warranty", "Heat-resistant protection"],
+      price: "₹3,999",
+    },
+    {
+      id: "engine-ac-treatment",
+      icon: Wind,
+      title: "Engine Coating & AC Vent Treatment",
+      description: "Dual service protecting your engine bay with heat-resistant coating while deep-cleaning and sanitizing the AC system. Eliminates bacteria, mold, and odors from vents for fresh, healthy cabin air.",
+      features: ["Engine bay protective coating", "AC vent sanitization", "Antimicrobial treatment", "Ozone odor elimination", "Heat & moisture protection"],
+      price: "₹1,499",
     },
   ];
 

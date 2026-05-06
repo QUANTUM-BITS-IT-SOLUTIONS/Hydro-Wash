@@ -473,11 +473,37 @@
   animation: count-up-glow 2s ease-in-out infinite;
 }
 
+/* Performance Optimizations */
+.gpu-accelerate {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimized hover lift effect */
+.hover-lift {
+  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px hsl(var(--gold) / 0.15);
+}
+
+/* Reduced motion for performance */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Scroll-triggered animation states */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s var(--ease-premium);
+  transform: translateY(20px);
+  transition: all 0.5s var(--ease-premium);
 }
 
 .reveal.active {
@@ -490,25 +516,14 @@
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* Smooth hover lift effect */
-.hover-lift {
-  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
-  will-change: transform;
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px hsl(var(--gold) / 0.15);
-}
-
-/* Smooth image zoom */
+/* Optimized image zoom */
 .img-zoom {
-  transition: transform 0.6s var(--ease-out-expo);
+  transition: transform 0.4s var(--ease-premium);
   will-change: transform;
 }
 
 .img-zoom:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* Stagger children animation helper */

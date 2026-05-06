@@ -55,7 +55,8 @@ const Hero = () => {
             loop
             playsInline
             className="h-full w-full object-cover"
-            poster="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80"
+            poster="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80&auto=format&fit=crop"
+            preload="metadata"
           >
             <source
               src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164&oauth2_token_id=57447761"
@@ -70,34 +71,34 @@ const Hero = () => {
           style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         />
 
-        {/* Animated Ambient Orbs - GPU Accelerated */}
+        {/* Simplified Ambient Orbs - Reduced GPU load */}
         <div 
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-gold/10 blur-[100px] gpu-accelerate"
+          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-gold/10 blur-[50px]"
           style={{ 
-            transform: `translate3d(${mousePosition.x * 30}px, ${mousePosition.y * 30 + scrollY * 0.2}px, 0)`,
-            transition: 'transform 0.5s var(--ease-smooth)'
+            transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15 + scrollY * 0.1}px)`,
+            transition: 'transform 0.8s var(--ease-smooth)'
           }}
         />
         <div 
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-gold/5 blur-[80px] gpu-accelerate"
+          className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] rounded-full bg-gold/5 blur-[40px]"
           style={{ 
-            transform: `translate3d(${mousePosition.x * -20}px, ${mousePosition.y * -20 + scrollY * 0.15}px, 0)`,
-            transition: 'transform 0.5s var(--ease-smooth)'
+            transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10 + scrollY * 0.08}px)`,
+            transition: 'transform 0.8s var(--ease-smooth)'
           }}
         />
 
-        {/* Floating Particles */}
+        {/* Reduced Floating Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-gold/30 rounded-full"
+              className="absolute w-1 h-1 bg-gold/20 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+                animation: `float ${4 + Math.random() * 3}s ease-in-out infinite`,
                 animationDelay: `${Math.random() * 2}s`,
-                transform: `translateY(${scrollY * (0.1 + Math.random() * 0.2)}px)`,
+                transform: `translateY(${scrollY * 0.05}px)`,
               }}
             />
           ))}

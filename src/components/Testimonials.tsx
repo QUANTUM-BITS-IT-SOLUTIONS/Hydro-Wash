@@ -125,7 +125,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <section id="testimonials" className="relative py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
 
       <div className="section-container relative z-10" ref={ref}>
@@ -136,11 +136,14 @@ const Testimonials = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="micro-label mb-3 sm:mb-4 block">Testimonials</span>
-          <h2 className="headline-lg">
-            What Our <span className="text-gold-gradient">Clients</span> Say
+          <span className="micro-label mb-3 sm:mb-4 block">Client Reviews</span>
+          <h2 className="headline-lg mb-3 sm:mb-4">
+            <span className="text-gold-gradient">Success</span> Stories
           </h2>
-          
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
+            Real experiences from satisfied customers.
+          </p>
+
           {/* Google Rating Summary */}
           <div 
             className={cn(
@@ -184,12 +187,12 @@ const Testimonials = () => {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Main Card - Google Review Style */}
-          <div className="glass-card p-5 sm:p-8 md:p-12">
-            <div className="flex flex-col md:flex-row items-start gap-5 sm:gap-8">
+          <div className="glass-card p-4 sm:p-6 md:p-8 lg:p-12">
+            <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6 md:gap-8">
               {/* Avatar with Initials (Google Style) */}
               <div className="relative flex-shrink-0 mx-auto md:mx-0">
                 <div className={cn(
-                  "w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg",
+                  "w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg md:text-xl shadow-lg",
                   testimonials[currentIndex].avatarColor
                 )}>
                   {testimonials[currentIndex].initials}

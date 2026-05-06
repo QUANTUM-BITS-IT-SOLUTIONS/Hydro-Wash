@@ -24,7 +24,7 @@ import {
   MessageCircle,
   MoveHorizontal
 } from 'lucide-react';
-import { getServiceById, getRelatedServices, type ServiceDetail, type BeforeAfterImage } from '@/data/servicesData';
+import { getServiceById, getRelatedServices, type BeforeAfterImage } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -152,6 +152,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Check,
 };
 
+
 const ServiceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -167,6 +168,10 @@ const ServiceDetail = () => {
   if (!service) {
     return null;
   }
+
+  // Only use manually defined beforeAfterImages from servicesData.ts
+  // Gallery folder images are NOT automatically shown on service pages anymore
+  const combinedBeforeAfterImages: BeforeAfterImage[] = service.beforeAfterImages;
 
   const relatedServices = getRelatedServices(service.relatedServices);
 
@@ -260,7 +265,7 @@ const ServiceDetail = () => {
         </section>
 
         {/* Before/After Results Section */}
-        {service.beforeAfterImages && service.beforeAfterImages.length > 0 && (
+        {combinedBeforeAfterImages.length > 0 && (
           <section className="py-16 md:py-24">
             <div className="section-container">
               <div className="text-center mb-12">
@@ -269,14 +274,14 @@ const ServiceDetail = () => {
                   Before & <span className="text-gold-gradient">After</span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  See the transformational results our {service.title} service delivers. 
+                  See the transformational results our {service.title} service delivers.
                   Drag the slider to compare before and after images.
                 </p>
               </div>
 
               {/* Mobile: Stacked View */}
               <div className="block md:hidden space-y-8">
-                {service.beforeAfterImages.map((image, index) => (
+                {combinedBeforeAfterImages.map((image, index) => (
                   <div key={index} className="space-y-3">
                     <div className="grid grid-cols-2 gap-3">
                       <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
@@ -315,7 +320,7 @@ const ServiceDetail = () => {
 
               {/* Desktop: Slider View */}
               <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {service.beforeAfterImages.map((image, index) => (
+                {combinedBeforeAfterImages.map((image, index) => (
                   <BeforeAfterComparison key={index} image={image} />
                 ))}
               </div>

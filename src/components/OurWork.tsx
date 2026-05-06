@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Shield, Droplets, Sparkles } from 'lucide-react';
-
-interface WorkCategory {
-  id: string;
-  title: string;
-  icon: React.ElementType;
-  description: string;
-  beforeImage: string;
-  afterImage: string;
-  stats: { value: string; label: string }[];
-  features: string[];
-}
+import { ArrowRight } from 'lucide-react';
+import { workCategories } from '@/data/ourWorkData';
+import type { WorkCategory } from '@/data/ourWorkData';
 
 const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: string; afterImage: string; title: string }) => {
   const [comparePosition, setComparePosition] = useState(50);
+  const [isLoaded, setIsLoaded] = useState(false);
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const isUpdatingRef = React.useRef(false);
 
@@ -92,7 +84,10 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: st
         <img
           src={afterImage}
           alt={`${title} - After`}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+          loading="lazy"
+          onLoad={() => setIsLoaded(true)}
+          style={{ opacity: isLoaded ? 1 : 0 }}
         />
         
         {/* Before Image (Clipped - Top Layer) */}
@@ -105,6 +100,7 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: st
             src={beforeImage}
             alt={`${title} - Before`}
             className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
           />
           {/* Before overlay for contrast */}
           <div className="absolute inset-0 bg-black/10" />
@@ -153,48 +149,6 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: st
 
 const OurWork = () => {
   const { ref, isVisible } = useScrollReveal();
-
-  const workCategories: WorkCategory[] = [
-    {
-      id: 'ppf',
-      title: 'Paint Protection Film',
-      icon: Shield,
-      description: 'Invisible armor that shields your paint from rock chips, scratches, and environmental damage with self-healing technology.',
-      beforeImage: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80&auto=format&fit=crop',
-      afterImage: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80&auto=format&fit=crop',
-      stats: [
-        { value: '150+', label: 'PPF Jobs' },
-        { value: '5yr', label: 'Warranty' },
-      ],
-      features: ['Self-healing technology', 'UV protection', 'Invisible finish', 'Stone chip protection'],
-    },
-    {
-      id: 'ceramic',
-      title: 'Ceramic Coating',
-      icon: Droplets,
-      description: 'Professional-grade 9H ceramic coating that provides years of hydrophobic protection with a stunning mirror-like finish.',
-      beforeImage: 'https://images.unsplash.com/photo-1549399810-3e163770b259?w=800&q=80&auto=format&fit=crop',
-      afterImage: 'https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&q=80&auto=format&fit=crop',
-      stats: [
-        { value: '450+', label: 'Coatings' },
-        { value: '2yr', label: 'Protection' },
-      ],
-      features: ['9H hardness', 'Hydrophobic', 'Chemical resistant', 'UV protection'],
-    },
-    {
-      id: 'detailing',
-      title: 'Deep Detailing',
-      icon: Sparkles,
-      description: 'Complete interior and exterior restoration service that brings your vehicle back to showroom condition.',
-      beforeImage: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80&auto=format&fit=crop',
-      afterImage: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80&auto=format&fit=crop',
-      stats: [
-        { value: '800+', label: 'Cars Detailed' },
-        { value: '4.9★', label: 'Rating' },
-      ],
-      features: ['Paint correction', 'Interior restoration', 'Engine bay cleaning', 'Leather treatment'],
-    },
-  ];
 
   return (
     <section id="work" className="relative py-24 md:py-32 overflow-hidden">
