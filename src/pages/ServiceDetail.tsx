@@ -22,7 +22,8 @@ import {
   ArrowRight,
   Phone,
   MessageCircle,
-  MoveHorizontal
+  MoveHorizontal,
+  AlertTriangle
 } from 'lucide-react';
 import { getServiceById, getRelatedServices, type BeforeAfterImage } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
@@ -156,17 +157,69 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 const ServiceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const service = id ? getServiceById(id) : undefined;
 
   useEffect(() => {
-    if (!service) {
-      navigate('/services');
-    }
-    window.scrollTo(0, 0);
-  }, [service, navigate]);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      if (!service || !id) {
+        setError('Service not found');
+        console.error(`Service not found for ID: ${id}`);
+        // Redirect after a short delay to allow user to see the error
+        setTimeout(() => {
+          navigate('/services', { replace: true });
+        }, 2000);
+      }
+    }, 500); // Simulate loading time
 
-  if (!service) {
-    return null;
+    window.scrollTo(0, 0);
+
+    return () => clearTimeout(timer);
+  }, [service, id, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+        <Navbar />
+        <main className="pt-20">
+          <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-16 h-16 border-4 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-muted-foreground">Loading service details...</p>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error || !service) {
+    return (
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+        <Navbar />
+        <main className="pt-20">
+          <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center px-4">
+            <div className="max-w-md w-full text-center">
+              <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-4">
+                <AlertTriangle className="w-8 h-8 text-destructive" />
+              </div>
+              <h1 className="text-2xl font-bold mb-4">Service Not Found</h1>
+              <p className="text-muted-foreground mb-6">
+                {error || 'The service you\'re looking for doesn\'t exist.'}
+              </p>
+              <p className="text-sm text-muted-foreground mb-6">
+                Redirecting to services list...
+              </p>
+              <div className="w-16 h-16 border-4 border-gold/30 border-t-gold rounded-full animate-spin mx-auto"></div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   // Only use manually defined beforeAfterImages from servicesData.ts
