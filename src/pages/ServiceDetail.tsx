@@ -212,7 +212,7 @@ const ServiceDetail = () => {
                 
                 <div className="flex flex-wrap gap-4">
                   <a
-                    href="https://wa.me/918123456789"
+                    href="https://wa.me/918888899936"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold inline-flex items-center gap-2 px-8 py-4"
@@ -221,7 +221,7 @@ const ServiceDetail = () => {
                     Book via WhatsApp
                   </a>
                   <a
-                    href="tel:+918123456789"
+                    href="tel:+918888899936"
                     className="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-gold font-medium hover:bg-gold/10 transition-all duration-300"
                   >
                     <Phone className="w-5 h-5" />
@@ -486,7 +486,7 @@ const ServiceDetail = () => {
                   </div>
 
                   <a
-                    href="https://wa.me/918123456789"
+                    href="https://wa.me/918888899936"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
@@ -589,7 +589,7 @@ const ServiceDetail = () => {
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a
-                    href="https://wa.me/918123456789"
+                    href="https://wa.me/918888899936"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold inline-flex items-center gap-2 px-8 py-4"

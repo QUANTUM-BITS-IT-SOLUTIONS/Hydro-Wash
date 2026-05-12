@@ -100,7 +100,7 @@ const Services = () => {
       title: "Paint Protection Film (PPF)",
       description: "Advanced self-healing urethane film that forms an invisible armor around your vehicle's paint. Our precision-cut PPF protects against stone chips, road debris, scratches, and environmental contaminants while maintaining your car's original gloss and finish.",
       features: ["Self-healing technology (heat activated)", "Computer-precision cutting", "10-year manufacturer warranty", "Hydrophobic top coat", "Stain & chemical resistance"],
-      price: "₹29,999",
+      price: "₹49,999",
     },
     {
       id: "ceramic-coating",
@@ -108,7 +108,7 @@ const Services = () => {
       title: "Ceramic Coating",
       description: "Premium SiO2-based nano-ceramic coating that creates a permanent bond with your paint, delivering exceptional gloss, extreme hydrophobicity, and long-lasting protection against UV rays, oxidation, chemical stains, and minor scratches.",
       features: ["9H pencil hardness rating", "5+ years durability", "Extreme water beading", "UV & oxidation protection", "Chemical stain resistance"],
-      price: "₹12,999",
+      price: "₹14,999",
     },
     {
       id: "graphene-coating",
@@ -116,7 +116,7 @@ const Services = () => {
       title: "Graphene Coating",
       description: "Next-generation graphene-infused coating offering superior heat dissipation, reduced water spotting, and enhanced durability over traditional ceramic coatings. The ultra-thin graphene layer provides unmatched slickness and protection.",
       features: ["Superior heat dissipation", "Reduced water spotting", "7+ years protection", "Extreme slickness & gloss", "Anti-static properties"],
-      price: "₹18,999",
+      price: "₹19,999",
     },
     {
       id: "premium-detailing",
@@ -124,7 +124,7 @@ const Services = () => {
       title: "Premium Auto Detailing Studio",
       description: "Our state-of-the-art detailing studio combines advanced equipment, premium products, and master craftsmanship to deliver transformational results. From concours-level paint correction to complete interior rejuvenation, we treat every vehicle as a masterpiece.",
       features: ["Climate-controlled environment", "Professional-grade equipment", "Master-certified technicians", "Premium product lines", "Concours-level standards"],
-      price: "Custom Quote",
+      price: "₹1,999",
     },
     {
       id: "interior-detailing",
@@ -132,7 +132,7 @@ const Services = () => {
       title: "Interior Car Detailing",
       description: "Deep-cleaning restoration of your vehicle's cabin using steam cleaning, extraction shampooing, and leather conditioning. We eliminate odors, stains, allergens, and bacteria while rejuvenating every surface to like-new condition.",
       features: ["Steam cleaning & sanitization", "Leather cleaning & conditioning", "Carpet & upholstery extraction", "Dashboard & trim restoration", "Ozone odor elimination"],
-      price: "₹3,499",
+      price: "₹1,999",
     },
     {
       id: "exterior-detailing",
@@ -140,7 +140,7 @@ const Services = () => {
       title: "Exterior Car Detailing",
       description: "Comprehensive exterior rejuvenation including clay bar decontamination, multi-stage paint correction, and protective sealant application. We restore clarity, depth, and gloss to every painted surface, trim, and glass.",
       features: ["Clay bar paint decontamination", "Multi-stage paint correction", "Machine polishing", "Trim & plastic restoration", "Glass polishing & coating"],
-      price: "₹4,999",
+      price: "₹4,499",
     },
     {
       id: "headlight-restoration",
@@ -148,7 +148,7 @@ const Services = () => {
       title: "Headlight Restoration",
       description: "Professional restoration of oxidized, yellowed, or hazy headlights using wet-sanding, polishing, and UV-resistant sealing. Improve nighttime visibility and restore your vehicle's aesthetic appeal while avoiding costly headlight replacements.",
       features: ["Wet-sanding & compounding", "UV damage removal", "Crystal-clear clarity", "UV-resistant sealant", "Taillight restoration available"],
-      price: "₹1,499",
+      price: "₹999",
     },
     {
       id: "underbody-coating",
@@ -164,7 +164,7 @@ const Services = () => {
       title: "Premium Car Wash",
       description: "Meticulous hand-wash service using the two-bucket method, pH-neutral shampoos, and premium microfiber towels. Our safe wash techniques eliminate swirl marks while thoroughly cleaning every panel, wheel, and trim piece.",
       features: ["Two-bucket safe wash method", "pH-neutral foam shampoo", "Microfiber drying technique", "Wheel & tire deep clean", "Door jambs & fuel cap cleaning"],
-      price: "₹499",
+      price: "₹1,199",
     },
     {
       id: "complete-detailing",
@@ -172,7 +172,7 @@ const Services = () => {
       title: "Complete Car Detailing",
       description: "The ultimate all-inclusive package combining full interior and exterior detailing with paint correction and protective coating. This comprehensive service transforms your vehicle to showroom or better-than-new condition in every aspect.",
       features: ["Full interior deep clean", "Paint correction & polishing", "Engine bay detailing", "Protective coating application", "Final quality inspection"],
-      price: "₹8,999",
+      price: "₹1,999",
     },
     {
       id: "rubbing-polishing",
@@ -180,7 +180,7 @@ const Services = () => {
       title: "Rubbing & Polishing",
       description: "Professional paint correction service using multi-stage machine polishing to remove swirl marks, light scratches, oxidation, and holograms. Restores your paint's original depth, clarity, and showroom gloss.",
       features: ["Multi-stage machine polishing", "Swirl mark removal", "Paint oxidation repair", "Gloss restoration", "Paint thickness safety check"],
-      price: "₹1,999",
+      price: "₹4,499",
     },
     {
       id: "hydrowash-wax",
@@ -188,7 +188,7 @@ const Services = () => {
       title: "Premium Hydrowash & Wax",
       description: "Thorough hand wash using high-pressure rinse with premium carnauba wax application. Creates a hydrophobic barrier that protects your paint, enhances gloss, and makes future cleaning easier for up to 3 months.",
       features: ["High-pressure pre-rinse", "Two-bucket hand wash", "Premium carnauba wax", "Hydrophobic protection", "UV damage prevention"],
-      price: "₹599",
+      price: "₹1,199",
     },
     {
       id: "anti-rust-alloy",
@@ -196,7 +196,7 @@ const Services = () => {
       title: "Anti Rust Coating & Alloy Treatment",
       description: "Comprehensive protection combining rubberized underbody rust coating with ceramic alloy wheel treatment. Prevents corrosion, resists brake dust buildup, and makes wheel cleaning effortless.",
       features: ["Rubberized underbody coating", "Alloy wheel ceramic coat", "Brake dust resistance", "5-year rust warranty", "Heat-resistant protection"],
-      price: "₹3,999",
+      price: "₹5,498",
     },
     {
       id: "engine-ac-treatment",
@@ -204,7 +204,7 @@ const Services = () => {
       title: "Engine Coating & AC Vent Treatment",
       description: "Dual service protecting your engine bay with heat-resistant coating while deep-cleaning and sanitizing the AC system. Eliminates bacteria, mold, and odors from vents for fresh, healthy cabin air.",
       features: ["Engine bay protective coating", "AC vent sanitization", "Antimicrobial treatment", "Ozone odor elimination", "Heat & moisture protection"],
-      price: "₹1,499",
+      price: "₹2,298",
     },
   ];
 

@@ -86,7 +86,7 @@ const Navbar = () => {
               )
             ))}
             <a
-              href="https://wa.me/918123456789"
+              href="https://wa.me/918888899936"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 rounded-full border border-gold/30 text-gold text-sm uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300"
@@ -142,7 +142,7 @@ const Navbar = () => {
             )
           ))}
           <a
-            href="https://wa.me/918123456789"
+            href="https://wa.me/918888899936"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(

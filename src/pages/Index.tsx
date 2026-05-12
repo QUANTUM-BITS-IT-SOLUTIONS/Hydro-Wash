@@ -2,6 +2,7 @@ import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import BrandCarousel from '@/components/BrandCarousel';
 import OurWork from '@/components/OurWork';
 import Pricing from '@/components/Pricing';
 import Stats from '@/components/Stats';
@@ -27,6 +28,9 @@ const Index = () => {
         
         {/* Services - Luxury Showcase */}
         <Services />
+        
+        {/* Brand Carousel - Trusted Partners */}
+        <BrandCarousel />
         
         {/* Our Work - Featured Projects */}
         <OurWork />
@@ -57,7 +61,7 @@ const Index = () => {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/918123456789"
+        href="https://wa.me/918888899936"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform duration-300 btn-pulse"

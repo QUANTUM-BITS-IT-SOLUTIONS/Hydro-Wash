@@ -1,6 +1,6 @@
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
-import { MapPin, Phone, Mail, Clock, ExternalLink, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ExternalLink, Star, Globe } from 'lucide-react';
 
 const Contact = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -9,24 +9,30 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Near Milk Bar Circle, Alwar, Rajasthan 301001',
+      value: '01, CEB Kalimori Bridge Station Road, Aravali Hotel, Alwar (Raj.) - 301001',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 98765 43210',
-      href: 'tel:+919876543210',
+      value: '+91 88888-99936',
+      href: 'tel:+918888899936',
     },
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@hydrowashcarwash.com',
-      href: 'mailto:info@hydrowashcarwash.com',
+      value: 'info@hydrowash.in',
+      href: 'mailto:info@hydrowash.in',
     },
     {
       icon: Clock,
       label: 'Working Hours',
       value: 'Mon-Sat: 9AM - 7PM, Sun: 10AM - 5PM',
+    },
+    {
+      icon: Globe,
+      label: 'Website',
+      value: 'www.hydrowash.in',
+      href: 'https://www.hydrowash.in',
     },
   ];
 
@@ -144,7 +150,7 @@ const Contact = () => {
 
             {/* WhatsApp CTA */}
             <a
-              href="https://wa.me/918123456789"
+              href="https://wa.me/918888899936"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold w-full text-center mt-2 sm:mt-4 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base py-3 sm:py-4"
