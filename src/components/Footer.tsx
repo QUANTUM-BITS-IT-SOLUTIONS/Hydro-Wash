@@ -12,14 +12,6 @@ const Footer = () => {
     { label: 'Premium Car Wash', href: '#services' },
   ];
 
-  const quickLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/share/1JRg7C1eYW/', label: 'Facebook' },
@@ -39,7 +31,7 @@ const Footer = () => {
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
       <div className="section-container px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
@@ -82,26 +74,10 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          {/* Quick Links */}
-          <div className="text-center sm:text-left">
-            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Quick Links</h4>
-            <ul className="space-y-2 sm:space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Newsletter */}
           <div className="text-center sm:text-left">
-            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Newsletter</h4>
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Newsletter</h4>
             <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
               Subscribe for exclusive offers and updates.
             </p>

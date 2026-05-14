@@ -262,9 +262,9 @@ const Services = () => {
               loop: true,
             }}
             plugins={[autoplayPlugin.current]}
-            className="w-full relative -my-12"
+            className="w-full relative"
           >
-            <CarouselContent className="-ml-4 md:-ml-6 py-12">
+            <CarouselContent className="-ml-4 md:-ml-6 py-12 -my-12">
               {services.map((service) => (
                 <CarouselItem 
                   key={service.title} 

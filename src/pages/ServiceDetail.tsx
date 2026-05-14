@@ -239,69 +239,65 @@ const ServiceDetail = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-gold/10 via-background to-background" />
-          <div className="absolute top-0 right-0 w-full md:w-1/2 h-1/2 bg-gold/5 blur-[120px] -z-10 rounded-full" />
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-background to-background" />
           
           <div className="section-container relative z-10">
             <Link 
               to="/services" 
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold transition-all duration-300 mb-10 group"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors mb-8"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-sm font-medium uppercase tracking-widest">Back to Services</span>
+              <ArrowLeft className="w-4 h-4" />
+              Back to Services
             </Link>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              <div className="animate-fade-in text-center lg:text-left">
-                <span className="micro-label mb-5 block">Automotive Perfection</span>
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1] tracking-tight text-balance mx-auto lg:mx-0">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <span className="micro-label mb-4 block">Professional Service</span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
                   {service.title.split(' ').map((word, i) => 
                     i === 0 ? <span key={i}>{word} </span> : 
                     <span key={i} className="text-gold-gradient">{word} </span>
                   )}
                 </h1>
-                <p className="text-base md:text-lg lg:text-xl text-gold/80 font-medium mb-8 leading-relaxed italic mx-auto lg:mx-0 max-w-2xl">{service.subtitle}</p>
-                <p className="text-sm md:text-base leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 text-muted-foreground">{service.fullDescription}</p>
+                <p className="text-xl text-muted-foreground mb-6">{service.subtitle}</p>
+                <p className="text-muted-foreground leading-relaxed mb-8">{service.fullDescription}</p>
                 
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-5">
+                <div className="flex flex-wrap gap-4">
                   <a
                     href="https://wa.me/918888899936"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 text-sm md:text-base"
+                    className="btn-gold inline-flex items-center gap-2 px-8 py-4"
                   >
-                    <MessageCircle className="w-6 h-6" />
-                    Book Professional Service
+                    <MessageCircle className="w-5 h-5" />
+                    Book via WhatsApp
                   </a>
                   <a
                     href="tel:+918888899936"
-                    className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border border-gold/30 text-gold font-bold rounded-xl hover:bg-gold/10 transition-all duration-300 backdrop-blur-sm text-sm md:text-base"
+                    className="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-gold font-medium hover:bg-gold/10 transition-all duration-300"
                   >
                     <Phone className="w-5 h-5" />
-                    Speak with Expert
+                    Call Now
                   </a>
                 </div>
               </div>
 
-              {/* Quick Info Card - Service Intelligence */}
-              <div className="glass-card p-6 sm:p-8 lg:p-10 border-white/5 relative overflow-hidden animate-slide-up [animation-delay:200ms] mt-8 lg:mt-0">
-                <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                   <Shield className="w-20 h-20 sm:w-24 sm:h-24 text-gold" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-8 relative z-10">Service Intelligence</h3>
-                <div className="space-y-4 sm:space-y-6 relative z-10">
+              {/* Quick Info Card */}
+              <div className="glass-card p-8">
+                <h3 className="text-xl font-semibold mb-6">Service Overview</h3>
+                <div className="space-y-4">
                   {service.specs.slice(0, 4).map((spec) => (
-                    <div key={spec.label} className="flex justify-between items-baseline py-3 sm:py-4 border-b border-white/5 last:border-0 group">
-                      <span className="text-muted-foreground text-[10px] sm:text-xs uppercase tracking-widest group-hover:text-gold transition-colors mr-4">{spec.label}</span>
-                      <span className="font-bold text-foreground text-base sm:text-lg text-right">{spec.value}</span>
+                    <div key={spec.label} className="flex justify-between items-center py-3 border-b border-border/30 last:border-0">
+                      <span className="text-muted-foreground">{spec.label}</span>
+                      <span className="font-semibold text-foreground">{spec.value}</span>
                     </div>
                   ))}
                 </div>
                 
-                <div className="mt-8 sm:mt-10 pt-8 sm:pt-10 border-t border-white/10 relative z-10">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">Premium Investment From</p>
-                  <p className="text-3xl sm:text-4xl font-bold text-gold-gradient tracking-tighter">{service.packages[0]?.price || 'Custom Quote'}</p>
+                <div className="mt-6 pt-6 border-t border-border/30">
+                  <p className="text-sm text-muted-foreground mb-2">Starting from</p>
+                  <p className="text-3xl font-bold text-gold">{service.packages[0]?.price || 'Custom Quote'}</p>
                 </div>
               </div>
             </div>
@@ -309,42 +305,39 @@ const ServiceDetail = () => {
         </section>
 
         {/* What Is It Section */}
-        <section className="py-24 md:py-32 relative">
-          <div className="absolute inset-0 carbon-bg opacity-20" />
-          <div className="section-container relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <span className="micro-label mb-5 block">Detailed Insight</span>
-              <h2 className="headline-lg mb-8">
-                The Science of <span className="text-gold-gradient">{service.title}</span>
+        <section className="py-16 md:py-24 bg-card/30">
+          <div className="section-container">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="micro-label mb-3 block">Understanding the Service</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                What is <span className="text-gold-gradient">{service.title}</span>?
               </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light italic">
-                "{service.whatIsIt}"
-              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">{service.whatIsIt}</p>
             </div>
           </div>
         </section>
 
         {/* Before/After Results Section */}
         {combinedBeforeAfterImages.length > 0 && (
-          <section className="py-24 md:py-32 overflow-hidden">
+          <section className="py-16 md:py-24">
             <div className="section-container">
-              <div className="text-center mb-20">
-                <span className="micro-label mb-4 block">Proven Transformation</span>
-                <h2 className="headline-lg mb-6">
-                  Visual <span className="text-gold-gradient">Excellence</span>
+              <div className="text-center mb-12">
+                <span className="micro-label mb-3 block">Real Results</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Before & <span className="text-gold-gradient">After</span>
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-                  Experience the radical difference through our portfolio of successful restorations. 
-                  Every vehicle treated as a masterpiece.
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  See the transformational results our {service.title} service delivers.
+                  Drag the slider to compare before and after images.
                 </p>
               </div>
 
-              {/* Mobile: Enhanced Stacked View */}
-              <div className="block md:hidden space-y-12">
+              {/* Mobile: Stacked View */}
+              <div className="block md:hidden space-y-8">
                 {combinedBeforeAfterImages.map((image, index) => (
-                  <div key={index} className="space-y-5 animate-fade-in">
-                    <div className="grid grid-cols-1 gap-4">
-                      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
+                  <div key={index} className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                         <img
                           src={image.before}
                           alt="Before"
@@ -353,12 +346,11 @@ const ServiceDetail = () => {
                             (e.target as HTMLImageElement).src = '/images/placeholder-before.jpg';
                           }}
                         />
-                        <div className="absolute inset-0 bg-black/20" />
-                        <span className="absolute top-4 left-4 px-4 py-1.5 bg-red-600/90 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full backdrop-blur-md">
+                        <span className="absolute top-2 left-2 px-2 py-1 bg-red-500/90 text-white text-xs font-bold uppercase rounded">
                           Before
                         </span>
                       </div>
-                      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-gold/20 shadow-2xl shadow-gold/10">
+                      <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                         <img
                           src={image.after}
                           alt="After"
@@ -367,25 +359,22 @@ const ServiceDetail = () => {
                             (e.target as HTMLImageElement).src = '/images/placeholder-after.jpg';
                           }}
                         />
-                        <span className="absolute top-4 right-4 px-4 py-1.5 bg-gold text-background text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
+                        <span className="absolute top-2 right-2 px-2 py-1 bg-green-500/90 text-white text-xs font-bold uppercase rounded">
                           After
                         </span>
                       </div>
                     </div>
-                    <div className="text-center px-4">
-                      <p className="text-foreground font-bold tracking-tight mb-1">{image.caption}</p>
-                      <p className="text-xs text-muted-foreground uppercase tracking-widest">Master Execution</p>
-                    </div>
+                    <p className="text-center text-sm text-muted-foreground font-medium">
+                      {image.caption}
+                    </p>
                   </div>
                 ))}
               </div>
 
-              {/* Desktop: Premium Slider View */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {/* Desktop: Slider View */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {combinedBeforeAfterImages.map((image, index) => (
-                  <div key={index} className="hover-lift">
-                    <BeforeAfterComparison image={image} />
-                  </div>
+                  <BeforeAfterComparison key={index} image={image} />
                 ))}
               </div>
             </div>
@@ -393,26 +382,25 @@ const ServiceDetail = () => {
         )}
 
         {/* Why Choose Us */}
-        <section className="py-24 md:py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gold/5" />
-          <div className="section-container relative z-10">
-            <div className="max-w-3xl mx-auto text-center mb-20">
-              <span className="micro-label mb-4 block">The Studio Difference</span>
-              <h2 className="headline-lg mb-6">
-                Why Entrust Us with <span className="text-gold-gradient">Your Vehicle</span>?
+        <section className="py-16 md:py-24">
+          <div className="section-container">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <span className="micro-label mb-3 block">Our Difference</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Why Choose <span className="text-gold-gradient">Car Wash Studio</span>?
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.whyChoose.map((reason, index) => (
                 <div 
                   key={index} 
-                  className="group flex items-start gap-5 p-8 rounded-2xl border border-white/5 bg-card/40 backdrop-blur-sm hover:border-gold/30 hover:bg-card transition-all duration-500 hover-lift"
+                  className="flex items-start gap-4 p-6 rounded-xl border border-border/30 bg-card/30 hover:border-gold/30 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold text-gold group-hover:text-background transition-all duration-500">
-                    <Check className="w-6 h-6" />
+                  <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-5 h-5 text-gold" />
                   </div>
-                  <p className="text-foreground text-lg font-medium leading-tight group-hover:text-gold transition-colors">{reason}</p>
+                  <p className="text-foreground">{reason}</p>
                 </div>
               ))}
             </div>
@@ -420,26 +408,26 @@ const ServiceDetail = () => {
         </section>
 
         {/* Benefits Grid */}
-        <section className="py-24 md:py-32">
+        <section className="py-16 md:py-24 bg-card/30">
           <div className="section-container">
-            <div className="text-center mb-20">
-              <span className="micro-label mb-4 block">Core Advantages</span>
-              <h2 className="headline-lg mb-6">
-                Exceptional <span className="text-gold-gradient">Benefits</span>
+            <div className="text-center mb-12">
+              <span className="micro-label mb-3 block">Advantages</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Benefits of <span className="text-gold-gradient">{service.title}</span>
               </h2>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className="group p-10 rounded-2xl border border-white/5 bg-card/30 hover:border-gold/30 transition-all duration-500 hover-lift"
+                  className="group p-8 rounded-xl border border-border/30 bg-background hover:border-gold/30 transition-all duration-300"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-gold/5 flex items-center justify-center mb-8 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-500">
+                  <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
                     <span className="text-gold">{renderIcon(benefit.icon)}</span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-gold transition-colors">{benefit.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-lg">{benefit.description}</p>
+                  <h3 className="text-lg font-semibold mb-3">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -447,24 +435,23 @@ const ServiceDetail = () => {
         </section>
 
         {/* Technical Specifications */}
-        <section className="py-24 md:py-32 relative overflow-hidden">
-           <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold/5 blur-[100px] rounded-full" />
-          <div className="section-container relative z-10">
-            <div className="grid lg:grid-cols-2 gap-20">
+        <section className="py-16 md:py-24">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12">
               <div>
-                <span className="micro-label mb-5 block">Precision Data</span>
-                <h2 className="headline-lg mb-8">
-                  Technical <span className="text-gold-gradient">Specifications</span>
+                <span className="micro-label mb-3 block">Technical Data</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  <span className="text-gold-gradient">Specifications</span>
                 </h2>
-                <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
-                  We maintain radical transparency about our methodology and the high-grade materials utilized in our studio.
+                <p className="text-muted-foreground mb-8">
+                  Our services utilize industry-leading products and equipment, meeting the highest professional standards.
                 </p>
                 
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid sm:grid-cols-2 gap-4">
                   {service.specs.map((spec, index) => (
-                    <div key={index} className="p-6 rounded-xl bg-white/5 border border-white/5 hover:border-gold/20 transition-all group">
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-[0.2em] mb-2 group-hover:text-gold transition-colors">{spec.label}</p>
-                      <p className="text-lg font-bold text-foreground">{spec.value}</p>
+                    <div key={index} className="p-4 rounded-lg bg-card/50 border border-border/30">
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{spec.label}</p>
+                      <p className="font-semibold text-foreground">{spec.value}</p>
                     </div>
                   ))}
                 </div>
@@ -472,28 +459,23 @@ const ServiceDetail = () => {
 
               {/* Process Steps */}
               <div>
-                <span className="micro-label mb-5 block">Workflow Mastery</span>
-                <h2 className="headline-lg mb-8">
-                  The <span className="text-gold-gradient">Art of Process</span>
+                <span className="micro-label mb-3 block">Our Methodology</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  The <span className="text-gold-gradient">Process</span>
                 </h2>
-                <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
-                  Every vehicle undergoes a standardized, meticulous multi-stage protocol to ensure absolute consistency.
+                <p className="text-muted-foreground mb-8">
+                  Our systematic approach ensures consistent, professional results every time.
                 </p>
 
-                <div className="space-y-10">
+                <div className="space-y-6">
                   {service.process.map((step, index) => (
-                    <div key={index} className="flex gap-6 group">
-                      <div className="relative">
-                        <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0 border border-gold/30 group-hover:bg-gold transition-all duration-500 z-10 relative">
-                          <span className="text-gold group-hover:text-background font-black text-xl tracking-tighter transition-colors">{step.step}</span>
-                        </div>
-                        {index < service.process.length - 1 && (
-                          <div className="absolute top-14 left-1/2 -translate-x-1/2 w-px h-10 bg-gradient-to-b from-gold/30 to-transparent" />
-                        )}
+                    <div key={index} className="flex gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 border border-gold/30">
+                        <span className="text-gold font-bold text-sm">{step.step}</span>
                       </div>
-                      <div className="pt-2">
-                        <h4 className="text-xl font-bold mb-2 group-hover:text-gold transition-colors">{step.title}</h4>
-                        <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                      <div>
+                        <h4 className="font-semibold mb-1">{step.title}</h4>
+                        <p className="text-sm text-muted-foreground">{step.description}</p>
                       </div>
                     </div>
                   ))}
@@ -504,57 +486,56 @@ const ServiceDetail = () => {
         </section>
 
         {/* Packages Section */}
-        <section className="py-24 md:py-32 relative overflow-hidden">
-          <div className="absolute inset-0 carbon-bg opacity-30" />
-          <div className="section-container relative z-10">
-            <div className="text-center mb-20">
-              <span className="micro-label mb-4 block">Bespoke Options</span>
-              <h2 className="headline-lg mb-6">
-                Investment <span className="text-gold-gradient">Tiers</span>
+        <section className="py-16 md:py-24 bg-card/30">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="micro-label mb-3 block">Investment</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Service <span className="text-gold-gradient">Packages</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-                Tailored packages designed to meet the specific requirements of your vehicle and your vision.
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Choose the package that fits your needs. All packages include our quality guarantee.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {service.packages.map((pkg, index) => (
                 <div 
                   key={index}
                   className={cn(
-                    "relative rounded-3xl border p-10 transition-all duration-700",
+                    "relative rounded-xl border p-8 transition-all duration-500",
                     pkg.recommended 
-                      ? "border-gold bg-gold/10 shadow-[0_0_80px_rgba(212,175,55,0.25)] md:scale-110 z-20"
-                      : "border-white/5 bg-background/50 backdrop-blur-sm hover:border-gold/30 hover-lift z-10"
+                      ? "border-gold/50 bg-gold/5 shadow-[0_0_40px_rgba(201,162,39,0.15)] scale-105 z-10"
+                      : "border-border/30 bg-background hover:border-gold/30"
                   )}
                 >
                   {pkg.recommended && (
-                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                      <span className="px-6 py-2 bg-gold text-background text-[10px] font-black uppercase tracking-[0.3em] rounded-full shadow-2xl">
-                        Elite Recommendation
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                      <span className="px-4 py-1 bg-gold text-background text-xs font-bold uppercase tracking-wider rounded-full">
+                        Recommended
                       </span>
                     </div>
                   )}
 
-                  <h3 className="text-2xl font-black mb-2 tracking-tight uppercase">{pkg.name}</h3>
-                  <p className="text-xs text-gold/60 font-bold uppercase tracking-widest mb-8">{pkg.duration}</p>
+                  <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{pkg.duration}</p>
                   
-                  <div className="mb-10">
-                    <span className="text-5xl font-black text-gold-gradient tracking-tighter">{pkg.price}</span>
+                  <div className="mb-6">
+                    <span className="text-3xl font-bold text-gold">{pkg.price}</span>
                   </div>
 
-                  <ul className="space-y-5 mb-12">
+                  <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-4 text-sm font-medium group">
-                        <Check className="w-5 h-5 text-gold flex-shrink-0 mt-0.5 group-hover:scale-125 transition-transform" />
-                        <span className="text-muted-foreground group-hover:text-foreground transition-colors leading-tight">{feature}</span>
+                      <li key={i} className="flex items-start gap-2 text-sm">
+                        <Check className="w-5 h-5 text-gold flex-shrink-0" />
+                        <span className="text-muted-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="pt-8 border-t border-white/10 mb-10">
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-[0.2em] mb-2">Service Guarantee</p>
-                    <p className="text-lg font-bold text-foreground italic">"{pkg.warranty}"</p>
+                  <div className="pt-6 border-t border-border/30">
+                    <p className="text-xs text-muted-foreground mb-1">Warranty</p>
+                    <p className="font-semibold text-foreground">{pkg.warranty}</p>
                   </div>
 
                   <a
@@ -562,13 +543,13 @@ const ServiceDetail = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "block w-full py-5 rounded-xl font-black uppercase tracking-[0.2em] text-xs text-center transition-all duration-500",
+                      "block w-full py-3 rounded-lg font-semibold text-center mt-6 transition-all duration-300",
                       pkg.recommended
-                        ? "btn-gold shadow-gold/30"
-                        : "border-2 border-gold/40 text-gold hover:bg-gold hover:text-background"
+                        ? "btn-gold"
+                        : "border border-gold/30 text-gold hover:bg-gold/10"
                     )}
                   >
-                    Secure This Tier
+                    Book Now
                   </a>
                 </div>
               ))}
@@ -577,35 +558,31 @@ const ServiceDetail = () => {
         </section>
 
         {/* FAQs Section */}
-        <section className="py-24 md:py-32">
+        <section className="py-16 md:py-24">
           <div className="section-container">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-20">
-                <span className="micro-label mb-4 block">Knowledge Base</span>
-                <h2 className="headline-lg mb-6">
-                  Expert <span className="text-gold-gradient">Insights</span>
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="micro-label mb-3 block">Common Questions</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Frequently Asked <span className="text-gold-gradient">Questions</span>
                 </h2>
               </div>
 
-              <Accordion type="single" collapsible className="space-y-5">
+              <Accordion type="single" collapsible className="space-y-4">
                 {service.faqs.map((faq, index) => (
                   <AccordionItem 
                     key={index} 
                     value={`item-${index}`}
-                    className="border border-white/5 rounded-2xl px-8 data-[state=open]:border-gold/40 data-[state=open]:bg-gold/5 transition-all duration-500 overflow-hidden"
+                    className="border border-border/30 rounded-lg px-6 data-[state=open]:border-gold/30"
                   >
-                    <AccordionTrigger className="text-left hover:no-underline py-6 group">
-                      <div className="flex items-center gap-5">
-                        <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-all">
-                           <HelpCircle className="w-5 h-5 text-gold" />
-                        </div>
-                        <span className="text-lg font-bold tracking-tight text-foreground/90 group-hover:text-gold transition-colors">{faq.question}</span>
+                    <AccordionTrigger className="text-left hover:no-underline py-4">
+                      <div className="flex items-center gap-3">
+                        <HelpCircle className="w-5 h-5 text-gold flex-shrink-0" />
+                        <span className="font-medium">{faq.question}</span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-lg leading-relaxed pb-8 pl-15">
-                      <div className="border-l-2 border-gold/30 pl-6 py-2">
-                        {faq.answer}
-                      </div>
+                    <AccordionContent className="text-muted-foreground pb-4 pl-8">
+                      {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -616,32 +593,31 @@ const ServiceDetail = () => {
 
         {/* Related Services */}
         {relatedServices.length > 0 && (
-          <section className="py-24 md:py-32 relative overflow-hidden">
-            <div className="absolute inset-0 carbon-bg opacity-10" />
-            <div className="section-container relative z-10">
-              <div className="text-center mb-20">
-                <span className="micro-label mb-4 block">Expand the Experience</span>
-                <h2 className="headline-lg mb-6">
-                  Complementary <span className="text-gold-gradient">Treatments</span>
+          <section className="py-16 md:py-24 bg-card/30">
+            <div className="section-container">
+              <div className="text-center mb-12">
+                <span className="micro-label mb-3 block">Explore More</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Related <span className="text-gold-gradient">Services</span>
                 </h2>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedServices.map((related) => (
                   <Link
                     key={related.id}
                     to={`/services/${related.id}`}
-                    className="group p-8 rounded-2xl border border-white/5 bg-card/30 hover:border-gold/30 transition-all duration-500 hover-lift"
+                    className="group p-6 rounded-xl border border-border/30 bg-background hover:border-gold/30 transition-all duration-300"
                   >
-                    <h3 className="text-2xl font-bold mb-4 group-hover:text-gold transition-colors duration-300 tracking-tight">
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-gold transition-colors">
                       {related.title}
                     </h3>
-                    <p className="text-muted-foreground text-base leading-relaxed mb-8 line-clamp-2 italic">
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                       {related.shortDescription}
                     </p>
-                    <div className="flex items-center gap-3 text-gold text-xs font-black uppercase tracking-[0.2em] group-hover:gap-5 transition-all">
-                      Explore Mastery
-                      <ArrowRight className="w-4 h-4" />
+                    <div className="flex items-center gap-2 text-gold text-sm font-medium">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 ))}
@@ -651,39 +627,34 @@ const ServiceDetail = () => {
         )}
 
         {/* CTA Section */}
-        <section className="py-24 md:py-40 relative">
+        <section className="py-16 md:py-24">
           <div className="section-container">
-            <div className="relative rounded-[40px] overflow-hidden group">
-              {/* Complex Premium Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/30 via-background to-background" />
-              <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold/10 blur-[120px] rounded-full animate-pulse" />
-              <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gold/5 blur-[120px] rounded-full animate-pulse [animation-delay:1s]" />
-              <div className="absolute inset-0 carbon-bg opacity-20 group-hover:opacity-30 transition-opacity duration-700" />
+            <div className="relative rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/5" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,162,39,0.15),transparent_50%)]" />
               
-              <div className="relative p-12 md:p-20 lg:p-32 text-center border border-white/5">
-                <span className="micro-label mb-6 block">Ready for Transformation</span>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-tight tracking-tighter text-balance">
-                  Elevate Your <span className="text-gold-gradient">Vehicle's Soul</span>
+              <div className="relative p-8 md:p-12 lg:p-16 text-center">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Ready to Transform Your Vehicle?
                 </h2>
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-                  Join the elite ranks of vehicle owners who refuse to settle for anything less 
-                  than absolute perfection. Your master appointment awaits.
+                <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+                  Book your {service.title} service today and experience the difference professional care makes.
                 </p>
-                <div className="flex flex-wrap justify-center gap-6">
+                <div className="flex flex-wrap justify-center gap-4">
                   <a
                     href="https://wa.me/918888899936"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold inline-flex items-center gap-4 px-12 py-6 text-lg font-black shadow-gold/40"
+                    className="btn-gold inline-flex items-center gap-2 px-8 py-4"
                   >
-                    <MessageCircle className="w-6 h-6" />
-                    Initialize Booking
+                    <MessageCircle className="w-5 h-5" />
+                    Book via WhatsApp
                   </a>
                   <Link
                     to="/services"
-                    className="inline-flex items-center gap-4 px-10 py-6 border-2 border-gold/40 text-gold font-black uppercase tracking-[0.2em] text-sm rounded-2xl hover:bg-gold hover:text-background transition-all duration-500 backdrop-blur-md"
+                    className="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-gold font-medium hover:bg-gold/10 transition-all duration-300"
                   >
-                    The Full Portfolio
+                    View All Services
                   </Link>
                 </div>
               </div>

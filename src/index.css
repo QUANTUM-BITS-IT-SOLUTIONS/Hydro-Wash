@@ -284,7 +284,7 @@
 
   /* Headline Styling - Consistent font sizes across devices */
   .headline-xl {
-    @apply text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1];
+    @apply text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight;
     font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 

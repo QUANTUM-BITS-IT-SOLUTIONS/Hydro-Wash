@@ -14,7 +14,7 @@ const StatCounter = ({ value, suffix, label, isVisible, delay }: StatProps) => {
 
   return (
     <div className="text-center px-6 md:px-10 py-6">
-      <div className="text-3xl md:text-4xl font-bold text-foreground mb-2 tabular-nums">
+      <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 tabular-nums">
         {count}<span className="text-gold">{suffix}</span>
       </div>
       <div className="text-sm text-muted-foreground uppercase tracking-wider">{label}</div>
