@@ -217,11 +217,11 @@ const Services = () => {
           )}
         >
           <div className="max-w-3xl">
-            <span className="micro-label mb-3 block">Comprehensive Solutions</span>
-            <h2 className="headline-lg mb-4">
+            <span className="micro-label mb-2 sm:mb-3 block text-[10px] sm:text-xs">Comprehensive Solutions</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 sm:mb-4">
               Premium <span className="text-gold-gradient">Car Care Services</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-sm sm:text-base">
               From protective coatings and paint correction to deep interior restoration and professional detailing, 
               we deliver expert automotive care using industry-leading products, advanced techniques, and master craftsmanship 
               to protect and transform your vehicle.

@@ -12,6 +12,14 @@ const Footer = () => {
     { label: 'Premium Car Wash', href: '#services' },
   ];
 
+  const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Our Work', href: '#work' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'Gallery', href: '#gallery' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/share/1JRg7C1eYW/', label: 'Facebook' },
@@ -31,13 +39,13 @@ const Footer = () => {
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
       <div className="section-container px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
+          <div className="col-span-2 lg:col-span-1 text-center sm:text-left flex flex-col items-center sm:items-start">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
               <span className="text-gold-gradient">HydroWash</span> Car Wash
             </h3>
-            <p className="text-muted-foreground max-w-md mb-5 sm:mb-6 mx-auto sm:mx-0 text-sm sm:text-base">
+            <p className="text-muted-foreground max-w-xs mb-5 sm:mb-6 text-sm sm:text-base">
               Voted as the best car wash in the town.
             </p>
 
@@ -58,9 +66,26 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Quick Links */}
+          <div className="col-span-1 text-left">
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Most Purchased Services */}
-          <div className="text-center sm:text-left">
-            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Most Purchased Services</h4>
+          <div className="col-span-1 text-left">
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Most Purchased Services</h4>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service.label}>
@@ -76,19 +101,19 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div className="text-center sm:text-left">
+          <div className="col-span-2 lg:col-span-1 text-center sm:text-left bg-card/40 sm:bg-transparent p-6 sm:p-0 rounded-2xl border border-border/40 sm:border-transparent flex flex-col items-center sm:items-start">
             <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Newsletter</h4>
-            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
+            <p className="text-xs sm:text-sm text-muted-foreground mb-4">
               Subscribe for exclusive offers and updates.
             </p>
-            <form onSubmit={handleSubmit} className="flex gap-2 max-w-xs mx-auto sm:mx-0">
+            <form onSubmit={handleSubmit} className="flex gap-2 w-full max-w-xs">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className={cn(
-                  "flex-1 px-3 sm:px-4 py-2 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground text-sm",
+                  "flex-1 px-3 sm:px-4 py-2 rounded-lg bg-background sm:bg-card border border-border text-foreground placeholder:text-muted-foreground text-sm w-full",
                   "focus:outline-none focus:border-gold transition-colors duration-300"
                 )}
                 required
