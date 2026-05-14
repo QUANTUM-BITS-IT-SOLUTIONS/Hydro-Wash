@@ -286,62 +286,42 @@ const Services = () => {
             )}
           </Carousel>
 
-          {/* Premium Circular Pagination Container */}
-          <div className="mt-8 md:mt-10 flex flex-col items-center gap-6">
-            {/* Elegant Dots Pagination */}
-            <div className="flex items-center justify-center gap-2.5 sm:gap-3">
-              {Array.from({ length: isMobile ? count : Math.ceil(services.length / 3) || 1 }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => api?.scrollTo(index)}
-                  className="group relative flex items-center justify-center h-5 w-5 focus:outline-none"
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  {/* Outer glow ring for active state */}
-                  <div 
+          {/* Mobile Pagination Container */}
+          <div className="mt-8 md:mt-12 flex flex-col items-center gap-6">
+            {/* Repeating Dots Pagination */}
+            <div className="flex items-center justify-center gap-2">
+              {Array.from({ length: 4 }).map((_, index) => {
+                const isActive = (current % 4) === index;
+                return (
+                  <div
+                    key={index}
                     className={cn(
-                      "absolute inset-0 rounded-full transition-all duration-500 ease-out",
-                      current === index 
-                        ? "border border-gold/40 scale-100" 
-                        : "border border-transparent group-hover:border-gold/20 scale-50"
+                      "rounded-full transition-all duration-500",
+                      isActive 
+                        ? "w-6 h-1.5 bg-gold shadow-[0_0_8px_rgba(255,215,0,0.5)]" 
+                        : "w-1.5 h-1.5 bg-border"
                     )}
                   />
-                  {/* Dot */}
-                  <div 
-                    className={cn(
-                      "rounded-full transition-all duration-500 ease-out",
-                      current === index 
-                        ? "h-2.5 w-2.5 bg-gold shadow-[0_0_10px_rgba(255,215,0,0.8)]" 
-                        : "h-1.5 w-1.5 bg-muted-foreground/30 group-hover:bg-gold/50"
-                    )}
-                  />
-                </button>
-              ))}
+                );
+              })}
             </div>
 
             {/* Navigation Controls - Mobile */}
-            <div className="flex md:hidden items-center justify-center gap-6">
+            <div className="flex md:hidden items-center justify-center gap-8">
               <button
                 onClick={scrollPrev}
-                className="w-9 h-9 rounded-full bg-card/50 border border-border/40 flex items-center justify-center text-muted-foreground hover:bg-gold/10 hover:border-gold/50 hover:text-gold transition-all duration-300"
+                className="p-2 text-muted-foreground hover:text-gold transition-colors duration-300 focus:outline-none"
                 aria-label="Previous service"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
               
-              {/* Minimal Counter */}
-              <div className="text-[10px] font-medium tracking-[0.2em] text-muted-foreground">
-                <span className="text-gold">{String(current + 1).padStart(2, '0')}</span> 
-                <span className="mx-1 opacity-40">/</span> 
-                {String(count).padStart(2, '0')}
-              </div>
-
               <button
                 onClick={scrollNext}
-                className="w-9 h-9 rounded-full bg-card/50 border border-border/40 flex items-center justify-center text-muted-foreground hover:bg-gold/10 hover:border-gold/50 hover:text-gold transition-all duration-300"
+                className="p-2 text-muted-foreground hover:text-gold transition-colors duration-300 focus:outline-none"
                 aria-label="Next service"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-6 h-6" />
               </button>
             </div>
           </div>
