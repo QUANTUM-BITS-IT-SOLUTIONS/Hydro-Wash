@@ -18,54 +18,51 @@ const Pricing = () => {
 
   const tiers: PricingTier[] = [
     {
-      name: 'Express Wash',
-      icon: Star,
-      description: 'Efficient exterior cleaning service',
-      price: '₹399',
-      priceNote: 'Sedan • SUV +₹100',
+      name: 'Premium Detailing',
+      icon: Crown,
+      description: 'Exterior & Interior comprehensive care',
+      price: '₹1,999/-',
+      priceNote: 'Sedan • SUV +₹300',
       features: [
-        'Pre-wash foam application',
-        'High-pressure exterior wash',
-        'Microfiber cloth dry',
-        'Tire & rim cleaning',
-        'Window cleaning (exterior)',
-        '30-minute service',
+        'Full interior deep clean',
+        'Multi-stage paint correction',
+        'Premium sealant application',
+        'Leather & upholstery care',
+        'Dashboard conditioning',
+        '2-hour service',
       ],
       cta: 'Book Now',
     },
     {
-      name: 'Premium Detail',
-      icon: Crown,
-      description: 'Comprehensive interior and exterior restoration',
-      price: '₹1,499',
-      priceNote: 'Sedan • SUV +₹300',
+      name: 'Ceramic Coating',
+      icon: Shield,
+      description: 'Advanced 9H ceramic protection',
+      price: '₹14,999/-',
+      priceNote: 'Sedan • SUV +₹2,000',
       features: [
-        'Everything in Express',
-        'Interior vacuum & shampoo',
-        'Dashboard & console conditioning',
-        'Leather seat treatment',
-        'Clay bar decontamination',
-        'Paint sealant application',
-        'Headlight polishing',
-        '2-hour service',
+        '9H pencil hardness rating',
+        'Extreme water beading',
+        'UV & oxidation protection',
+        'Long-lasting gloss',
+        'Warranty certificate',
+        '4-hour service',
       ],
       popular: true,
       cta: 'Most Popular',
     },
     {
-      name: 'Ceramic Shield',
-      icon: Shield,
-      description: 'Advanced ceramic coating system',
-      price: '₹8,999',
-      priceNote: 'Sedan • SUV +₹2,000',
+      name: 'PPF Protection',
+      icon: Star,
+      description: 'Paint Protection Film (PPF)',
+      price: '₹49,999/-',
+      priceNote: 'Full Body Coverage',
       features: [
-        'Complete paint correction',
-        '9H ceramic coating (2 years)',
-        'Paint thickness measurement',
-        'Infrared curing',
-        'Maintenance kit included',
-        'Warranty certificate',
-        '4-hour service',
+        'Self-healing technology',
+        'Computer-precision cutting',
+        '10-year manufacturer warranty',
+        'Stone chip protection',
+        'Stain & chemical resistance',
+        'Full vehicle wrap',
       ],
       cta: 'Get Quote',
     },
@@ -87,9 +84,9 @@ const Pricing = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}
         >
-          <span className="micro-label mb-4 block">Service Packages</span>
+          <span className="micro-label mb-4 block">Best Sellers</span>
           <h2 className="headline-lg mb-4">
-            <span className="text-gold-gradient">Professional</span> Pricing
+            Most <span className="text-gold-gradient">Purchased</span> Services
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Expert car care services with clear, upfront pricing. Vehicle type and specific requirements may affect final cost. Custom packages available upon request.

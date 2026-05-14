@@ -5,17 +5,24 @@ import { cn } from '@/lib/utils';
 const Footer = () => {
   const [email, setEmail] = useState('');
 
+  const services = [
+    { label: 'Ceramic Coating', href: '#services' },
+    { label: 'PPF (Paint Protection Film)', href: '#services' },
+    { label: 'Interior Detailing', href: '#services' },
+    { label: 'Premium Car Wash', href: '#services' },
+  ];
+
   const quickLinks = [
-    { label: 'Services', href: '#services' },
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
     { label: 'Gallery', href: '#gallery' },
-    { label: 'About Us', href: '#about' },
+    { label: 'Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' },
   ];
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/share/1JRg7C1eYW/', label: 'Facebook' },
-    { icon: Youtube, href: 'https://youtube.com/hydrowashcarwash', label: 'YouTube' },
     { icon: MapPin, href: 'https://maps.app.goo.gl/NnZwDGryAvLZ5FvEA', label: 'Google Maps' },
   ];
 
@@ -32,14 +39,14 @@ const Footer = () => {
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
 
       <div className="section-container px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
               <span className="text-gold-gradient">HydroWash</span> Car Wash
             </h3>
             <p className="text-muted-foreground max-w-md mb-5 sm:mb-6 mx-auto sm:mx-0 text-sm sm:text-base">
-             Because exceptional machines deserve nothing less.
+              Voted as the best car wash in the town.
             </p>
 
             {/* Social Links */}
@@ -59,9 +66,25 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Most Purchased Services */}
+          <div className="text-center sm:text-left">
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Most Purchased Services</h4>
+            <ul className="space-y-2 sm:space-y-3">
+              {services.map((service) => (
+                <li key={service.label}>
+                  <a
+                    href={service.href}
+                    className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
+                  >
+                    {service.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
           {/* Quick Links */}
           <div className="text-center sm:text-left">
-            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Quick Links</h4>
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Quick Links</h4>
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -78,7 +101,7 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div className="text-center sm:text-left">
-            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm">Newsletter</h4>
+            <h4 className="micro-label mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest text-gold font-bold">Newsletter</h4>
             <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
               Subscribe for exclusive offers and updates.
             </p>

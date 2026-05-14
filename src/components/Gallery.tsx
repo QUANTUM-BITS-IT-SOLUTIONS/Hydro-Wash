@@ -310,7 +310,7 @@ const Gallery = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/10 to-transparent animate-pulse" />
           <div className="relative z-10">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6">
               Ready to Transform Your <span className="text-gold-gradient">Vehicle?</span>
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base">
