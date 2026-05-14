@@ -286,39 +286,56 @@ const Services = () => {
             )}
           </Carousel>
 
-          {/* Pagination Dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {Array.from({ length: isMobile ? count : Math.ceil(services.length / 3) || 1 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  current === index 
-                    ? "w-8 bg-gold" 
-                    : "bg-border hover:bg-gold/50"
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          {/* Premium Pagination & Controls Container */}
+          <div className="mt-8 md:mt-12 flex flex-col items-center gap-6 sm:gap-8">
+            {/* Dynamic Segmented Progress Pagination */}
+            <div className="flex items-center gap-1.5 w-full max-w-[280px] p-1.5 rounded-full bg-background/50 border border-border/50 backdrop-blur-md shadow-inner">
+              {Array.from({ length: isMobile ? count : Math.ceil(services.length / 3) || 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => api?.scrollTo(index)}
+                  className={cn(
+                    "h-1.5 sm:h-2 rounded-full transition-all duration-500 ease-out relative overflow-hidden",
+                    current === index 
+                      ? "bg-gold flex-[3] sm:flex-[4] shadow-[0_0_10px_rgba(255,215,0,0.4)]" 
+                      : "bg-muted-foreground/30 flex-[1] hover:bg-gold/40"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                >
+                  {current === index && (
+                    <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                  )}
+                </button>
+              ))}
+            </div>
 
-          {/* Navigation Controls - Mobile */}
-          <div className="flex md:hidden items-center justify-center gap-3 mt-6">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:border-gold/50 hover:text-gold transition-all duration-300"
-              aria-label="Previous service"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:border-gold/50 hover:text-gold transition-all duration-300"
-              aria-label="Next service"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            {/* Navigation Controls - Mobile */}
+            <div className="flex md:hidden items-center justify-between w-full max-w-[280px]">
+              <button
+                onClick={scrollPrev}
+                className="w-11 h-11 rounded-full bg-card/80 border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-gold/10 hover:border-gold/50 hover:text-gold transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-95"
+                aria-label="Previous service"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <div className="flex flex-col items-center justify-center">
+                 <span className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 font-medium mb-1">Service</span>
+                 <div className="text-sm font-semibold tracking-widest text-foreground flex items-center gap-1.5">
+                    <span className="text-gold">{String(current + 1).padStart(2, '0')}</span> 
+                    <span className="text-muted-foreground/30 text-xs">/</span> 
+                    <span className="text-muted-foreground/70">{String(count).padStart(2, '0')}</span>
+                  </div>
+              </div>
+
+              <button
+                onClick={scrollNext}
+                className="w-11 h-11 rounded-full bg-card/80 border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-gold/10 hover:border-gold/50 hover:text-gold transition-all duration-300 shadow-[0_4px_12px_rgba(0,0,0,0.1)] active:scale-95"
+                aria-label="Next service"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
 
