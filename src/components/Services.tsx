@@ -280,6 +280,7 @@ const Services = () => {
             plugins={[autoplayPlugin.current]}
             className="w-full relative"
           >
+
             <CarouselContent className="-ml-4 md:-ml-6">
               {services.map((service) => (
                 <CarouselItem 
@@ -302,39 +303,44 @@ const Services = () => {
             )}
           </Carousel>
 
-          {/* Pagination Dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {Array.from({ length: isMobile ? count : Math.ceil(services.length / 3) || 1 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  current === index 
-                    ? "w-8 bg-gold" 
-                    : "bg-border hover:bg-gold/50"
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          {/* Mobile Pagination Container */}
+          <div className="mt-8 md:mt-12 flex flex-col items-center gap-6">
+            {/* Repeating Dots Pagination */}
+            <div className="flex items-center justify-center gap-2">
+              {Array.from({ length: 4 }).map((_, index) => {
+                const isActive = (current % 4) === index;
+                return (
+                  <div
+                    key={index}
+                    className={cn(
+                      "rounded-full transition-all duration-500",
+                      isActive 
+                        ? "w-6 h-1.5 bg-gold shadow-[0_0_8px_rgba(255,215,0,0.5)]" 
+                        : "w-1.5 h-1.5 bg-border"
+                    )}
+                  />
+                );
+              })}
+            </div>
 
-          {/* Navigation Controls - Mobile */}
-          <div className="flex md:hidden items-center justify-center gap-3 mt-6">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:border-gold/50 hover:text-gold transition-all duration-300"
-              aria-label="Previous service"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-muted-foreground hover:border-gold/50 hover:text-gold transition-all duration-300"
-              aria-label="Next service"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
+            {/* Navigation Controls - Mobile */}
+            <div className="flex md:hidden items-center justify-center gap-8">
+              <button
+                onClick={scrollPrev}
+                className="p-2 text-muted-foreground hover:text-gold transition-colors duration-300 focus:outline-none"
+                aria-label="Previous service"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              <button
+                onClick={scrollNext}
+                className="p-2 text-muted-foreground hover:text-gold transition-colors duration-300 focus:outline-none"
+                aria-label="Next service"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
 

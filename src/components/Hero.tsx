@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+const HERO_IMAGES = {
+  mobile: '/Hero-mobile.png',
+  desktop: '/Hero.png',
+} as const;
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -44,18 +49,22 @@ const Hero = () => {
     <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
       {/* Multi-layer Parallax Background */}
       <div className="absolute inset-0">
-        {/* Base Video Layer */}
+        {/* Base image layer — mobile vs laptop/desktop */}
         <div 
           className="absolute inset-0 scale-110"
           style={{ transform: `scale(1.1) translateY(${scrollY * 0.3}px)` }}
         >
-          <img
-            src="/Hero.png"
-            alt="Hero Image"
-            aria-hidden="true"
-            className="h-full w-full object-cover"
-            draggable={false}
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet={HERO_IMAGES.mobile} />
+            <source media="(min-width: 768px)" srcSet={HERO_IMAGES.desktop} />
+            <img
+              src={HERO_IMAGES.desktop}
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </picture>
         </div>
 
         {/* Dark Gradient Overlay */}
