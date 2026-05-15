@@ -81,25 +81,27 @@ const Contact = () => {
           </a>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-0">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
           {/* Map */}
           <div
             className={cn(
-              "relative aspect-[16/9] sm:aspect-[4/3] lg:aspect-auto lg:h-full min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-700 ease-premium",
+              "relative w-full min-w-0 max-w-full overflow-hidden rounded-xl sm:rounded-2xl transition-all duration-700 ease-premium lg:h-full lg:min-h-[32rem]",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}
             style={{ transitionDelay: '200ms' }}
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3538.0!2d76.6123!3d27.5679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjc8MzQnMDQuNCJOIDc2wrAzNic0NC4zIkU!5e0!3m2!1sen!2sin!4v1704067200000!5m2!1sen!2sin"
-              className="absolute inset-0 w-full h-full border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="HydroWash Car Wash Location"
-            />
+            <div className="relative w-full aspect-[4/3] sm:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:h-full lg:w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3538.0!2d76.6123!3d27.5679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjc8MzQnMDQuNCJOIDc2wrAzNic0NC4zIkU!5e0!3m2!1sen!2sin!4v1704067200000!5m2!1sen!2sin"
+                className="absolute inset-0 h-full w-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="HydroWash Car Wash Location"
+              />
+            </div>
             {/* Overlay */}
-            <div className="absolute inset-0 pointer-events-none border border-gold/20 rounded-xl sm:rounded-2xl" />
+            <div className="pointer-events-none absolute inset-0 rounded-xl border border-gold/20 sm:rounded-2xl" />
             
             {/* Directions Button */}
             <a
@@ -116,7 +118,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div
             className={cn(
-              "flex flex-col gap-3 sm:gap-6 transition-all duration-700 ease-premium",
+              "flex min-w-0 flex-col gap-3 sm:gap-6 lg:h-full lg:justify-center transition-all duration-700 ease-premium",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}
             style={{ transitionDelay: '300ms' }}
@@ -141,7 +143,7 @@ const Contact = () => {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground text-sm sm:text-base">{info.value}</p>
+                      <p className="text-foreground text-sm sm:text-base break-words">{info.value}</p>
                     )}
                   </div>
                 </div>

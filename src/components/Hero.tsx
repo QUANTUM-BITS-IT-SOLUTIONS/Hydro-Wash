@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
+const HERO_IMAGES = {
+  mobile: '/Hero-Mobile.png',
+  desktop: '/Hero.png',
+} as const;
+
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -44,25 +49,26 @@ const Hero = () => {
     <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
       {/* Multi-layer Parallax Background */}
       <div className="absolute inset-0">
-        {/* Base Video Layer */}
+        {/* Base image layer — mobile vs laptop/desktop */}
         <div 
-          className="absolute inset-0 scale-110"
-          style={{ transform: `scale(1.1) translateY(${scrollY * 0.3}px)` }}
+          className="absolute inset-0 bg-background"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            poster="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80&auto=format&fit=crop"
-            preload="metadata"
-          >
-            <source
-              src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164&oauth2_token_id=57447761"
-              type="video/mp4"
-            />
-          </video>
+          <div className="absolute inset-0 scale-100 md:scale-110 transition-transform duration-700 flex flex-col justify-start">
+            <picture className="w-full h-full flex flex-col justify-start">
+              <source media="(max-width: 767px)" srcSet={HERO_IMAGES.mobile} />
+              <source media="(min-width: 768px)" srcSet={HERO_IMAGES.desktop} />
+              <img
+                src={HERO_IMAGES.desktop}
+                alt=""
+                aria-hidden="true"
+                className="w-full h-[60vh] md:h-full object-contain md:object-cover object-top md:object-center"
+                draggable={false}
+              />
+            </picture>
+            {/* Seamless fade to background on mobile */}
+            <div className="absolute bottom-0 left-0 right-0 h-[60vh] bg-gradient-to-t from-background via-background/90 to-transparent md:hidden pointer-events-none" />
+          </div>
         </div>
 
         {/* Dark Gradient Overlay */}
@@ -186,20 +192,21 @@ const Hero = () => {
       </div>
 
         {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+      <div className="relative z-10 flex h-full flex-col items-center md:items-start justify-center px-4 sm:px-6 lg:px-10 xl:px-12 text-center md:text-left w-full">
         {/* Decorative Elements - Smooth scaling */}
         <div 
-          className={`absolute top-1/3 left-1/2 -translate-x-1/2 w-[300px] h-[300px] border border-gold/10 rounded-full gpu-accelerate transition-all duration-1000 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+          className={`absolute top-1/3 left-[10%] -translate-x-1/2 w-[300px] h-[300px] border border-gold/10 rounded-full gpu-accelerate transition-all duration-1000 pointer-events-none ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
           style={{ transform: `translate(-50%, -50%) scale3d(${1 + scrollY * 0.0005}, ${1 + scrollY * 0.0005}, 1)` }}
         />
         <div 
-          className={`absolute top-1/3 left-1/2 -translate-x-1/2 w-[400px] h-[400px] border border-gold/5 rounded-full gpu-accelerate transition-all duration-1000 delay-200 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+          className={`absolute top-1/3 left-[10%] -translate-x-1/2 w-[400px] h-[400px] border border-gold/5 rounded-full gpu-accelerate transition-all duration-1000 delay-200 pointer-events-none ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
           style={{ transform: `translate(-50%, -50%) scale3d(${1 + scrollY * 0.0003}, ${1 + scrollY * 0.0003}, 1)` }}
         />
 
-        {/* Logo Reveal - Smoother easing */}
-        <div
-          className={`mb-4 sm:mb-6 transition-all duration-1000 delay-100 ${
+        <div className="md:ml-[2cm] flex flex-col items-center md:items-start max-w-full w-full">
+          {/* Logo Reveal - Smoother easing */}
+          <div
+            className={`mb-4 sm:mb-6 transition-all duration-1000 delay-100 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
@@ -228,7 +235,7 @@ const Hero = () => {
 
         {/* Animated Divider */}
         <div 
-          className={`h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mb-6 transition-all duration-1000 delay-400 gpu-accelerate ${isLoaded ? 'opacity-100 w-24' : 'opacity-0 w-0'}`}
+          className={`h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent md:from-gold md:via-gold/50 md:to-transparent mb-6 transition-all duration-1000 delay-400 gpu-accelerate ${isLoaded ? 'opacity-100 w-32 md:w-24' : 'opacity-0 w-0'}`}
           style={{ 
             transform: `translate3d(0, ${-scrollY * 0.45}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
@@ -250,7 +257,7 @@ const Hero = () => {
 
         {/* CTAs - Enhanced hover effects */}
         <div
-          className={`flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 transition-all duration-1000 delay-700 ${
+          className={`flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 justify-center md:justify-start transition-all duration-1000 delay-700 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
@@ -286,7 +293,7 @@ const Hero = () => {
 
         {/* Stats Preview - Smooth reveal */}
         <div 
-          className={`flex gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-16 transition-all duration-1000 delay-900 gpu-accelerate ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`flex gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-16 justify-center md:justify-start w-full md:w-auto transition-all duration-1000 delay-900 gpu-accelerate ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             transform: `translate3d(0, ${-scrollY * 0.2}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
@@ -306,6 +313,7 @@ const Hero = () => {
               <p className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">{stat.label}</p>
             </div>
           ))}
+        </div>
         </div>
       </div>
 

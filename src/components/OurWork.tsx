@@ -6,111 +6,105 @@ import { workCategories } from '@/data/ourWorkData';
 import type { WorkCategory } from '@/data/ourWorkData';
 
 const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: string; afterImage: string; title: string }) => {
-  const [comparePosition, setComparePosition] = useState(50);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const sliderRef = React.useRef<HTMLDivElement>(null);
-  const isUpdatingRef = React.useRef(false);
+  const [position, setPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState({ before: false, after: false });
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (isUpdatingRef.current) return;
-    
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
-    const clampedPercentage = Math.max(0, Math.min(100, percentage));
-    
-    // Direct DOM manipulation for instant visual feedback
-    if (sliderRef.current) {
-      const beforeElement = sliderRef.current.querySelector('[data-before-image]') as HTMLElement;
-      const sliderLine = sliderRef.current.querySelector('[data-slider-line]') as HTMLElement;
-      
-      if (beforeElement) {
-        beforeElement.style.clipPath = `inset(0 ${100 - clampedPercentage}% 0 0)`;
-      }
-      if (sliderLine) {
-        sliderLine.style.left = `calc(${clampedPercentage}% - 2px)`;
-      }
-    }
-    
-    // Throttled state update
-    isUpdatingRef.current = true;
-    requestAnimationFrame(() => {
-      setComparePosition(clampedPercentage);
-      isUpdatingRef.current = false;
-    });
+  const updatePosition = React.useCallback((clientX: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.width === 0) return;
+    const percent = ((clientX - rect.left) / rect.width) * 100;
+    setPosition(Math.max(0, Math.min(100, percent)));
   }, []);
 
-  const handleTouchMove = React.useCallback((e: React.TouchEvent<HTMLDivElement>) => {
-    if (isUpdatingRef.current) return;
-    
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.touches[0].clientX - rect.left;
-    const percentage = (x / rect.width) * 100;
-    const clampedPercentage = Math.max(0, Math.min(100, percentage));
-    
-    // Direct DOM manipulation for instant visual feedback
-    if (sliderRef.current) {
-      const beforeElement = sliderRef.current.querySelector('[data-before-image]') as HTMLElement;
-      const sliderLine = sliderRef.current.querySelector('[data-slider-line]') as HTMLElement;
-      
-      if (beforeElement) {
-        beforeElement.style.clipPath = `inset(0 ${100 - clampedPercentage}% 0 0)`;
-      }
-      if (sliderLine) {
-        sliderLine.style.left = `calc(${clampedPercentage}% - 2px)`;
-      }
+  React.useEffect(() => {
+    if (!isDragging) return;
+
+    const onPointerMove = (e: PointerEvent) => updatePosition(e.clientX);
+    const onPointerUp = () => setIsDragging(false);
+
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
+
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      window.removeEventListener('pointercancel', onPointerUp);
+    };
+  }, [isDragging, updatePosition]);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+    updatePosition(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'mouse' && !isDragging) {
+      updatePosition(e.clientX);
     }
-    
-    // Throttled state update
-    isUpdatingRef.current = true;
-    requestAnimationFrame(() => {
-      setComparePosition(clampedPercentage);
-      isUpdatingRef.current = false;
-    });
-  }, []);
+  };
+
+  const isReady = imagesLoaded.before && imagesLoaded.after;
 
   return (
-    <div 
-      ref={sliderRef}
-      className="relative aspect-[4/3] overflow-hidden rounded-3xl group cursor-ew-resize"
-      onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
-    >
-      {/* Decorative Frame */}
-      <div className="absolute -inset-1 bg-gradient-to-br from-gold/30 via-gold/10 to-gold/30 rounded-[28px] blur-sm opacity-60" />
-      
-      <div className="relative h-full rounded-3xl overflow-hidden">
+    <div className="relative aspect-[4/3] overflow-hidden rounded-3xl group">
+      <div className="pointer-events-none absolute -inset-1 rounded-[28px] bg-gradient-to-br from-gold/30 via-gold/10 to-gold/30 opacity-60 blur-sm" />
+
+      <div
+        ref={containerRef}
+        className="relative h-full touch-none cursor-ew-resize select-none overflow-hidden rounded-3xl"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        role="slider"
+        aria-label={`${title} before and after comparison`}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(position)}
+      >
         {/* After Image (Full - Bottom Layer) */}
         <img
           src={afterImage}
           alt={`${title} - After`}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+          className="h-full w-full object-cover"
+          draggable={false}
           loading="lazy"
-          onLoad={() => setIsLoaded(true)}
-          style={{ opacity: isLoaded ? 1 : 0 }}
+          onLoad={() => setImagesLoaded((s) => ({ ...s, after: true }))}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = '/images/placeholder-after.jpg';
+          }}
         />
         
         {/* Before Image (Clipped - Top Layer) */}
         <div
-          data-before-image
-          className="absolute inset-0 overflow-hidden transition-none"
-          style={{ clipPath: `inset(0 ${100 - comparePosition}% 0 0)` }}
+          className="absolute inset-0 overflow-hidden"
+          style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         >
           <img
             src={beforeImage}
             alt={`${title} - Before`}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="h-full w-full object-cover"
+            draggable={false}
             loading="lazy"
+            onLoad={() => setImagesLoaded((s) => ({ ...s, before: true }))}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/images/placeholder-before.jpg';
+            }}
           />
-          {/* Before overlay for contrast */}
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="pointer-events-none absolute inset-0 bg-black/10" />
         </div>
 
         {/* Slider Divider Line */}
         <div
-          data-slider-line
-          className="absolute top-0 bottom-0 w-1 z-20 bg-gold shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-75"
-          style={{ left: `calc(${comparePosition}% - 2px)` }}
+          className={cn(
+            'absolute top-0 bottom-0 z-20 w-1 bg-gold shadow-[0_0_20px_rgba(212,175,55,0.6)]',
+            !isDragging && 'transition-[left] duration-75'
+          )}
+          style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
         >
           {/* Slider Handle */}
           <div 
@@ -128,20 +122,26 @@ const BeforeAfterSlider = ({ beforeImage, afterImage, title }: { beforeImage: st
         </div>
 
         {/* Labels with enhanced styling */}
-        <div className="absolute top-5 left-5 z-10">
+        <div className="pointer-events-none absolute left-5 top-5 z-10">
           <div className="bg-background/95 backdrop-blur-md px-4 py-2 rounded-xl border border-border/50 shadow-lg">
             <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Before</span>
           </div>
         </div>
-        <div className="absolute top-5 right-5 z-10">
+        <div className="pointer-events-none absolute right-5 top-5 z-10">
           <div className="bg-gold px-4 py-2 rounded-xl shadow-lg shadow-gold/30">
             <span className="text-xs font-bold uppercase tracking-widest text-background">After</span>
           </div>
         </div>
 
         
+        {!isReady && (
+          <div className="absolute inset-0 z-30 flex items-center justify-center bg-muted/80">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-gold border-t-transparent" />
+          </div>
+        )}
+
         {/* Hover Border Effect */}
-        <div className="absolute inset-0 rounded-3xl border-2 border-gold/0 group-hover:border-gold/40 transition-all duration-500 pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 rounded-3xl border-2 border-gold/0 transition-all duration-500 group-hover:border-gold/40" />
       </div>
     </div>
   );

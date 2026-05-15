@@ -30,9 +30,8 @@ export const workCategories: WorkCategory[] = [
     title: 'Paint Protection Film',
     icon: Shield,
     description: 'Invisible armor that shields your paint from rock chips, scratches, and environmental damage with self-healing technology.',
-    // Update these paths with your PPF before/after images
-    beforeImage: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80&auto=format&fit=crop',
-    afterImage: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80&auto=format&fit=crop',
+    beforeImage: '/images/Before%20PPF.png',
+    afterImage: '/images/After%20PPF.png',
     stats: [
       { value: '150+', label: 'PPF Jobs' },
       { value: '5yr', label: 'Warranty' },
@@ -45,8 +44,8 @@ export const workCategories: WorkCategory[] = [
     icon: Droplets,
     description: 'Professional-grade 9H ceramic coating that provides years of hydrophobic protection with a stunning mirror-like finish.',
     // Update these paths with your Ceramic before/after images
-    beforeImage: 'https://images.unsplash.com/photo-1549399810-3e163770b259?w=800&q=80&auto=format&fit=crop',
-    afterImage: 'https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&q=80&auto=format&fit=crop',
+    beforeImage: '/images/Before%20CC.png',
+    afterImage: '/images/After%20CC.png',
     stats: [
       { value: '450+', label: 'Coatings' },
       { value: '2yr', label: 'Protection' },
@@ -59,8 +58,8 @@ export const workCategories: WorkCategory[] = [
     icon: Sparkles,
     description: 'Complete interior and exterior restoration service that brings your vehicle back to showroom condition.',
     // Update these paths with your Detailing before/after images
-    beforeImage: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80&auto=format&fit=crop',
-    afterImage: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80&auto=format&fit=crop',
+    beforeImage: '/images/Before%20DC.png',
+    afterImage: '/images/After%20DC.png',
     stats: [
       { value: '800+', label: 'Cars Detailed' },
       { value: '4.9★', label: 'Rating' },
