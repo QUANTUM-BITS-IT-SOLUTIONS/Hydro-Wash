@@ -101,48 +101,20 @@
 }
 
 @layer base {
-  /* Cross-device CSS Reset */
-  *,
-  *::before,
-  *::after {
+  * {
     @apply border-border;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    font-size: 16px; /* Base font size for consistent rem calculations */
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    overflow-x: hidden;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* iOS-specific fixes */
-  @supports (-webkit-touch-callout: none) {
-    body {
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-    }
-  }
-
-  /* Android-specific fixes */
-  @supports not (-webkit-touch-callout: none) {
-    body {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
   }
 
   /* Hardware acceleration for animated elements */
@@ -159,13 +131,9 @@
   }
 
   /* Touch-friendly tap targets */
-  @media (hover: none) and (pointer: coarse) {
+  @media (hover: none) {
     .hover\:scale-105:active {
       transform: scale(0.98);
-    }
-    button, a {
-      min-height: 44px; /* iOS touch target minimum */
-      min-width: 44px;
     }
   }
 
@@ -234,16 +202,10 @@
     border-radius: 1rem;
   }
 
-  /* Section Container - Consistent across devices */
+  /* Section Container */
   .section-container {
-    @apply w-full mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-16 xl:px-20;
+    @apply w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20;
     max-width: 100%;
-  }
-
-  @media (min-width: 375px) {
-    .section-container {
-      max-width: 375px;
-    }
   }
 
   @media (min-width: 640px) {
@@ -270,9 +232,9 @@
     }
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1536px) {
     .section-container {
-      max-width: 1400px;
+      max-width: 1536px;
     }
   }
 
@@ -282,20 +244,20 @@
     color: hsl(var(--gold));
   }
 
-  /* Headline Styling - Consistent font sizes across devices */
+  /* Headline Styling */
   .headline-xl {
-    @apply text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight;
-    font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
   }
 
   .headline-lg {
-    @apply text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
-    font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
   }
 
   .headline-md {
-    @apply text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold tracking-tight;
-    font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply text-xl sm:text-2xl md:text-3xl font-bold tracking-tight;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
   }
 
   /* Carbon Fiber Background */
@@ -607,7 +569,6 @@
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -621,44 +582,5 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--gold) / 0.5);
-}
-
-/* Firefox Scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--gold) / 0.3) hsl(var(--matte-black));
-}
-
-/* Cross-device input styling consistency */
-input, textarea, select {
-  font-size: 16px; /* Prevent iOS zoom on focus */
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* Safe area support for notched devices */
-@supports (padding: max(0px)) {
-  body {
-    padding-left: max(0px, env(safe-area-inset-left));
-    padding-right: max(0px, env(safe-area-inset-right));
-    padding-bottom: max(0px, env(safe-area-inset-bottom));
-  }
-}
-
-/* Prevent text selection on UI elements */
-button, a {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Consistent line heights across devices */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-}
-
-p, li, span {
-  line-height: 1.6;
 }
 
