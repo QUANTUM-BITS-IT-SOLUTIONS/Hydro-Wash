@@ -49,20 +49,13 @@ const Hero = () => {
           className="absolute inset-0 scale-110"
           style={{ transform: `scale(1.1) translateY(${scrollY * 0.3}px)` }}
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <img
+            src="/Hero.png"
+            alt="Hero Image"
+            aria-hidden="true"
             className="h-full w-full object-cover"
-            poster="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80&auto=format&fit=crop"
-            preload="metadata"
-          >
-            <source
-              src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164&oauth2_token_id=57447761"
-              type="video/mp4"
-            />
-          </video>
+            draggable={false}
+          />
         </div>
 
         {/* Dark Gradient Overlay */}
