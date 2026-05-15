@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const HERO_IMAGES = {
-  mobile: '/Hero-mobile.png',
+  mobile: '/Hero-Mobile.png',
   desktop: '/Hero.png',
 } as const;
 
