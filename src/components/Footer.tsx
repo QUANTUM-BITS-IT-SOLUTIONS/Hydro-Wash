@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Send, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -6,8 +7,8 @@ const Footer = () => {
   const [email, setEmail] = useState('');
 
   const quickLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Services', href: '/services' },
+    { label: 'Gallery', href: '/gallery' },
     { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -65,12 +66,12 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

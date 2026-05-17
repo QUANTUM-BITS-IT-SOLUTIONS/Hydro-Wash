@@ -119,21 +119,70 @@ if (typeof window !== 'undefined') {
 // Fallback images if no images found in folders
 export const fallbackGalleryImages: GalleryImage[] = [
   {
-    id: 1,
+    id: 101,
     src: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80',
     before: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=800&q=80',
     alt: 'PPF Installation',
     category: 'ppf',
   },
   {
-    id: 2,
+    id: 102,
     src: 'https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?w=800&q=80',
     alt: 'Ceramic Coating',
     category: 'ceramic',
   },
+  {
+    id: 103,
+    src: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80',
+    before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80',
+    alt: 'Graphene Coating Transformation',
+    category: 'graphene',
+  },
+  {
+    id: 104,
+    src: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&q=80',
+    alt: 'Premium Interior Detailing',
+    category: 'interior',
+  },
+  {
+    id: 105,
+    src: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+    alt: 'Luxury Exterior Polishing',
+    category: 'polishing',
+  },
+  {
+    id: 106,
+    src: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80',
+    alt: 'Professional Car Wash',
+    category: 'wash',
+  },
+  {
+    id: 107,
+    src: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80',
+    alt: 'Complete Restoration Project',
+    category: 'restoration',
+  },
+  {
+    id: 108,
+    src: 'https://images.unsplash.com/photo-1601362840469-51e4d8d59085?w=800&q=80',
+    alt: 'Headlight Restoration',
+    category: 'headlight',
+  },
+  {
+    id: 109,
+    src: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80',
+    alt: 'Luxury Alloy Treatment',
+    category: 'alloy',
+  },
+  {
+    id: 110,
+    src: 'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80',
+    alt: 'Detailing Excellence',
+    category: 'detailing',
+  }
 ];
 
-// Use dynamic images if available, otherwise fallback
-export const autoGalleryImages = dynamicGalleryImages.length > 0
-  ? dynamicGalleryImages
-  : fallbackGalleryImages;
+// Combine dynamic images with fallback images
+// This ensures that even if some folders are empty, the gallery has content
+export const autoGalleryImages = [...dynamicGalleryImages, ...fallbackGalleryImages];
+

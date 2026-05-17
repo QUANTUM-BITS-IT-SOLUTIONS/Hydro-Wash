@@ -80,18 +80,7 @@ export const galleryFilters: { value: FilterCategory; label: string }[] = [
   { value: 'all', label: 'All Work' },
   { value: 'ppf', label: 'PPF' },
   { value: 'ceramic', label: 'Ceramic' },
-  { value: 'graphene', label: 'Graphene' },
   { value: 'detailing', label: 'Detailing' },
-  { value: 'interior', label: 'Interior' },
-  { value: 'exterior', label: 'Exterior' },
-  { value: 'wash', label: 'Wash & Wax' },
-  { value: 'polishing', label: 'Polishing' },
-  { value: 'rust-protection', label: 'Rust Protection' },
-  { value: 'alloy', label: 'Alloy Treatment' },
-  { value: 'underbody', label: 'Underbody' },
-  { value: 'engine-ac', label: 'Engine & AC' },
-  { value: 'headlight', label: 'Headlight' },
-  { value: 'restoration', label: 'Restoration' },
 ];
 
 // Helper function to get images by category

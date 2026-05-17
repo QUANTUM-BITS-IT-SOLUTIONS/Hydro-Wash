@@ -22,7 +22,7 @@ const Navbar = () => {
     { label: 'Services', href: '/services', type: 'route' as const },
     { label: 'Our Work', href: '#work', type: 'anchor' as const },
     { label: 'Pricing', href: '#pricing', type: 'anchor' as const },
-    { label: 'Gallery', href: '#gallery', type: 'anchor' as const },
+    { label: 'Gallery', href: '/gallery', type: 'route' as const },
     { label: 'Contact', href: '#contact', type: 'anchor' as const },
   ];
 

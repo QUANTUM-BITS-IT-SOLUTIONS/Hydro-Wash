@@ -22,7 +22,6 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
     '/about': '/',
     '/contact': '/',
     '/pricing': '/',
-    '/gallery': '/',
     '/process': '/',
     '/testimonials': '/',
     '/stats': '/',
