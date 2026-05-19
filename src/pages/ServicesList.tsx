@@ -13,7 +13,20 @@ import {
   Check,
   Clock,
   Phone,
-  MessageCircle
+  MessageCircle,
+  RotateCw,
+  Wrench,
+  CircleDot,
+  Cog,
+  Wind,
+  Zap,
+  Award,
+  Diamond,
+  Heart,
+  Wallet,
+  VolumeX,
+  Eye,
+  Waves
 } from 'lucide-react';
 import { getAllServices } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
@@ -31,6 +44,20 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Brush,
   Gem,
   SprayCan,
+  RotateCw,
+  Wrench,
+  CircleDot,
+  Cog,
+  Wind,
+  Zap,
+  Award,
+  Diamond,
+  Heart,
+  Wallet,
+  VolumeX,
+  Eye,
+  Clock,
+  Waves,
 };
 
 const ServicesList = () => {
@@ -144,7 +171,7 @@ const ServicesList = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => {
-                const Icon = iconMap[service.benefits[0]?.icon] || Shield;
+                const Icon = iconMap[service.mainIcon] || Shield;
                 
                 return (
                   <Link

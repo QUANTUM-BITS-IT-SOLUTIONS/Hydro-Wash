@@ -154,14 +154,14 @@ const Testimonials = () => {
           >
             <span className="text-muted-foreground text-sm">Google Rating:</span>
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-foreground">4.9</span>
+              <span className="text-2xl font-bold text-foreground">4.3</span>
               <div className="flex">
                 {[1,2,3,4,5].map((i) => (
                   <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                 ))}
               </div>
             </div>
-            <span className="text-muted-foreground text-sm">(127 reviews)</span>
+            <span className="text-muted-foreground text-sm">(112 reviews)</span>
           </div>
           
           {/* Write a Review Button */}

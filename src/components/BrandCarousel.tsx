@@ -3,29 +3,29 @@ import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
 
 const BRAND_IMAGE = '/Brand.png';
-const BRAND_COUNT = 4;
+const BRAND_COUNT = 3;
 
-const BrandLogo = () => (
+const BrandLogo = ({ src }: { src: string }) => (
   <div className="flex h-16 shrink-0 items-center justify-center px-8 sm:h-20 sm:px-10 md:h-24 md:px-12 lg:h-32 lg:px-14">
     <img
-      src={BRAND_IMAGE}
+      src={src}
       alt="Premium brand partners"
-      className="max-h-full w-auto object-contain opacity-[0.45] grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+      className="max-h-full w-auto object-contain"
       loading="lazy"
       decoding="async"
     />
   </div>
 );
 
-const BrandTrack = ({ trackId }: { trackId: string }) => (
+const BrandTrack = ({ trackId, logos }: { trackId: string; logos: string[] }) => (
   <div className="flex shrink-0">
-    {[...Array(BRAND_COUNT)].map((_, i) => (
-      <BrandLogo key={`${trackId}-${i}`} />
+    {logos.map((logo, i) => (
+      <BrandLogo key={`${trackId}-${i}`} src={logo} />
     ))}
   </div>
 );
 
-const BrandCarousel = () => {
+const BrandCarousel = ({ logos }: { logos: string[] }) => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -50,8 +50,8 @@ const BrandCarousel = () => {
 
           <div className="relative overflow-hidden group" aria-label="Partner brands">
             <div className="flex w-max animate-scroll-left">
-              <BrandTrack trackId="a" />
-              <BrandTrack trackId="b" />
+              <BrandTrack trackId="a" logos={logos} />
+              <BrandTrack trackId="b" logos={logos} />
             </div>
           </div>
         </div>

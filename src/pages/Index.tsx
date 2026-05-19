@@ -30,7 +30,17 @@ const Index = () => {
         <Services />
         
         {/* Brand Carousel - Trusted Partners */}
-        <BrandCarousel />
+        <BrandCarousel 
+          logos={[
+            '/Brand.png',
+            '/Brand.png',
+            '/Brand.png',
+            '/Brand.png',
+            '/Brand.png',
+            '/Brand.png',
+            '/Brand.png',
+          ]}
+        />
         
         {/* Our Work - Featured Projects */}
         <OurWork />

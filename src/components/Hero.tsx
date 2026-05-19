@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const HERO_IMAGES = {
   mobile: '/Hero-Mobile.png',
@@ -7,10 +8,14 @@ const HERO_IMAGES = {
 } as const;
 
 const Hero = () => {
+  const isMobile = useIsMobile();
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
+
+  // Disable parallax on mobile to prevent text merging
+  const parallaxFactor = isMobile ? 0 : 1;
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 300);
@@ -210,7 +215,7 @@ const Hero = () => {
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.4}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.4 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
@@ -223,21 +228,21 @@ const Hero = () => {
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.5}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.5 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          <span className="text-gold-gradient">HydroWash</span>{' '}
-          <span className="block sm:inline">Car Wash</span>
-          <br className="hidden sm:block" />
-          <span className="text-foreground/90">& Detailing Studio</span>
+         <span className="block text-gold-gradient">HydroWash</span>
+         <span className="block text-4xl sm:text-5xl md:text-5xl text-foreground/90">
+          Car Wash & Detailing Studio
+         </span>
         </h1>
 
         {/* Animated Divider */}
         <div 
           className={`h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent md:from-gold md:via-gold/50 md:to-transparent mb-6 transition-all duration-1000 delay-400 gpu-accelerate ${isLoaded ? 'opacity-100 w-32 md:w-24' : 'opacity-0 w-0'}`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.45}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.45 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         />
@@ -248,7 +253,7 @@ const Hero = () => {
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.35}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.35 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
@@ -261,7 +266,7 @@ const Hero = () => {
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.3}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.3 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
@@ -295,14 +300,14 @@ const Hero = () => {
         <div 
           className={`flex gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-16 justify-center md:justify-start w-full md:w-auto transition-all duration-1000 delay-900 gpu-accelerate ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
-            transform: `translate3d(0, ${-scrollY * 0.2}px, 0)`,
+            transform: `translate3d(0, ${-scrollY * 0.2 * parallaxFactor}px, 0)`,
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
           {[
-            { value: '8+', label: 'Years' },
+            { value: '10+', label: 'Years' },
             { value: '5K+', label: 'Cars' },
-            { value: '4.9', label: 'Rating' },
+            { value: '4.3', label: 'Rating' },
           ].map((stat, index) => (
             <div 
               key={stat.label} 
@@ -324,7 +329,7 @@ const Hero = () => {
           isLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{ 
-          transform: `translate3d(-50%, ${-scrollY * 0.5}px, 0)`,
+          transform: `translate3d(-50%, ${-scrollY * 0.5 * parallaxFactor}px, 0)`,
           left: '50%',
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
         }}

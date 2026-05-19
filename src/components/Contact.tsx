@@ -69,14 +69,14 @@ const Contact = () => {
           >
             <span className="text-xs sm:text-sm text-muted-foreground">Google Reviews</span>
             <div className="flex items-center gap-1">
-              <span className="font-bold text-foreground">4.9</span>
+              <span className="font-bold text-foreground">4.3</span>
               <div className="flex">
                 {[1,2,3,4,5].map((i) => (
                   <Star key={i} className="w-3 h-3 fill-gold text-gold" />
                 ))}
               </div>
             </div>
-            <span className="text-xs text-muted-foreground">(127 reviews)</span>
+            <span className="text-xs text-muted-foreground">(112 reviews)</span>
             <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-gold transition-colors" />
           </a>
         </div>

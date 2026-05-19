@@ -28,6 +28,7 @@ export interface ServiceDetail {
   id: string;
   title: string;
   subtitle: string;
+  mainIcon: string;
   shortDescription: string;
   fullDescription: string;
   whatIsIt: string;
@@ -52,8 +53,9 @@ export interface ServiceDetail {
 export const servicesData: Record<string, ServiceDetail> = {
   "paint-protection-film": {
     id: "paint-protection-film",
-    title: "Paint Protection Film (PPF)",
+    title: "PPF Paint Protection Film",
     subtitle: "The Ultimate Invisible Shield for Your Vehicle",
+    mainIcon: "Shield",
     shortDescription: "Self-healing urethane film that protects your paint from stone chips, scratches, and environmental damage.",
     fullDescription: "Paint Protection Film (PPF) is a transparent, ultra-durable urethane film applied to your vehicle's painted surfaces. This advanced protective layer acts as an invisible shield against road debris, stone chips, bug splatter, bird droppings, and minor abrasions. Our PPF features self-healing technology that automatically repairs minor scratches when exposed to heat, ensuring your vehicle maintains a flawless finish for years.",
     whatIsIt: "PPF is a thermoplastic urethane film originally developed for military helicopter blades. Today, it's the gold standard in automotive paint protection. The film is precisely cut using computer-designed patterns and applied to high-impact areas or entire vehicle surfaces. Its transparent nature ensures your paint color and gloss remain unchanged while providing superior protection.",
@@ -94,14 +96,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Partial Front",
-        price: "₹19,999",
+        price: "₹24,999",
         duration: "1 Day",
         features: ["Partial hood coverage", "Front bumper", "Side mirrors", "Headlights"],
         warranty: "5 Years"
       },
       {
         name: "Full Front",
-        price: "₹29,999",
+        price: "₹34,999",
         duration: "1-2 Days",
         features: ["Full hood coverage", "Full front bumper", "Front fenders", "Side mirrors", "Headlights"],
         warranty: "7 Years",
@@ -109,7 +111,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Full Vehicle",
-        price: "₹79,999",
+        price: "₹49,999",
         duration: "3-5 Days",
         features: ["All painted panels", "Full hood & bumpers", "All fenders", "Doors & pillars", "Roof option available"],
         warranty: "10 Years"
@@ -122,14 +124,15 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Does PPF require special maintenance?", answer: "No special maintenance needed. Simply wash normally and avoid abrasive polishes. The film is resistant to most chemicals and environmental contaminants." },
       { question: "Will the self-healing work in all weather?", answer: "Self-healing activates at around 30-40°C. Direct sunlight, hot water, or a heat gun can trigger the healing process for any minor scratches." }
     ],
-    relatedServices: ["ceramic-coating", "graphene-coating", "exterior-detailing"],
+    relatedServices: ["ceramic-coating", "graphene-coating", "rubbing-polishing"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
   "ceramic-coating": {
     id: "ceramic-coating",
-    title: "Crystal Shield Ceramic Coating",
+    title: "Ceramic Coating",
     subtitle: "Nano-Technology Protection with Showroom Shine",
+    mainIcon: "Droplets",
     shortDescription: "Professional SiO2-based nano-coating providing unmatched gloss, hydrophobicity, and 5+ year protection.",
     fullDescription: "Our Crystal Shield Ceramic Coating is a professional-grade nano-ceramic treatment that chemically bonds with your vehicle's paint, creating a permanent hydrophobic layer. Formulated with 80%+ high-grade Silicon Dioxide (SiO2), this coating delivers exceptional gloss, extreme water beading, and superior protection against UV rays, oxidation, chemical stains, and environmental contaminants for 5+ years.",
     whatIsIt: "Ceramic coating is a liquid polymer that contains nano-ceramic particles suspended in a clear resin. When applied to paint, these particles bond at the molecular level to create a glass-like protective layer. Unlike waxes or sealants that sit on top, ceramic coatings become one with your paint, offering years of protection rather than months.",
@@ -141,7 +144,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Prevents 60% of hairline scratches from washing"
     ],
     benefits: [
-      { icon: "Diamond", title: "9H Hardness", description: "Extreme scratch resistance from the highest ceramic hardness rating" },
+      { icon: "Droplets", title: "9H Hardness", description: "Extreme scratch resistance from the highest ceramic hardness rating" },
       { icon: "Droplets", title: "Hydrophobic", description: "Water beads and rolls off, taking dirt with it - easier cleaning" },
       { icon: "Sun", title: "UV Protection", description: "Prevents oxidation and fading from harsh sun exposure" },
       { icon: "Sparkles", title: "Mirror Finish", description: "Deeper gloss and reflection than new-car finish" },
@@ -170,14 +173,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Lite 9H",
-        price: "₹8,999",
+        price: "₹9,999",
         duration: "4-6 Hours",
         features: ["Entry-level protection", "1-layer application", "1-year durability", "Basic gloss enhancement"],
         warranty: "1 Year"
       },
       {
         name: "Trinity 9H",
-        price: "₹12,999",
+        price: "₹14,999",
         duration: "6-8 Hours",
         features: ["3-layer system", "Paint correction included", "5-year durability", "Superior hydrophobicity"],
         warranty: "5 Years",
@@ -185,7 +188,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Pentagon 10H",
-        price: "₹18,999",
+        price: "₹19,999",
         duration: "8-10 Hours",
         features: ["5-layer system", "Advanced paint correction", "7-year durability", "Maximum hardness"],
         warranty: "7 Years"
@@ -204,8 +207,9 @@ export const servicesData: Record<string, ServiceDetail> = {
 
   "graphene-coating": {
     id: "graphene-coating",
-    title: "G10 Impact Graphene Coating",
+    title: "Graphene Coating",
     subtitle: "Nobel Prize-Winning Material Meets Automotive Protection",
+    mainIcon: "Layers",
     shortDescription: "Next-generation graphene-infused coating with superior heat dissipation, reduced water spotting, and 7+ year durability.",
     fullDescription: "G10 Impact represents the cutting edge of automotive protection technology. Utilizing graphene, a Nobel Prize-winning wonder material 200x stronger than steel, this coating delivers unmatched slickness, superior heat dissipation, and dramatically reduced water spotting compared to traditional ceramic coatings. The graphene structure creates an impenetrable barrier with 7+ years of protection.",
     whatIsIt: "Graphene is a single layer of carbon atoms arranged in a hexagonal lattice - the thinnest, strongest material known to science. When infused into our coating formula, graphene's unique properties create a denser, more durable protective layer that outperforms traditional SiO2 coatings in every aspect." ,
@@ -217,7 +221,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Extended durability - 7+ years of protection"
     ],
     benefits: [
-      { icon: "Zap", title: "Heat Dissipation", description: "Superior thermal conductivity prevents water spot etching" },
+      { icon: "Layers", title: "Heat Dissipation", description: "Superior thermal conductivity prevents water spot etching" },
       { icon: "Droplets", title: "Less Water Spotting", description: "80% reduction in water spotting compared to ceramic" },
       { icon: "Sparkles", title: "Extreme Slickness", description: "Lowest surface friction - nothing sticks to graphene" },
       { icon: "Wind", title: "Anti-Static", description: "Repels dust, pollen, and airborne particles" },
@@ -246,7 +250,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "G10 Standard",
-        price: "₹18,999",
+        price: "₹19,999",
         duration: "8 Hours",
         features: ["2-layer graphene system", "Paint correction", "5-year durability"],
         warranty: "5 Years"
@@ -273,14 +277,15 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Can I apply graphene over ceramic coating?", answer: "It's not recommended. For best results, apply graphene to properly corrected paint. If you have ceramic, it should be removed or you can wait for it to degrade before applying graphene." },
       { question: "Is graphene coating worth the extra cost?", answer: "For vehicles exposed to harsh sun or parked outdoors, absolutely. The heat dissipation and water spot resistance make maintenance significantly easier. The extended durability also provides better long-term value." }
     ],
-    relatedServices: ["ceramic-coating", "paint-protection-film", "exterior-detailing"],
+    relatedServices: ["ceramic-coating", "paint-protection-film", "rubbing-polishing"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
   "premium-detailing": {
     id: "premium-detailing",
-    title: "Premium Auto Detailing Studio",
+    title: "Premium Detailing (Exterior & Interior)",
     subtitle: "State-of-the-Art Detailing Facility",
+    mainIcon: "Gem",
     shortDescription: "Our state-of-the-art detailing studio combines advanced equipment, premium products, and master craftsmanship to deliver transformational results.",
     fullDescription: "Experience automotive care at its finest in our Premium Auto Detailing Studio. Our climate-controlled facility houses the latest in detailing technology, from IR curing lamps for ceramic coatings to commercial-grade steam cleaners for interior restoration. Our master-certified technicians treat every vehicle as a masterpiece, delivering concours-level results that exceed expectations.",
     whatIsIt: "Our Premium Auto Detailing Studio is more than just a service - it's a complete facility designed for perfection. The climate-controlled environment ensures optimal conditions for coating applications. Professional-grade equipment including paint thickness gauges, dual-action polishers, and hot water extractors enable our technicians to achieve results impossible in standard conditions. This is where excellence meets execution.",
@@ -327,18 +332,18 @@ export const servicesData: Record<string, ServiceDetail> = {
         warranty: "Per Service Terms"
       },
       {
-        name: "Signature Detail",
-        price: "₹24,999",
-        duration: "2 Days",
-        features: ["Complete interior detail", "Full exterior correction", "1-year ceramic coating", "Engine bay detail"],
-        warranty: "1 Year Coating",
+        name: "Premium Detailing",
+        price: "₹1,999",
+        duration: "4-6 Hours",
+        features: ["Complete interior detail", "Full exterior correction", "Basic protection", "Engine bay detail"],
+        warranty: "Satisfaction Guaranteed",
         recommended: true
       },
       {
         name: "Ultimate Protection",
         price: "₹49,999",
         duration: "3-4 Days",
-        features: ["Everything in Signature", "PPF on high-impact areas", "3-year graphene coating", "Annual maintenance included"],
+        features: ["Everything in Premium", "PPF on high-impact areas", "3-year graphene coating", "Annual maintenance included"],
         warranty: "3 Year Protection"
       }
     ],
@@ -348,14 +353,15 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Can I wait while my car is serviced?", answer: "We have a comfortable waiting area with WiFi. However, for full detailing services, we recommend dropping off your vehicle as the process takes several hours to multiple days depending on the service." },
       { question: "What makes your studio 'premium'?", answer: "Our studio features climate control, HEPA air filtration, IR curing lamps, and commercial-grade equipment. Combined with master-certified technicians, we deliver results that exceed standard detailing services." }
     ],
-    relatedServices: ["ceramic-coating", "graphene-coating", "complete-detailing"],
+    relatedServices: ["ceramic-coating", "graphene-coating"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
   "interior-detailing": {
     id: "interior-detailing",
-    title: "Intensive Interior Detailing",
+    title: "Car Interior Deep Cleaning",
     subtitle: "Deep Clean & Restoration for Your Vehicle's Cabin",
+    mainIcon: "Car",
     shortDescription: "Complete interior rejuvenation using steam cleaning, extraction shampooing, and leather conditioning for a like-new cabin.",
     fullDescription: "Our Intensive Interior Detailing service is a comprehensive deep-cleaning and restoration process that transforms your vehicle's cabin to better-than-new condition. Using commercial-grade steam cleaners, hot water extraction machines, and premium leather treatments, we eliminate odors, stains, allergens, and bacteria while rejuvenating every surface. From headliner to floor mats, no area is overlooked.",
     whatIsIt: "Interior detailing goes far beyond a basic vacuum and wipe-down. It's a systematic restoration of all cabin surfaces including seats, carpets, headliner, dashboard, door panels, and trim. We use specialized equipment like steam cleaners that sanitize without chemicals, extraction machines that pull dirt from deep within fabrics, and professional-grade conditioners that restore leather and plastics.",
@@ -367,7 +373,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "All products are pH-neutral and safe for all interior materials"
     ],
     benefits: [
-      { icon: "Wind", title: "Odor Elimination", description: "Ozone treatment destroys odor molecules at the source" },
+      { icon: "Car", title: "Odor Elimination", description: "Ozone treatment destroys odor molecules at the source" },
       { icon: "Shield", title: "Sanitized Surfaces", description: "Steam cleaning kills bacteria, viruses, and allergens" },
       { icon: "Sparkles", title: "Restored Appearance", description: "Leather and plastics look and feel like new" },
       { icon: "Heart", title: "Healthier Air", description: "Removes allergens and improves cabin air quality" },
@@ -396,14 +402,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Essential Interior",
-        price: "₹2,499",
+        price: "₹1,999",
         duration: "3-4 Hours",
         features: ["Deep vacuum", "Dashboard & trim clean", "Glass cleaning", "Ozone treatment"],
         warranty: "Satisfaction Guaranteed"
       },
       {
         name: "Premium Interior",
-        price: "₹3,999",
+        price: "₹2,999",
         duration: "5-6 Hours",
         features: ["Everything in Essential", "Steam sanitization", "Carpet extraction cleaning", "Leather conditioning"],
         warranty: "Satisfaction Guaranteed",
@@ -411,7 +417,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Luxury Interior",
-        price: "₹5,999",
+        price: "₹4,999",
         duration: "7-8 Hours",
         features: ["Everything in Premium", "Headliner cleaning", "Seat removal for thorough cleaning", "Leather protection coating", "Engine bay cleaning"],
         warranty: "Satisfaction Guaranteed"
@@ -423,90 +429,16 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Is ozone treatment safe?", answer: "Yes, ozone treatment is completely safe. We run the generator while the car is unoccupied, then allow 30 minutes of ventilation before return. It leaves no residue." },
       { question: "How often should I get interior detailing?", answer: "For daily drivers, every 6 months maintains a like-new condition. For weekend cars, annually is sufficient. More frequent cleaning prevents permanent staining." }
     ],
-    relatedServices: ["exterior-detailing", "complete-detailing", "headlight-restoration"],
+    relatedServices: ["rubbing-polishing", "headlight-restoration"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
-  "exterior-detailing": {
-    id: "exterior-detailing",
-    title: "Exterior Car Detailing",
-    subtitle: "Complete Paint Restoration & Surface Rejuvenation",
-    shortDescription: "Multi-stage paint correction, clay bar decontamination, and protective sealant to restore showroom shine.",
-    fullDescription: "Our Exterior Detailing service is a comprehensive paint restoration process that brings your vehicle's finish back to showroom condition. Through clay bar decontamination, multi-stage machine polishing, and premium sealant application, we remove embedded contaminants, eliminate swirl marks, and restore clarity, depth, and gloss to every painted surface. This is the foundation of all protective coating applications.",
-    whatIsIt: "Exterior detailing is a systematic restoration of your vehicle's outer surfaces. Unlike a car wash that only cleans the surface, detailing removes bonded contaminants (iron, tar, tree sap), corrects paint imperfections (swirls, holograms, light scratches), and protects the finish. It's the difference between 'clean' and 'perfect.'",
-    whyChoose: [
-      "Clay bar treatment removes contaminants washing can't touch",
-      "Machine polishing restores gloss impossible to achieve by hand",
-      "Multi-stage process addresses different levels of paint damage",
-      "Premium sealants provide months of protection",
-      "Essential preparation step before ceramic coating or PPF"
-    ],
-    benefits: [
-      { icon: "Sparkles", title: "Paint Correction", description: "Removes swirl marks and restores mirror-like finish" },
-      { icon: "Layers", title: "Decontamination", description: "Clay bar removes bonded contaminants for smooth paint" },
-      { icon: "Sun", title: "UV Protection", description: "Sealant shields paint from sun damage" },
-      { icon: "Droplets", title: "Hydrophobic", description: "Water beading makes future washes easier" },
-      { icon: "Gem", title: "Enhanced Gloss", description: "Deeper color and reflective clarity" },
-      { icon: "Shield", title: "Protection", description: "Seals paint against environmental damage" }
-    ],
-    specs: [
-      { label: "Clay Grade", value: "Fine/Medium/Heavy" },
-      { label: "Polish Stages", value: "1-3 Stage Options" },
-      { label: "Pad Options", value: "Foam/Wool/Microfiber" },
-      { label: "Sealant Duration", value: "3-6 Months" },
-      { label: "Paint Thickness Check", value: "Included" },
-      { label: "Correction Levels", value: "75-95% Defect Removal" },
-      { label: "Duration", value: "4-8 Hours" },
-      { label: "Products", value: "Premium Professional Grade" }
-    ],
-    process: [
-      { step: 1, title: "Foam Pre-Wash", description: "Thick foam application to soften and lift loose dirt" },
-      { step: 2, title: "Two-Bucket Wash", description: "Hand wash using premium shampoo and proper technique" },
-      { step: 3, title: "Chemical Decon", description: "Iron remover and tar remover for bonded contaminants" },
-      { step: 4, title: "Clay Bar", description: "Clay treatment to remove remaining embedded particles" },
-      { step: 5, title: "Paint Thickness Check", description: "Measure paint depth to ensure safe correction" },
-      { step: 6, title: "Machine Polishing", description: "Multi-stage correction to remove swirls and enhance gloss" },
-      { step: 7, title: "Sealant Application", description: "Premium sealant for protection and hydrophobic properties" },
-      { step: 8, title: "Final Inspection", description: "LED inspection to ensure flawless finish" }
-    ],
-    packages: [
-      {
-        name: "Essential Exterior",
-        price: "₹2,999",
-        duration: "4 Hours",
-        features: ["Deep wash & clay", "Single-stage polish", "Spray sealant", "Wheel detailing"],
-        warranty: "3 Month Sealant"
-      },
-      {
-        name: "Premium Exterior",
-        price: "₹4,999",
-        duration: "6-8 Hours",
-        features: ["Everything in Essential", "Two-stage correction", "Premium paste sealant", "Trim restoration"],
-        warranty: "6 Month Sealant",
-        recommended: true
-      },
-      {
-        name: "Concours Exterior",
-        price: "₹7,999",
-        duration: "1-2 Days",
-        features: ["Everything in Premium", "Three-stage correction", "Coating prep finish", "Engine bay detail"],
-        warranty: "Ready for Coating"
-      }
-    ],
-    faqs: [
-      { question: "Will paint correction remove all scratches?", answer: "Paint correction removes light swirls, holograms, and fine scratches. Deep scratches that reach the primer or metal may be minimized but not completely removed." },
-      { question: "Is clay bar safe for my paint?", answer: "Yes, when done correctly with proper lubrication, clay bar is completely safe. It's essential for removing bonded contaminants that washing can't remove." },
-      { question: "How long does the protection last?", answer: "Our sealants provide 3-6 months of protection depending on the package and how the vehicle is stored/maintained. For longer protection, consider ceramic coating." },
-      { question: "Can I wash my car after exterior detailing?", answer: "Wait 24-48 hours for the sealant to fully cure. Then use the two-bucket method and pH-neutral shampoo to maintain the finish." }
-    ],
-    relatedServices: ["interior-detailing", "ceramic-coating", "complete-detailing"],
-    beforeAfterImages: [] // Images removed - add back when available
-  },
 
   "headlight-restoration": {
     id: "headlight-restoration",
     title: "Headlight Restoration",
     subtitle: "Crystal Clear Visibility & Like-New Appearance",
+    mainIcon: "Sun",
     shortDescription: "Professional restoration of oxidized, yellowed headlights using wet-sanding, polishing, and UV-resistant sealing.",
     fullDescription: "Our Headlight Restoration service transforms foggy, yellowed, or oxidized headlights back to crystal-clear condition. Using professional wet-sanding techniques, machine polishing, and UV-resistant sealing, we remove years of sun damage and restore nighttime visibility. This service improves safety and appearance while avoiding the high cost of headlight replacement.",
     whatIsIt: "Headlight lenses are made of polycarbonate plastic with a UV-protective clear coat. Over time, sun exposure breaks down this coating causing oxidation, yellowing, and hazing. Our restoration process removes the damaged layer and applies a new UV-resistant sealant, restoring clarity and protecting against future damage.",
@@ -547,14 +479,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Headlight Pair",
-        price: "₹1,499",
+        price: "₹999",
         duration: "1-1.5 Hours",
         features: ["Both headlights", "Wet-sanding", "Polishing", "UV coating"],
         warranty: "1 Year"
       },
       {
         name: "Full Front",
-        price: "₹2,499",
+        price: "₹1,499",
         duration: "2 Hours",
         features: ["Headlights", "Fog lights", "Both included", "Complete front lighting restoration"],
         warranty: "1 Year",
@@ -562,7 +494,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Complete Lighting",
-        price: "₹3,999",
+        price: "₹2,499",
         duration: "3 Hours",
         features: ["All front lights", "Taillights", "All exterior lenses", "Complete vehicle lighting"],
         warranty: "1 Year"
@@ -574,240 +506,15 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Is it better than DIY kits?", answer: "Absolutely. DIY kits use low-quality sealants that last only months. Our professional UV coating and proper wet-sanding technique delivers lasting results." },
       { question: "Will it damage my paint?", answer: "No, we carefully mask all surrounding areas. Our wet-sanding technique and professional products are safe for your vehicle." }
     ],
-    relatedServices: ["exterior-detailing", "ceramic-coating", "ppf"],
-    beforeAfterImages: [] // Images removed - add back when available
-  },
-
-  "underbody-coating": {
-    id: "underbody-coating",
-    title: "Underbody Coating",
-    subtitle: "Complete Rust & Corrosion Protection",
-    shortDescription: "Rubberized protective coating for undercarriage preventing rust, corrosion, and stone chip damage.",
-    fullDescription: "Our Underbody Coating service provides comprehensive protection for your vehicle's most vulnerable area. A thick, rubberized coating is applied to the entire undercarriage, creating a barrier against moisture, salt, road debris, and corrosion. Essential for coastal areas and harsh climates, this service extends your vehicle's structural life and reduces road noise.",
-    whatIsIt: "Underbody coating is a thick, rubberized protective layer applied to the vehicle's chassis, wheel wells, and undercarriage components. It seals out moisture, prevents rust formation, dampens road noise, and protects against stone chips. The coating remains flexible over time, expanding and contracting with temperature changes without cracking.",
-    whyChoose: [
-      "Prevents rust and corrosion from road salt and moisture",
-      "Sound-dampening properties reduce road noise",
-      "Essential protection for coastal and snowy regions",
-      "Maintains structural integrity and resale value",
-      "5-year warranty on coating durability"
-    ],
-    benefits: [
-      { icon: "Shield", title: "Rust Prevention", description: "Seals metal from moisture and salt exposure" },
-      { icon: "VolumeX", title: "Noise Reduction", description: "Sound-dampening properties for quieter cabin" },
-      { icon: "Gem", title: "Stone Protection", description: "Thick rubberized layer absorbs impacts" },
-      { icon: "Droplets", title: "Waterproof", description: "Seals electrical connections and components" },
-      { icon: "Clock", title: "Long Lasting", description: "5+ years of durable protection" },
-      { icon: "Award", title: "Warranty Backed", description: "5-year protection guarantee" }
-    ],
-    specs: [
-      { label: "Material", value: "Rubberized Bitumen/Polymer" },
-      { label: "Thickness", value: "1-2mm Applied" },
-      { label: "Coverage", value: "Full Undercarriage" },
-      { label: "Drying Time", value: "24 Hours" },
-      { label: "Cure Time", value: "72 Hours" },
-      { label: "Durability", value: "5+ Years" },
-      { label: "Temperature Range", value: "-30°C to +80°C" },
-      { label: "Sound Reduction", value: "Up to 40%" }
-    ],
-    process: [
-      { step: 1, title: "Lift & Inspect", description: "Vehicle lifted on hoist for complete undercarriage access and inspection" },
-      { step: 2, title: "Deep Clean", description: "High-pressure washing to remove dirt, grease, and loose rust" },
-      { step: 3, title: "Rust Treatment", description: "Existing rust spots treated with converter before coating" },
-      { step: 4, title: "Drying", description: "Complete drying to ensure coating adhesion" },
-      { step: 5, title: "Masking", description: "Protecting exhaust, brake components, and moving parts" },
-      { step: 6, title: "Coating Application", description: "Spray application of rubberized coating to all underbody areas" },
-      { step: 7, title: "Curing", description: "24-72 hour curing period for full protection development" }
-    ],
-    packages: [
-      {
-        name: "Standard",
-        price: "₹3,999",
-        duration: "4 Hours",
-        features: ["Chassis coating", "Wheel wells", "3-year warranty"],
-        warranty: "3 Years"
-      },
-      {
-        name: "Premium",
-        price: "₹4,999",
-        duration: "5 Hours",
-        features: ["Full undercarriage", "Door cavities", "Fender areas", "5-year warranty"],
-        warranty: "5 Years",
-        recommended: true
-      },
-      {
-        name: "Ultimate",
-        price: "₹6,999",
-        duration: "6 Hours",
-        features: ["Everything in Premium", "Rust converter treatment", "Cavity wax injection", "7-year warranty"],
-        warranty: "7 Years"
-      }
-    ],
-    faqs: [
-      { question: "Is underbody coating necessary for new cars?", answer: "Yes, especially in coastal or snowy areas. Factory undercoating is minimal. Our comprehensive coating provides superior long-term protection." },
-      { question: "Will it affect servicing?", answer: "No, the coating is applied to fixed structural components. Serviceable parts are masked and remain accessible." },
-      { question: "How long before I can drive?", answer: "Wait 24 hours before normal driving. Avoid water/deep puddles for 72 hours for full curing." },
-      { question: "Does it stop existing rust?", answer: "We treat existing rust before coating. The coating prevents new rust but can't reverse significant structural corrosion." }
-    ],
-    relatedServices: ["paint-protection-film", "ceramic-coating", "exterior-detailing"],
-    beforeAfterImages: [] // Images removed - add back when available
-  },
-
-  "car-wash": {
-    id: "car-wash",
-    title: "Premium Car Wash",
-    subtitle: "Safe, Scratch-Free Hand Washing",
-    shortDescription: "Meticulous hand-wash using two-bucket method and pH-neutral products for swirl-free cleaning.",
-    fullDescription: "Our Premium Car Wash is the safest way to clean your vehicle. Using the professional two-bucket method with grit guards, pH-neutral shampoos, and premium microfiber materials, we eliminate the swirl marks and scratches common with automated car washes. Every panel is cleaned with care, and we attend to often-missed areas like door jambs, fuel caps, and under trim.",
-    whatIsIt: "A proper hand wash is the foundation of car care. Unlike automated washes that cause swirl marks, our method uses proper technique, quality products, and careful attention. The two-bucket method (wash and rinse) with grit guards prevents dirt from returning to your paint. We use multiple mitts and towels, never reusing dirty materials.",
-    whyChoose: [
-      "Two-bucket method prevents scratches from wash process",
-      "pH-neutral shampoo is safe for wax and coating",
-      "Separate wheel cleaning prevents cross-contamination",
-      "Microfiber drying prevents water spots and marring",
-      "Attention to overlooked areas like door jambs"
-    ],
-    benefits: [
-      { icon: "Shield", title: "Swirl-Free", description: "Proper technique prevents wash-induced scratches" },
-      { icon: "Sparkles", title: "Streak-Free", description: "Proper drying leaves no water spots" },
-      { icon: "Droplets", title: "Safe Products", description: "pH-neutral preserves existing protection" },
-      { icon: "Eye", title: "Detailed", description: "Door jambs, fuel cap, and hidden areas cleaned" },
-      { icon: "Clock", title: "Quick", description: "30-45 minute service" },
-      { icon: "Wallet", title: "Affordable", description: "Professional results at accessible price" }
-    ],
-    specs: [
-      { label: "Method", value: "Two-Bucket + Grit Guards" },
-      { label: "Shampoo", value: "pH-Neutral, Wax-Safe" },
-      { label: "Water", value: "Deionized (Spot-Free)" },
-      { label: "Drying", value: "Microfiber + Air Blower" },
-      { label: "Wheel Clean", value: "Separate Process" },
-      { label: "Duration", value: "30-45 Minutes" },
-      { label: "Tires", value: "Cleaned & Dressed" },
-      { label: "Glass", value: "Streak-Free Finish" }
-    ],
-    process: [
-      { step: 1, title: "Pre-Rinse", description: "Gentle rinse to remove loose dirt and soften remaining contaminants" },
-      { step: 2, title: "Wheel Cleaning", description: "Dedicated wheel buckets and brushes to clean wheels and tires" },
-      { step: 3, title: "Foam Pre-Wash", description: "Snow foam application to further loosen dirt (Premium package)" },
-      { step: 4, title: "Two-Bucket Wash", description: "Hand wash from top to bottom using wash mitt and proper technique" },
-      { step: 5, title: "Rinse", description: "Thorough rinse removing all shampoo and loosened dirt" },
-      { step: 6, title: "Drying", description: "Microfiber towel drying and air blower for mirrors and trim" },
-      { step: 7, title: "Finishing", description: "Tire dressing, glass cleaning, and final inspection" }
-    ],
-    packages: [
-      {
-        name: "Express Wash",
-        price: "₹399",
-        duration: "30 Minutes",
-        features: ["Exterior wash", "Wheel cleaning", "Tire dressing", "Window cleaning"],
-        warranty: "Satisfaction Guaranteed"
-      },
-      {
-        name: "Premium Wash",
-        price: "₹699",
-        duration: "45 Minutes",
-        features: ["Foam pre-wash", "Two-bucket wash", "Door jambs", "Air blower dry", "Interior vacuum"],
-        warranty: "Satisfaction Guaranteed",
-        recommended: true
-      },
-      {
-        name: "Deluxe Wash",
-        price: "₹999",
-        duration: "60 Minutes",
-        features: ["Everything in Premium", "Quick interior wipe", "Glass inside & out", "Spray wax protection"],
-        warranty: "Satisfaction Guaranteed"
-      }
-    ],
-    faqs: [
-      { question: "How often should I wash my car?", answer: "Weekly washing is ideal to prevent dirt buildup. In dusty areas or after rain, more frequent washing protects your paint." },
-      { question: "Is this safe for ceramic-coated cars?", answer: "Yes, our pH-neutral shampoo is specifically safe for ceramic coatings, PPF, and wax. It won't degrade your existing protection." },
-      { question: "Why is hand wash better than automatic?", answer: "Automatic washes use harsh brushes that cause swirl marks. Our hand wash uses proper technique that gently cleans without scratching." },
-      { question: "Do you clean the interior too?", answer: "Premium and Deluxe packages include basic interior cleaning. For deep interior cleaning, see our Interior Detailing service." }
-    ],
-    relatedServices: ["interior-detailing", "exterior-detailing", "ceramic-coating"],
-    beforeAfterImages: [] // Images removed - add back when available
-  },
-
-  "complete-detailing": {
-    id: "complete-detailing",
-    title: "Complete Car Detailing",
-    subtitle: "The Ultimate All-Inclusive Transformation",
-    shortDescription: "Complete interior and exterior detailing with paint correction and protection - total vehicle restoration.",
-    fullDescription: "Our Complete Car Detailing is our most comprehensive service - a full-day transformation that addresses every aspect of your vehicle. This all-inclusive package combines intensive interior deep-cleaning, multi-stage exterior paint correction, and protective coating application. Your vehicle will look better than the day it left the showroom, inside and out.",
-    whatIsIt: "Complete detailing is the ultimate automotive rejuvenation service. It's not just a combination of interior and exterior services - it's a coordinated transformation where each process enhances the other. From the engine bay to the trunk, every surface is cleaned, restored, and protected. This is the service for those who want their vehicle in perfect condition.",
-    whyChoose: [
-      "One-day transformation for your entire vehicle",
-      "Best value when combining all services",
-      "Coordinated approach ensures nothing is missed",
-      "Showroom+ condition inside and out",
-      "Ideal for pre-sale preparation or special occasions"
-    ],
-    benefits: [
-      { icon: "Sparkles", title: "Showroom Finish", description: "Paint corrected to better-than-new condition" },
-      { icon: "Wind", title: "Fresh Interior", description: "Deep-cleaned cabin free of odors and stains" },
-      { icon: "Shield", title: "Protected", description: "Sealant or coating for lasting results" },
-      { icon: "Gem", title: "Complete", description: "Every surface addressed, nothing overlooked" },
-      { icon: "Clock", title: "Efficient", description: "All services in one coordinated session" },
-      { icon: "Award", title: "Best Value", description: "Package pricing saves 25% vs. individual services" }
-    ],
-    specs: [
-      { label: "Interior", value: "Steam + Extraction" },
-      { label: "Exterior", value: "Clay + Correction" },
-      { label: "Paint Stages", value: "2-Stage Correction" },
-      { label: "Protection", value: "6-Month Sealant" },
-      { label: "Engine Bay", value: "Included" },
-      { label: "Duration", value: "8-12 Hours" },
-      { label: "Team Size", value: "2-3 Technicians" },
-      { label: "Value Save", value: "25% vs Individual" }
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Complete vehicle inspection to create detailed work plan" },
-      { step: 2, title: "Interior Deep Clean", description: "Full interior detailing including steam and extraction" },
-      { step: 3, title: "Exterior Prep", description: "Deep wash and clay bar decontamination" },
-      { step: 4, title: "Paint Correction", description: "Two-stage machine polishing for flawless finish" },
-      { step: 5, title: "Protection", description: "Premium sealant or ceramic coating application" },
-      { step: 6, title: "Engine Bay", description: "Detailed cleaning and dressing of engine compartment" },
-      { step: 7, title: "Final Touches", description: "Glass, trim, wheels - every detail perfected" },
-      { step: 8, title: "Quality Check", description: "Comprehensive inspection with customer walkthrough" }
-    ],
-    packages: [
-      {
-        name: "Complete Standard",
-        price: "₹7,999",
-        duration: "1 Day",
-        features: ["Interior detailing", "Exterior + 1-stage polish", "Sealant protection", "Engine bay"],
-        warranty: "6 Month Sealant"
-      },
-      {
-        name: "Complete Premium",
-        price: "₹11,999",
-        duration: "1 Day",
-        features: ["Luxury interior detail", "Exterior + 2-stage correction", "1-year ceramic coating", "Engine bay", "Headlight restoration"],
-        warranty: "1 Year Coating",
-        recommended: true
-      },
-      {
-        name: "Complete Ultimate",
-        price: "₹16,999",
-        duration: "2 Days",
-        features: ["Everything in Premium", "3-stage paint correction", "3-year ceramic coating", "PPF on high-impact areas", "Underbody coating"],
-        warranty: "3 Year Protection"
-      }
-    ],
-    faqs: [
-      { question: "How long does complete detailing take?", answer: "Standard takes 1 day (8-10 hours). Premium is 1 long day. Ultimate may take 2 days for the most thorough results." },
-      { question: "Is it worth the investment?", answer: "Absolutely. The package saves 25% compared to booking services separately. Plus, the coordinated approach delivers better results than separate appointments." },
-      { question: "Do I need to drop off my car?", answer: "Yes, complete detailing requires full-day access to your vehicle. We can arrange pickup/drop-off service in local areas." },
-      { question: "What's the difference between packages?", answer: "Standard is great for maintenance. Premium adds ceramic coating for lasting protection. Ultimate is for enthusiasts wanting the best possible result with maximum protection." }
-    ],
-    relatedServices: ["interior-detailing", "exterior-detailing", "ceramic-coating"],
+    relatedServices: ["rubbing-polishing", "ceramic-coating", "paint-protection-film"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
   "rubbing-polishing": {
     id: "rubbing-polishing",
-    title: "Rubbing & Polishing",
+    title: "Compounding and Polishing",
     subtitle: "Professional Paint Correction & Gloss Restoration",
+    mainIcon: "RotateCw",
     shortDescription: "Multi-stage machine polishing and rubbing compound treatment to remove swirl marks, scratches, and restore showroom shine.",
     fullDescription: "Our Rubbing & Polishing service is a specialized paint correction treatment designed to restore your vehicle's finish to its original glory. Using professional-grade rubbing compounds and machine polishers, we remove surface imperfections including swirl marks, light scratches, oxidation, and holograms. This service reveals the true depth and clarity of your paint before applying protective sealants or wax.",
     whatIsIt: "Rubbing and polishing is a mechanical paint correction process that uses abrasive compounds and machine polishers to level the clear coat. The 'rubbing' stage uses cutting compounds to remove deeper defects, while 'polishing' uses finer compounds to restore gloss. This process removes microscopic layers of damaged clear coat to reveal fresh, unblemished paint underneath.",
@@ -848,14 +555,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Single Stage Polish",
-        price: "₹1,999",
+        price: "₹2,499",
         duration: "3-4 Hours",
         features: ["Light swirl removal", "Gloss enhancement", "All painted panels"],
         warranty: "Satisfaction Guaranteed"
       },
       {
         name: "Two Stage Correction",
-        price: "₹3,999",
+        price: "₹4,499",
         duration: "5-6 Hours",
         features: ["Compound + polish", "Moderate defect removal", "Paint thickness check", "All exterior panels"],
         warranty: "Satisfaction Guaranteed",
@@ -863,7 +570,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Three Stage Concours",
-        price: "₹6,999",
+        price: "₹7,999",
         duration: "7-8 Hours",
         features: ["Heavy cutting", "Refining polish", "Jeweling finish", "Coating preparation"],
         warranty: "Showroom Finish Guaranteed"
@@ -875,7 +582,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "How often should I polish my car?", answer: "Most vehicles benefit from polishing every 1-2 years. Over-polishing can thin the clear coat, so we measure paint thickness before every service." },
       { question: "What's the difference between rubbing and polishing?", answer: "Rubbing (compounding) removes deeper defects. Polishing restores gloss after rubbing. Both are machine processes using different abrasive levels." }
     ],
-    relatedServices: ["exterior-detailing", "ceramic-coating", "complete-detailing"],
+    relatedServices: ["rubbing-polishing", "ceramic-coating"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
@@ -883,6 +590,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     id: "hydrowash-wax",
     title: "Premium Hydrowash & Wax",
     subtitle: "Deep Clean with Hand-Applied Protection",
+    mainIcon: "Waves",
     shortDescription: "Thorough hand wash with high-quality carnauba wax application for a glossy, protected finish that lasts for months.",
     fullDescription: "Our Premium Hydrowash & Wax service combines meticulous hand washing with premium wax protection. Unlike quick automated washes, our hydrowash uses pressurized water and pH-neutral cleaners to safely remove dirt without scratching. The hand-applied carnauba or synthetic wax creates a hydrophobic barrier that protects your paint, enhances gloss, and makes future cleaning easier for up to 3 months.",
     whatIsIt: "Hydrowash is a high-pressure, hand-wash technique that uses controlled water pressure to safely lift and remove dirt before contact washing. Combined with premium wax application, this service cleans thoroughly while adding a protective layer. The wax fills microscopic imperfections, creates water-beading properties, and provides UV protection for your paint.",
@@ -951,160 +659,469 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Will wax remove scratches?", answer: "Wax fills minor swirl marks temporarily but doesn't remove them. For scratch removal, see our Rubbing & Polishing service." },
       { question: "How often should I wax my car?", answer: "Every 2-3 months for optimal protection. More frequent waxing is fine and provides additional benefits." }
     ],
-    relatedServices: ["car-wash", "exterior-detailing", "ceramic-coating"],
+    relatedServices: ["exterior-detailing", "ceramic-coating"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
-  "anti-rust-alloy": {
-    id: "anti-rust-alloy",
-    title: "Anti Rust Coating & Alloy Treatment",
-    subtitle: "Complete Underbody & Wheel Protection",
-    shortDescription: "Comprehensive rust protection for underbody plus specialized alloy wheel coating to prevent corrosion and brake dust buildup.",
-    fullDescription: "Our Anti Rust Coating & Alloy Treatment provides dual protection for your vehicle's most vulnerable metal surfaces. The underbody receives a thick rubberized coating that seals out moisture and prevents rust formation. Simultaneously, alloy wheels are treated with a ceramic-based coating that protects against brake dust, road salt, and corrosion while making future cleaning effortless. Essential for vehicles in coastal areas or harsh climates.",
-    whatIsIt: "This is a two-part protection service. Anti-rust coating applies a durable rubberized layer to the vehicle's undercarriage, chassis, and wheel wells to prevent corrosion. Alloy treatment is a ceramic coating specifically formulated for wheels that creates a heat-resistant barrier against brake dust, salt, and grime. Together they protect your vehicle's structural integrity and maintain wheel appearance.",
+  "anti-rust-coating": {
+    id: "anti-rust-coating",
+    title: "Anti Rust Coating",
+    subtitle: "Complete Rust & Corrosion Protection",
+    mainIcon: "Wrench",
+    shortDescription: "Rubberized protective coating for undercarriage preventing rust, corrosion, and stone chip damage.",
+    fullDescription: "Our Anti Rust Coating service provides comprehensive protection for your vehicle's most vulnerable area. A thick, rubberized coating is applied to the entire undercarriage, creating a barrier against moisture, salt, road debris, and corrosion. Essential for coastal areas and harsh climates, this service extends your vehicle's structural life and reduces road noise.",
+    whatIsIt: "Anti-rust coating is a thick, rubberized protective layer applied to the vehicle's chassis, wheel wells, and undercarriage components. It seals out moisture, prevents rust formation, dampens road noise, and protects against stone chips. The coating remains flexible over time, expanding and contracting with temperature changes without cracking.",
     whyChoose: [
-      "Rubberized underbody coating prevents rust for 5+ years",
-      "Alloy wheel coating resists brake dust and heat up to 400°C",
-      "Essential for coastal areas and winter climates",
-      "Makes wheel cleaning effortless - dirt wipes right off",
-      "Maintains resale value by preventing structural corrosion"
+      "Prevents rust and corrosion from road salt and moisture",
+      "Sound-dampening properties reduce road noise",
+      "Essential protection for coastal and snowy regions",
+      "Maintains structural integrity and resale value",
+      "5-year warranty on coating durability"
     ],
     benefits: [
-      { icon: "Shield", title: "Rust Prevention", description: "Seals underbody from moisture and salt" },
-      { icon: "Gem", title: "Wheel Protection", description: "Ceramic coating resists brake dust" },
-      { icon: "Sun", title: "Heat Resistant", description: "Withstands high brake temperatures" },
-      { icon: "Droplets", title: "Easy Cleaning", description: "Wheels clean with just water" },
-      { icon: "VolumeX", title: "Noise Reduction", description: "Undercoating dampens road noise" },
-      { icon: "Clock", title: "Long Lasting", description: "5+ years underbody, 1-2 years wheels" }
+      { icon: "Wrench", title: "Rust Prevention", description: "Seals metal from moisture and salt exposure" },
+      { icon: "VolumeX", title: "Noise Reduction", description: "Sound-dampening properties for quieter cabin" },
+      { icon: "Gem", title: "Stone Protection", description: "Thick rubberized layer absorbs impacts" },
+      { icon: "Droplets", title: "Waterproof", description: "Seals electrical connections and components" },
+      { icon: "Clock", title: "Long Lasting", description: "5+ years of durable protection" },
+      { icon: "Award", title: "Warranty Backed", description: "5-year protection guarantee" }
     ],
     specs: [
-      { label: "Underbody Material", value: "Rubberized Bitumen" },
-      { label: "Wheel Coating", value: "SiO2 Ceramic" },
-      { label: "Heat Resistance", value: "Up to 400°C" },
-      { label: "Underbody Warranty", value: "5 Years" },
-      { label: "Wheel Coating Life", value: "1-2 Years" },
-      { label: "Application Time", value: "3-4 Hours" },
-      { label: "Curing Time", value: "24 Hours" },
-      { label: "Coverage", value: "Full Underbody + 4 Wheels" }
+      { label: "Material", value: "Rubberized Bitumen/Polymer" },
+      { label: "Thickness", value: "1-2mm Applied" },
+      { label: "Coverage", value: "Full Undercarriage" },
+      { label: "Drying Time", value: "24 Hours" },
+      { label: "Cure Time", value: "72 Hours" },
+      { label: "Durability", value: "5+ Years" },
+      { label: "Temperature Range", value: "-30°C to +80°C" },
+      { label: "Sound Reduction", value: "Up to 40%" }
     ],
     process: [
-      { step: 1, title: "Lift & Inspect", description: "Vehicle raised for undercarriage inspection and wheel removal" },
-      { step: 2, title: "Deep Clean", description: "High-pressure cleaning of underbody and wheels" },
-      { step: 3, title: "Rust Treatment", description: "Existing rust spots treated with converter" },
-      { step: 4, title: "Masking", description: "Protecting brake components and moving parts" },
-      { step: 5, title: "Underbody Coating", description: "Spray application of rubberized coating" },
-      { step: 6, title: "Wheel Prep", description: "Thorough cleaning and decontamination of alloys" },
-      { step: 7, title: "Wheel Coating", description: "Ceramic coating applied to wheel faces and barrels" },
-      { step: 8, title: "Curing", description: "24-hour curing before vehicle return" }
+      { step: 1, title: "Lift & Inspect", description: "Vehicle lifted on hoist for complete undercarriage access and inspection" },
+      { step: 2, title: "Deep Clean", description: "High-pressure washing to remove dirt, grease, and loose rust" },
+      { step: 3, title: "Rust Treatment", description: "Existing rust spots treated with converter before coating" },
+      { step: 4, title: "Drying", description: "Complete drying to ensure coating adhesion" },
+      { step: 5, title: "Masking", description: "Protecting exhaust, brake components, and moving parts" },
+      { step: 6, title: "Coating Application", description: "Spray application of rubberized coating to all underbody areas" },
+      { step: 7, title: "Curing", description: "24-72 hour curing period for full protection development" }
     ],
     packages: [
       {
-        name: "Rust Protection Only",
+        name: "Standard",
         price: "₹3,999",
-        duration: "2 Hours",
-        features: ["Underbody coating", "Wheel wells", "3-year warranty"],
+        duration: "4 Hours",
+        features: ["Chassis coating", "Wheel wells", "3-year warranty"],
         warranty: "3 Years"
       },
       {
-        name: "Complete Protection",
-        price: "₹6,999",
-        duration: "4 Hours",
-        features: ["Full underbody coating", "Alloy wheel ceramic coat", "Brake dust resistance", "5-year rust warranty"],
+        name: "Premium",
+        price: "₹4,499",
+        duration: "5 Hours",
+        features: ["Full undercarriage", "Door cavities", "Fender areas", "5-year warranty"],
         warranty: "5 Years",
         recommended: true
       },
       {
-        name: "Premium Shield",
-        price: "₹9,999",
-        duration: "5 Hours",
-        features: ["Everything in Complete", "Cavity wax injection", "Door panel treatment", "Annual inspection included"],
+        name: "Ultimate",
+        price: "₹6,999",
+        duration: "6 Hours",
+        features: ["Everything in Premium", "Rust converter treatment", "Cavity wax injection", "7-year warranty"],
         warranty: "7 Years"
       }
     ],
     faqs: [
-      { question: "Is anti-rust coating necessary for new cars?", answer: "Yes, factory undercoating is minimal. Our comprehensive coating provides superior long-term protection, especially in coastal or snowy regions." },
-      { question: "Will wheel coating affect brake performance?", answer: "No, we carefully mask brake components. The coating is applied only to wheel surfaces and withstands high temperatures." },
-      { question: "How do I clean coated wheels?", answer: "Simply rinse with water - most brake dust and grime will wash away without scrubbing. For stubborn dirt, use pH-neutral wheel cleaner." },
-      { question: "Can rust coating be applied to rusty cars?", answer: "Light surface rust is treated before coating. Severe structural rust may need repair first. We inspect before application." }
+      { question: "Is anti-rust coating necessary for new cars?", answer: "Yes, especially in coastal or snowy areas. Factory undercoating is minimal. Our comprehensive coating provides superior long-term protection." },
+      { question: "Will it affect servicing?", answer: "No, the coating is applied to fixed structural components. Serviceable parts are masked and remain accessible." },
+      { question: "How long before I can drive?", answer: "Wait 24 hours before normal driving. Avoid water/deep puddles for 72 hours for full curing." },
+      { question: "Does it stop existing rust?", answer: "We treat existing rust before coating. The coating prevents new rust but can't reverse significant structural corrosion." }
     ],
-    relatedServices: ["underbody-coating", "ceramic-coating", "exterior-detailing"],
+    relatedServices: ["paint-protection-film", "ceramic-coating", "alloy-treatment"],
     beforeAfterImages: [] // Images removed - add back when available
   },
 
-  "engine-ac-treatment": {
-    id: "engine-ac-treatment",
-    title: "Engine Coating & AC Vent Treatment",
-    subtitle: "Protect & Sanitize Critical Systems",
-    shortDescription: "High-temperature engine bay coating plus deep AC vent sanitization to protect components and ensure fresh cabin air.",
-    fullDescription: "Our Engine Coating & AC Vent Treatment service addresses two often-neglected but critical areas of your vehicle. The engine bay receives a protective coating that resists heat, dust, and moisture while keeping components looking new. Simultaneously, the AC system undergoes deep sanitization using antimicrobial treatment and ozone therapy to eliminate bacteria, mold, and odors from vents and evaporator coils, ensuring fresh, healthy cabin air.",
-    whatIsIt: "Engine coating is a heat-resistant protective dressing applied to engine bay components that prevents dust accumulation, protects against moisture, and keeps rubber and plastic parts supple. AC vent treatment is a comprehensive sanitization process using specialized foaming agents, antimicrobial solutions, and ozone treatment to clean the entire HVAC system including vents, ducts, and evaporator coils - the source of most vehicle odors.",
+  "alloy-treatment": {
+    id: "alloy-treatment",
+    title: "Alloy Treatment",
+    subtitle: "Ceramic Protection for Your Wheels",
+    mainIcon: "CircleDot",
+    shortDescription: "Specialized ceramic coating for alloy wheels that prevents brake dust buildup and makes cleaning effortless.",
+    fullDescription: "Our Alloy Treatment service applies a specialized ceramic coating specifically formulated for wheels. This heat-resistant coating creates a protective barrier against brake dust, road salt, and corrosion while making future cleaning effortless. The coating withstands high brake temperatures and maintains a brilliant shine for months.",
+    whatIsIt: "Alloy wheel coating is a ceramic-based treatment designed specifically for the harsh environment wheels face. Brake dust is corrosive and can etch into wheel finish if not removed promptly. Our coating creates a hydrophobic, heat-resistant barrier that prevents brake dust adhesion and protects against road chemicals, making wheel maintenance significantly easier.",
     whyChoose: [
-      "Engine coating protects against heat up to 200°C and prevents dust buildup",
-      "AC treatment eliminates 99.9% of bacteria, mold, and allergens",
-      "Prevents musty odors and improves air conditioning efficiency",
-      "Makes future engine bay cleaning effortless",
-      "Extends life of rubber hoses and plastic engine components"
+      "Ceramic coating resists brake dust and heat up to 400°C",
+      "Makes wheel cleaning effortless - most dirt rinses off with water",
+      "Protects against road salt and corrosion",
+      "Maintains wheel shine and prevents etching",
+      "Lasts 1-2 years with proper maintenance"
     ],
     benefits: [
-      { icon: "Shield", title: "Engine Protection", description: "Heat and moisture resistant coating" },
-      { icon: "Wind", title: "Fresh Air", description: "Eliminates odors at the source" },
-      { icon: "Heart", title: "Healthier Cabin", description: "Removes bacteria and allergens" },
-      { icon: "Zap", title: "AC Efficiency", description: "Clean system runs more efficiently" },
-      { icon: "Sparkles", title: "Like-New Look", description: "Engine bay looks showroom fresh" },
-      { icon: "Clock", title: "Long Lasting", description: "6-month engine, 3-month AC protection" }
+      { icon: "CircleDot", title: "Brake Dust Resistance", description: "Ceramic coating repels brake dust" },
+      { icon: "Sun", title: "Heat Resistant", description: "Withstands high brake temperatures" },
+      { icon: "Droplets", title: "Easy Cleaning", description: "Wheels clean with just water" },
+      { icon: "Shield", title: "Corrosion Protection", description: "Protects against road salt" },
+      { icon: "Sparkles", title: "Brilliant Shine", description: "Maintains showroom appearance" },
+      { icon: "Clock", title: "Long Lasting", description: "1-2 years of protection" }
     ],
     specs: [
-      { label: "Engine Coating", value: "Heat-Resistant Dressing" },
-      { label: "Heat Tolerance", value: "Up to 200°C" },
-      { label: "AC Treatment", value: "Antimicrobial + Ozone" },
-      { label: "Bacteria Removal", value: "99.9%" },
-      { label: "Coverage", value: "Engine Bay + All Vents" },
-      { label: "Duration", value: "2-3 Hours" },
-      { label: "Engine Coating Life", value: "6 Months" },
-      { label: "Ozone Treatment", value: "30 Minutes" }
+      { label: "Coating Type", value: "SiO2 Ceramic" },
+      { label: "Heat Resistance", value: "Up to 400°C" },
+      { label: "Durability", value: "1-2 Years" },
+      { label: "Hydrophobic", value: "Yes" },
+      { label: "Application Time", value: "1-2 Hours" },
+      { label: "Curing Time", value: "24 Hours" },
+      { label: "Coverage", value: "4 Wheels" },
+      { label: "Maintenance", value: "pH-Neutral Cleaner" }
     ],
     process: [
-      { step: 1, title: "Engine Inspection", description: "Check for any issues before treatment" },
-      { step: 2, title: "Engine Deep Clean", description: "Degreasing and detailing of all components" },
-      { step: 3, title: "Drying", description: "Complete drying before coating application" },
-      { step: 4, title: "Coating Application", description: "Heat-resistant dressing applied to all surfaces" },
-      { step: 5, title: "AC System Access", description: "Cabin filter removal and vent access" },
-      { step: 6, title: "Foam Treatment", description: "Antimicrobial foam through all vents" },
-      { step: 7, title: "Ozone Therapy", description: "Ozone generator sanitizes entire system" },
-      { step: 8, title: "Final Check", description: "AC operation test and quality inspection" }
+      { step: 1, title: "Wheel Removal", description: "Wheels removed for thorough access" },
+      { step: 2, title: "Deep Clean", description: "Degreasing and decontamination of wheel surface" },
+      { step: 3, title: "Clay Treatment", description: "Clay bar to remove embedded contaminants" },
+      { step: 4, title: "Surface Prep", description: "IPA wipe for optimal coating bonding" },
+      { step: 5, title: "Coating Application", description: "Ceramic coating applied to wheel faces" },
+      { step: 6, title: "Leveling", description: "Even coating distribution" },
+      { step: 7, title: "Curing", description: "24-hour curing period" },
+      { step: 8, title: "Installation", description: "Wheels reinstalled with proper torque" }
     ],
     packages: [
       {
-        name: "AC Treatment Only",
-        price: "₹1,499",
+        name: "Basic Protection",
+        price: "₹999",
         duration: "1 Hour",
-        features: ["Vent sanitization", "Antimicrobial foam", "Ozone treatment", "Cabin filter check"],
-        warranty: "3 Month Freshness"
+        features: ["Wheel faces coating", "Brake dust resistance", "6-month durability"],
+        warranty: "6 Months"
       },
       {
-        name: "Engine + AC Combo",
-        price: "₹2,999",
-        duration: "2.5 Hours",
-        features: ["Engine bay coating", "Full AC sanitization", "Ozone treatment", "Component protection"],
-        warranty: "Satisfaction Guaranteed",
+        name: "Complete Protection",
+        price: "₹1,499",
+        duration: "2 Hours",
+        features: ["Wheel faces + barrels", "Full decontamination", "1-year durability", "Tire dressing"],
+        warranty: "1 Year",
         recommended: true
       },
       {
-        name: "Complete System Care",
-        price: "₹4,499",
+        name: "Premium Shield",
+        price: "₹2,499",
         duration: "3 Hours",
-        features: ["Everything in Combo", "Cabin filter replacement", "AC performance check", "6-month engine warranty"],
-        warranty: "6 Month Protection"
+        features: ["Everything in Complete", "Wheel removal included", "2-year durability", "Annual maintenance"],
+        warranty: "2 Years"
+      }
+    ],
+    faqs: [
+      { question: "Will wheel coating affect brake performance?", answer: "No, we carefully mask brake components. The coating is applied only to wheel surfaces and withstands high temperatures." },
+      { question: "How do I clean coated wheels?", answer: "Simply rinse with water - most brake dust and grime will wash away without scrubbing. For stubborn dirt, use pH-neutral wheel cleaner." },
+      { question: "Can coating be applied to any wheels?", answer: "Yes, our coating works on all wheel types including painted, machined, and chrome finishes." },
+      { question: "How long does wheel coating last?", answer: "With proper maintenance, our wheel coating lasts 1-2 years depending on driving conditions and cleaning frequency." }
+    ],
+    relatedServices: ["exterior-detailing", "ceramic-coating", "hydrowash-wax"],
+    beforeAfterImages: []
+  },
+
+  "engine-coating": {
+    id: "engine-coating",
+    title: "Engine Coating",
+    subtitle: "Protect Your Engine Bay",
+    mainIcon: "Cog",
+    shortDescription: "Heat-resistant protective coating for engine bay components that prevents dust buildup and maintains showroom appearance.",
+    fullDescription: "Our Engine Coating service applies a specialized heat-resistant dressing to all engine bay components. This protective coating prevents dust accumulation, protects against moisture, and keeps rubber and plastic parts supple while maintaining a showroom-new appearance. Makes future engine bay cleaning effortless.",
+    whatIsIt: "Engine coating is a water-based, non-conductive protective dressing specifically designed for modern engine bays. It creates a protective barrier that repels dust and grime, protects rubber hoses and plastic components from drying out, and makes engine cleaning significantly easier. The coating is safe for all engine bay components including electronics.",
+    whyChoose: [
+      "Heat-resistant coating protects up to 200°C",
+      "Prevents dust and grime accumulation",
+      "Protects rubber and plastic from drying",
+      "Makes engine cleaning effortless",
+      "Safe for modern engine electronics"
+    ],
+    benefits: [
+      { icon: "Cog", title: "Engine Protection", description: "Heat and moisture resistant coating" },
+      { icon: "Shield", title: "Dust Repellent", description: "Prevents dust buildup" },
+      { icon: "Sparkles", title: "Like-New Look", description: "Engine bay looks showroom fresh" },
+      { icon: "Droplets", title: "Easy Cleaning", description: "Dirt wipes right off" },
+      { icon: "Clock", title: "Long Lasting", description: "6 months of protection" },
+      { icon: "Zap", title: "Safe for Electronics", description: "Non-conductive formula" }
+    ],
+    specs: [
+      { label: "Coating Type", value: "Heat-Resistant Dressing" },
+      { label: "Heat Tolerance", value: "Up to 200°C" },
+      { label: "Durability", value: "6 Months" },
+      { label: "Electronics Safe", value: "Yes, Non-Conductive" },
+      { label: "Application Time", value: "1 Hour" },
+      { label: "Drying Time", value: "30 Minutes" },
+      { label: "Coverage", value: "Full Engine Bay" },
+      { label: "Maintenance", value: "Wipe Clean Only" }
+    ],
+    process: [
+      { step: 1, title: "Engine Inspection", description: "Check for any issues before treatment" },
+      { step: 2, title: "Deep Clean", description: "Degreasing and detailing of all components" },
+      { step: 3, title: "Drying", description: "Complete drying before coating application" },
+      { step: 4, title: "Protection", description: "Sensitive electronics masked" },
+      { step: 5, title: "Coating Application", description: "Heat-resistant dressing applied to all surfaces" },
+      { step: 6, title: "Distribution", description: "Even coating on all components" },
+      { step: 7, title: "Drying", description: "30-minute drying period" },
+      { step: 8, title: "Final Check", description: "Quality inspection and component check" }
+    ],
+    packages: [
+      {
+        name: "Basic Engine Dressing",
+        price: "₹999",
+        duration: "1 Hour",
+        features: ["Engine bay coating", "Basic protection", "3-month durability"],
+        warranty: "3 Months"
+      },
+      {
+        name: "Complete Engine Protection",
+        price: "₹1,499",
+        duration: "1.5 Hours",
+        features: ["Full engine bay", "Deep cleaning included", "6-month durability", "Hood lining"],
+        warranty: "6 Months",
+        recommended: true
+      },
+      {
+        name: "Premium Engine Care",
+        price: "₹2,499",
+        duration: "2 Hours",
+        features: ["Everything in Complete", "Engine bay detailing", "Rubber conditioning", "Annual maintenance"],
+        warranty: "6 Months"
       }
     ],
     faqs: [
       { question: "Is engine coating safe for modern electronics?", answer: "Yes, we use water-based, non-conductive dressings specifically designed for modern engine bays. Sensitive electronics are protected during application." },
+      { question: "Will this affect engine cooling?", answer: "No, the coating is thin and does not impede heat dissipation. It's designed specifically for engine bay environments." },
+      { question: "How often should I recoat my engine?", answer: "Every 6 months is recommended for optimal protection and appearance. More frequent application is safe." },
+      { question: "Can I wash my engine after coating?", answer: "Wait 24 hours after coating before any moisture contact. After that, gentle washing is safe, but avoid high-pressure directly on sensitive components." }
+    ],
+    relatedServices: ["complete-detailing", "premium-detailing", "interior-detailing"],
+    beforeAfterImages: []
+  },
+
+  "ac-vent-treatment": {
+    id: "ac-vent-treatment",
+    title: "AC Vent Treatment",
+    subtitle: "Fresh, Healthy Cabin Air",
+    mainIcon: "Wind",
+    shortDescription: "Deep AC system sanitization using antimicrobial treatment and ozone therapy to eliminate bacteria, mold, and odors.",
+    fullDescription: "Our AC Vent Treatment is a comprehensive sanitization process that eliminates bacteria, mold, and odors from your vehicle's entire HVAC system. Using specialized foaming agents, antimicrobial solutions, and ozone treatment, we clean vents, ducts, and evaporator coils - the source of most vehicle odors. Ensures fresh, healthy cabin air and improved AC efficiency.",
+    whatIsIt: "AC vent treatment targets the entire HVAC system including vents, ducts, cabin filter, and evaporator coil. Over time, moisture in the AC system creates breeding grounds for bacteria and mold, causing musty odors and potential health issues. Our treatment uses antimicrobial foam and ozone therapy to sanitize 99.9% of contaminants, leaving your cabin air fresh and healthy.",
+    whyChoose: [
+      "Eliminates 99.9% of bacteria, mold, and allergens",
+      "Removes musty odors at the source",
+      "Improves air conditioning efficiency",
+      "Prevents future mold growth",
+      "Healthier cabin air for passengers"
+    ],
+    benefits: [
+      { icon: "Wind", title: "Fresh Air", description: "Eliminates odors at the source" },
+      { icon: "Heart", title: "Healthier Cabin", description: "Removes bacteria and allergens" },
+      { icon: "Zap", title: "AC Efficiency", description: "Clean system runs more efficiently" },
+      { icon: "Shield", title: "Mold Prevention", description: "Prevents future growth" },
+      { icon: "Droplets", title: "Deep Clean", description: "Cleans entire HVAC system" },
+      { icon: "Clock", title: "Quick Service", description: "1-2 hour treatment" }
+    ],
+    specs: [
+      { label: "Treatment Type", value: "Antimicrobial + Ozone" },
+      { label: "Bacteria Removal", value: "99.9%" },
+      { label: "Coverage", value: "Full HVAC System" },
+      { label: "Ozone Duration", value: "30 Minutes" },
+      { label: "Application Time", value: "1 Hour" },
+      { label: "Drying Time", value: "30 Minutes" },
+      { label: "Protection Duration", value: "3 Months" },
+      { label: "Cabin Filter", value: "Check & Replace" }
+    ],
+    process: [
+      { step: 1, title: "System Inspection", description: "Check AC operation and identify issues" },
+      { step: 2, title: "Filter Access", description: "Cabin filter removal and inspection" },
+      { step: 3, title: "Vent Access", description: "Access all vent openings" },
+      { step: 4, title: "Foam Treatment", description: "Antimicrobial foam through all vents" },
+      { step: 5, title: "Duct Cleaning", description: "Clean accessible ductwork" },
+      { step: 6, title: "Ozone Therapy", description: "Ozone generator sanitizes entire system" },
+      { step: 7, title: "Ventilation", description: "Thorough ventilation before return" },
+      { step: 8, title: "Final Test", description: "AC operation and air quality check" }
+    ],
+    packages: [
+      {
+        name: "Basic AC Treatment",
+        price: "₹1,299",
+        duration: "1 Hour",
+        features: ["Vent sanitization", "Antimicrobial foam", "Ozone treatment"],
+        warranty: "3 Month Freshness"
+      },
+      {
+        name: "Complete AC Care",
+        price: "₹1,999",
+        duration: "1.5 Hours",
+        features: ["Everything in Basic", "Cabin filter replacement", "Duct cleaning", "Evaporator treatment"],
+        warranty: "3 Months",
+        recommended: true
+      },
+      {
+        name: "Premium AC System",
+        price: "₹3,499",
+        duration: "2 Hours",
+        features: ["Everything in Complete", "AC performance check", "Refrigerant top-up", "6-month protection"],
+        warranty: "6 Months"
+      }
+    ],
+    faqs: [
       { question: "How often should AC be treated?", answer: "Every 6 months is recommended, especially if you notice musty odors when first turning on the AC." },
       { question: "Will this fix a broken AC?", answer: "No, this is a cleaning and sanitization service. Mechanical AC issues require repair services." },
-      { question: "Is ozone treatment safe?", answer: "Yes, we run the generator while the vehicle is unoccupied and ventilate thoroughly before return. It's completely safe and leaves no residue." }
+      { question: "Is ozone treatment safe?", answer: "Yes, we run the generator while the vehicle is unoccupied and ventilate thoroughly before return. It's completely safe and leaves no residue." },
+      { question: "Does this help with allergies?", answer: "Yes, by removing bacteria, mold, and allergens from the HVAC system, it significantly improves cabin air quality for allergy sufferers." }
     ],
-    relatedServices: ["interior-detailing", "complete-detailing", "premium-detailing"],
-    beforeAfterImages: [] // Images removed - add back when available
+    relatedServices: ["interior-detailing", "engine-coating", "complete-detailing"],
+    beforeAfterImages: []
+  },
+
+  "bike-ppf": {
+    id: "bike-ppf",
+    title: "Bike PPF",
+    subtitle: "Paint Protection for Motorcycles",
+    mainIcon: "Zap",
+    shortDescription: "Advanced paint protection film specifically designed for motorcycles that protects against stone chips and scratches.",
+    fullDescription: "Our Bike PPF service provides the same invisible armor protection for motorcycles as we do for cars. Using precision-cut PPF designed specifically for motorcycle contours, we protect tank, fenders, and other painted surfaces from stone chips, road debris, and scratches while maintaining the bike's original finish and gloss. Essential for preserving your motorcycle's appearance.",
+    whatIsIt: "Motorcycle PPF is a thermoplastic polyurethane film cut specifically for motorcycle shapes and contours. Unlike car PPF, motorcycle film must accommodate complex curves, tank shapes, and exposed areas. Our precision patterns ensure perfect fit while providing the same self-healing, impact-absorbing protection that makes PPF the gold standard in paint protection.",
+    whyChoose: [
+      "Self-healing technology repairs minor scratches automatically",
+      "Computer-precision cutting for perfect motorcycle fit",
+      "Protects tank, fenders, and fairings from road damage",
+      "Maintains original paint finish and gloss",
+      "5-year warranty on premium films"
+    ],
+    benefits: [
+      { icon: "Zap", title: "Self-Healing", description: "Heat-activated scratch repair" },
+      { icon: "Shield", title: "Impact Protection", description: "Absorbs stone chips and debris" },
+      { icon: "Sun", title: "UV Protection", description: "Prevents paint fading" },
+      { icon: "Sparkles", title: "Invisible", description: "Maintains original appearance" },
+      { icon: "Gem", title: "Custom Fit", description: "Precision-cut for each bike" },
+      { icon: "Award", title: "Warranty", description: "5-year protection guarantee" }
+    ],
+    specs: [
+      { label: "Material", value: "Thermoplastic Polyurethane" },
+      { label: "Thickness", value: "200-300 microns" },
+      { label: "Warranty", value: "5 Years" },
+      { label: "Self-Healing", value: "Heat Activated" },
+      { label: "UV Resistance", value: "99% UV Block" },
+      { label: "Installation Time", value: "4-6 Hours" },
+      { label: "Coverage Options", value: "Partial to Full" },
+      { label: "Finish", value: "Gloss or Matte" }
+    ],
+    process: [
+      { step: 1, title: "Bike Inspection", description: "Thorough inspection of paint condition" },
+      { step: 2, title: "Surface Prep", description: "Deep cleaning and decontamination" },
+      { step: 3, title: "Paint Correction", description: "Remove any imperfections before film" },
+      { step: 4, title: "Pattern Selection", description: "Computer-cut patterns for your bike" },
+      { step: 5, title: "Application", description: "Careful PPF application on all surfaces" },
+      { step: 6, title: "Edge Sealing", description: "All edges properly sealed" },
+      { step: 7, title: "Curing", description: "24-hour curing period" },
+      { step: 8, title: "Final Inspection", description: "Quality check under lighting" }
+    ],
+    packages: [
+      {
+        name: "Tank Protection",
+        price: "₹4,999",
+        duration: "2 Hours",
+        features: ["Fuel tank coverage", "Self-healing film", "3-year warranty"],
+        warranty: "3 Years"
+      },
+      {
+        name: "Front Protection",
+        price: "₹7,999",
+        duration: "4 Hours",
+        features: ["Tank + front fender", "Headlight area", "5-year warranty"],
+        warranty: "5 Years",
+        recommended: true
+      },
+      {
+        name: "Full Bike Protection",
+        price: "₹14,999",
+        duration: "6 Hours",
+        features: ["All painted surfaces", "Tank, fenders, fairings", "5-year warranty", "Self-healing"],
+        warranty: "5 Years"
+      }
+    ],
+    faqs: [
+      { question: "Is PPF worth it for motorcycles?", answer: "Absolutely. Motorcycles are more exposed to road debris than cars. PPF prevents stone chips on the tank and protects your investment." },
+      { question: "Will PPF affect my bike's appearance?", answer: "No, high-quality PPF is completely invisible. It maintains your paint's original color and gloss while protecting it." },
+      { question: "Can PPF be removed?", answer: "Yes, PPF can be safely removed without damaging the paint. The paint underneath often looks brand new because it was protected." },
+      { question: "How long does motorcycle PPF last?", answer: "With proper care, our motorcycle PPF lasts 5 years. The warranty covers yellowing, cracking, and peeling." }
+    ],
+    relatedServices: ["ceramic-coating", "graphene-coating", "paint-protection-film"],
+    beforeAfterImages: []
+  },
+
+  "car-wrap": {
+    id: "car-wrap",
+    title: "Car Wrap",
+    subtitle: "Transform Your Vehicle's Appearance",
+    mainIcon: "Sparkles",
+    shortDescription: "Premium vinyl car wrapping service for color change, protection, or custom graphics while protecting original paint.",
+    fullDescription: "Our Car Wrap service completely transforms your vehicle's appearance with premium vinyl films. Whether you want a complete color change, protective clear wrap, or custom graphics, our professional installation delivers stunning results. The wrap protects your original paint from UV damage, scratches, and stone chips while allowing you to change your vehicle's look dramatically.",
+    whatIsIt: "Car wrapping involves applying large sheets of premium vinyl film to your vehicle's painted surfaces. The vinyl can be color-changing (matte, gloss, satin, chrome), clear (for paint protection), or printed with custom graphics. Professional installation requires skill, patience, and specialized tools to ensure seamless results with no bubbles or imperfections.",
+    whyChoose: [
+      "Complete color change without painting",
+      "Protects original paint from damage",
+      "Removable without damaging paint",
+      "Custom graphics and finishes available",
+      "Cost-effective compared to repaint"
+    ],
+    benefits: [
+      { icon: "Sparkles", title: "Color Change", description: "Transform appearance completely" },
+      { icon: "Shield", title: "Paint Protection", description: "Protects original paint" },
+      { icon: "Layers", title: "Removable", description: "Can be removed without damage" },
+      { icon: "Gem", title: "Custom Options", description: "Matte, gloss, chrome, graphics" },
+      { icon: "Wallet", title: "Cost Effective", description: "Less than repaint" },
+      { icon: "Clock", title: "Quick Transform", description: "3-5 day installation" }
+    ],
+    specs: [
+      { label: "Vinyl Type", value: "Premium Cast Vinyl" },
+      { label: "Finish Options", value: "Matte, Gloss, Satin, Chrome" },
+      { label: "Durability", value: "5-7 Years" },
+      { label: "Removable", value: "Yes, Without Damage" },
+      { label: "Installation Time", value: "3-5 Days" },
+      { label: "Paint Protection", value: "Yes" },
+      { label: "Custom Graphics", value: "Available" },
+      { label: "Warranty", value: "5 Years" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Discuss color, finish, and design options" },
+      { step: 2, title: "Surface Prep", description: "Deep cleaning and paint correction" },
+      { step: 3, title: "Disassembly", description: "Remove trim and components for full coverage" },
+      { step: 4, title: "Vinyl Application", description: "Careful application with heat and tension" },
+      { step: 5, title: "Edge Sealing", description: "All edges sealed for durability" },
+      { step: 6, title: "Reassembly", description: "Components reinstalled properly" },
+      { step: 7, title: "Final Inspection", description: "Quality check under all lighting" },
+      { step: 8, title: "Curing", description: "24-48 hour curing period" }
+    ],
+    packages: [
+      {
+        name: "Partial Wrap",
+        price: "₹14,999",
+        duration: "2 Days",
+        features: ["Roof or hood", "Single color", "3-year durability"],
+        warranty: "3 Years"
+      },
+      {
+        name: "Full Color Change",
+        price: "₹29,999",
+        duration: "4 Days",
+        features: ["Full vehicle wrap", "Any color/finish", "5-year warranty", "Paint protection"],
+        warranty: "5 Years",
+        recommended: true
+      },
+      {
+        name: "Premium Custom",
+        price: "₹49,999",
+        duration: "5 Days",
+        features: ["Custom graphics", "Premium vinyl", "Design consultation", "7-year warranty"],
+        warranty: "7 Years"
+      }
+    ],
+    faqs: [
+      { question: "How long does car wrap last?", answer: "Our premium vinyl wraps last 5-7 years with proper care. The warranty covers fading, peeling, and cracking." },
+      { question: "Will wrap damage my paint?", answer: "No, high-quality vinyl protects paint and can be removed without damage. In fact, paint under wrap often looks new." },
+      { question: "Can I wash a wrapped car?", answer: "Yes, hand wash is recommended. Avoid automated washes with harsh brushes. Use pH-neutral soap and microfiber." },
+      { question: "Is wrap cheaper than paint?", answer: "Yes, a quality wrap is typically 30-50% less expensive than a professional repaint, and it protects your original paint." }
+    ],
+    relatedServices: ["paint-protection-film", "ceramic-coating", "graphene-coating"],
+    beforeAfterImages: []
   }
 };
 

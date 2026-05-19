@@ -23,7 +23,12 @@ import {
   Phone,
   MessageCircle,
   MoveHorizontal,
-  AlertTriangle
+  AlertTriangle,
+  RotateCw,
+  Wrench,
+  CircleDot,
+  Cog,
+  Waves
 } from 'lucide-react';
 import { getServiceById, getRelatedServices, type BeforeAfterImage } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
@@ -151,6 +156,11 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   VolumeX,
   Clock,
   Check,
+  RotateCw,
+  Wrench,
+  CircleDot,
+  Cog,
+  Waves,
 };
 
 
@@ -481,78 +491,6 @@ const ServiceDetail = () => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Packages Section */}
-        <section className="py-16 md:py-24 bg-card/30">
-          <div className="section-container">
-            <div className="text-center mb-12">
-              <span className="micro-label mb-3 block">Investment</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Service <span className="text-gold-gradient">Packages</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Choose the package that fits your needs. All packages include our quality guarantee.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {service.packages.map((pkg, index) => (
-                <div 
-                  key={index}
-                  className={cn(
-                    "relative rounded-xl border p-8 transition-all duration-500",
-                    pkg.recommended 
-                      ? "border-gold/50 bg-gold/5 shadow-[0_0_40px_rgba(201,162,39,0.15)] scale-105 z-10"
-                      : "border-border/30 bg-background hover:border-gold/30"
-                  )}
-                >
-                  {pkg.recommended && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                      <span className="px-4 py-1 bg-gold text-background text-xs font-bold uppercase tracking-wider rounded-full">
-                        Recommended
-                      </span>
-                    </div>
-                  )}
-
-                  <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{pkg.duration}</p>
-                  
-                  <div className="mb-6">
-                    <span className="text-3xl font-bold text-gold">{pkg.price}</span>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <Check className="w-5 h-5 text-gold flex-shrink-0" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="pt-6 border-t border-border/30">
-                    <p className="text-xs text-muted-foreground mb-1">Warranty</p>
-                    <p className="font-semibold text-foreground">{pkg.warranty}</p>
-                  </div>
-
-                  <a
-                    href="https://wa.me/918888899936"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      "block w-full py-3 rounded-lg font-semibold text-center mt-6 transition-all duration-300",
-                      pkg.recommended
-                        ? "btn-gold"
-                        : "border border-gold/30 text-gold hover:bg-gold/10"
-                    )}
-                  >
-                    Book Now
-                  </a>
-                </div>
-              ))}
             </div>
           </div>
         </section>

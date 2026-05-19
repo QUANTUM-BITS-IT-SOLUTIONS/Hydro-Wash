@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Droplets, Sparkles, ArrowRight, ChevronLeft, ChevronRight, Hand, Layers, Sun, Car, Brush, Gem, SprayCan, RotateCw, Waves, CircleDot, Wind } from 'lucide-react';
+import { Shield, Droplets, Sparkles, ArrowRight, ChevronLeft, ChevronRight, Hand, Layers, Sun, Car, Brush, Gem, SprayCan, RotateCw, Waves, CircleDot, Wind, Wrench, Zap, Star, Settings, Cog, Gauge, Hammer, CheckCircle2, BadgeCheck, Award, Crown, Diamond, Flame, Snowflake, Zap as Lightning } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
 import {
@@ -8,20 +8,44 @@ import {
   CarouselItem,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Autoplay from 'embla-carousel-autoplay';
+import { getAllServices } from '@/data/servicesData';
+
+// Icon mapping for dynamic rendering
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Shield,
+  Droplets,
+  Sparkles,
+  Layers,
+  Sun,
+  Car,
+  Brush,
+  Gem,
+  SprayCan,
+  RotateCw,
+  Wrench,
+  CircleDot,
+  Cog,
+  Wind,
+  Zap,
+  Waves,
+};
 
 interface ServiceCardProps {
   id: string;
-  icon: React.ComponentType<{ className?: string }>;
+  mainIcon: string;
   title: string;
-  description: string;
-  features: string[];
-  price: string;
+  shortDescription: string;
+  packages: { name: string; price: string; features: string[] }[];
 }
 
-const ServiceCard = ({ id, icon: Icon, title, description, features, price }: ServiceCardProps) => {
+const ServiceCard = ({ id, mainIcon, title, shortDescription, packages }: ServiceCardProps) => {
+  const Icon = iconMap[mainIcon] || Shield;
+  const price = packages[0]?.price || "Custom";
+  const features = packages[0]?.features || [];
+
   return (
     <Link to={`/services/${id}`} className="group block h-full p-4 sm:p-6 lg:p-8 rounded-lg sm:rounded-xl border border-border/50 bg-card/50 transition-all duration-300 hover:border-gold/30 hover:bg-card hover-lift">
       {/* Icon & Price Row */}
@@ -39,13 +63,13 @@ const ServiceCard = ({ id, icon: Icon, title, description, features, price }: Se
       <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2 sm:mb-3 group-hover:text-gold transition-colors duration-300">{title}</h3>
       
       {/* Description */}
-      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3">{description}</p>
+      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3">{shortDescription}</p>
 
       {/* Features */}
       <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
         {features.slice(0, 3).map((feature, index) => (
           <li 
-            key={feature} 
+            key={index} 
             className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground group-hover:text-foreground/80 transition-all duration-300"
           >
             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gold" />
@@ -93,120 +117,7 @@ const Services = () => {
     }
   }, [current]);
 
-  const services = [
-    {
-      id: "paint-protection-film",
-      icon: Shield,
-      title: "Paint Protection Film (PPF)",
-      description: "Advanced self-healing urethane film that forms an invisible armor around your vehicle's paint. Our precision-cut PPF protects against stone chips, road debris, scratches, and environmental contaminants while maintaining your car's original gloss and finish.",
-      features: ["Self-healing technology (heat activated)", "Computer-precision cutting", "10-year manufacturer warranty", "Hydrophobic top coat", "Stain & chemical resistance"],
-      price: "₹49,999",
-    },
-    {
-      id: "ceramic-coating",
-      icon: Droplets,
-      title: "Ceramic Coating",
-      description: "Premium SiO2-based nano-ceramic coating that creates a permanent bond with your paint, delivering exceptional gloss, extreme hydrophobicity, and long-lasting protection against UV rays, oxidation, chemical stains, and minor scratches.",
-      features: ["9H pencil hardness rating", "5+ years durability", "Extreme water beading", "UV & oxidation protection", "Chemical stain resistance"],
-      price: "₹14,999",
-    },
-    {
-      id: "graphene-coating",
-      icon: Layers,
-      title: "Graphene Coating",
-      description: "Next-generation graphene-infused coating offering superior heat dissipation, reduced water spotting, and enhanced durability over traditional ceramic coatings. The ultra-thin graphene layer provides unmatched slickness and protection.",
-      features: ["Superior heat dissipation", "Reduced water spotting", "7+ years protection", "Extreme slickness & gloss", "Anti-static properties"],
-      price: "₹19,999",
-    },
-    {
-      id: "premium-detailing",
-      icon: Gem,
-      title: "Premium Auto Detailing Studio",
-      description: "Our state-of-the-art detailing studio combines advanced equipment, premium products, and master craftsmanship to deliver transformational results. From concours-level paint correction to complete interior rejuvenation, we treat every vehicle as a masterpiece.",
-      features: ["Climate-controlled environment", "Professional-grade equipment", "Master-certified technicians", "Premium product lines", "Concours-level standards"],
-      price: "₹1,999",
-    },
-    {
-      id: "interior-detailing",
-      icon: Car,
-      title: "Interior Car Detailing",
-      description: "Deep-cleaning restoration of your vehicle's cabin using steam cleaning, extraction shampooing, and leather conditioning. We eliminate odors, stains, allergens, and bacteria while rejuvenating every surface to like-new condition.",
-      features: ["Steam cleaning & sanitization", "Leather cleaning & conditioning", "Carpet & upholstery extraction", "Dashboard & trim restoration", "Ozone odor elimination"],
-      price: "₹1,999",
-    },
-    {
-      id: "exterior-detailing",
-      icon: SprayCan,
-      title: "Exterior Car Detailing",
-      description: "Comprehensive exterior rejuvenation including clay bar decontamination, multi-stage paint correction, and protective sealant application. We restore clarity, depth, and gloss to every painted surface, trim, and glass.",
-      features: ["Clay bar paint decontamination", "Multi-stage paint correction", "Machine polishing", "Trim & plastic restoration", "Glass polishing & coating"],
-      price: "₹4,499",
-    },
-    {
-      id: "headlight-restoration",
-      icon: Sun,
-      title: "Headlight Restoration",
-      description: "Professional restoration of oxidized, yellowed, or hazy headlights using wet-sanding, polishing, and UV-resistant sealing. Improve nighttime visibility and restore your vehicle's aesthetic appeal while avoiding costly headlight replacements.",
-      features: ["Wet-sanding & compounding", "UV damage removal", "Crystal-clear clarity", "UV-resistant sealant", "Taillight restoration available"],
-      price: "₹999",
-    },
-    {
-      id: "underbody-coating",
-      icon: Shield,
-      title: "Under Body Coating",
-      description: "Protective coating applied to the vehicle's undercarriage to prevent rust, corrosion, and damage from road salt, moisture, and debris. Essential for vehicles in coastal areas or harsh climates to maintain structural integrity.",
-      features: ["Rust & corrosion prevention", "Sound dampening properties", "Stone chip protection", "Rubberized durable finish", "5-year protection warranty"],
-      price: "₹4,499",
-    },
-    {
-      id: "car-wash",
-      icon: Brush,
-      title: "Premium Car Wash",
-      description: "Meticulous hand-wash service using the two-bucket method, pH-neutral shampoos, and premium microfiber towels. Our safe wash techniques eliminate swirl marks while thoroughly cleaning every panel, wheel, and trim piece.",
-      features: ["Two-bucket safe wash method", "pH-neutral foam shampoo", "Microfiber drying technique", "Wheel & tire deep clean", "Door jambs & fuel cap cleaning"],
-      price: "₹1,199",
-    },
-    {
-      id: "complete-detailing",
-      icon: Sparkles,
-      title: "Complete Car Detailing",
-      description: "The ultimate all-inclusive package combining full interior and exterior detailing with paint correction and protective coating. This comprehensive service transforms your vehicle to showroom or better-than-new condition in every aspect.",
-      features: ["Full interior deep clean", "Paint correction & polishing", "Engine bay detailing", "Protective coating application", "Final quality inspection"],
-      price: "₹1,999",
-    },
-    {
-      id: "rubbing-polishing",
-      icon: RotateCw,
-      title: "Rubbing & Polishing",
-      description: "Professional paint correction service using multi-stage machine polishing to remove swirl marks, light scratches, oxidation, and holograms. Restores your paint's original depth, clarity, and showroom gloss.",
-      features: ["Multi-stage machine polishing", "Swirl mark removal", "Paint oxidation repair", "Gloss restoration", "Paint thickness safety check"],
-      price: "₹4,499",
-    },
-    {
-      id: "hydrowash-wax",
-      icon: Waves,
-      title: "Premium Hydrowash & Wax",
-      description: "Thorough hand wash using high-pressure rinse with premium carnauba wax application. Creates a hydrophobic barrier that protects your paint, enhances gloss, and makes future cleaning easier for up to 3 months.",
-      features: ["High-pressure pre-rinse", "Two-bucket hand wash", "Premium carnauba wax", "Hydrophobic protection", "UV damage prevention"],
-      price: "₹1,199",
-    },
-    {
-      id: "anti-rust-alloy",
-      icon: CircleDot,
-      title: "Anti Rust Coating & Alloy Treatment",
-      description: "Comprehensive protection combining rubberized underbody rust coating with ceramic alloy wheel treatment. Prevents corrosion, resists brake dust buildup, and makes wheel cleaning effortless.",
-      features: ["Rubberized underbody coating", "Alloy wheel ceramic coat", "Brake dust resistance", "5-year rust warranty", "Heat-resistant protection"],
-      price: "₹5,498",
-    },
-    {
-      id: "engine-ac-treatment",
-      icon: Wind,
-      title: "Engine Coating & AC Vent Treatment",
-      description: "Dual service protecting your engine bay with heat-resistant coating while deep-cleaning and sanitizing the AC system. Eliminates bacteria, mold, and odors from vents for fresh, healthy cabin air.",
-      features: ["Engine bay protective coating", "AC vent sanitization", "Antimicrobial treatment", "Ozone odor elimination", "Heat & moisture protection"],
-      price: "₹2,298",
-    },
-  ];
+  const services = useMemo(() => getAllServices(), []);
 
   useEffect(() => {
     if (!api) return;

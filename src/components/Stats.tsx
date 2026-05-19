@@ -26,7 +26,7 @@ const Stats = () => {
   const { ref, isVisible } = useScrollReveal({ threshold: 0.3 });
 
   const stats = [
-    { value: 8, suffix: '+', label: 'Years Experience' },
+    { value: 10, suffix: '+', label: 'Years Experience' },
     { value: 5000, suffix: '+', label: 'Vehicles Detailed' },
     { value: 4500, suffix: '+', label: 'Happy Clients' },
     { value: 100, suffix: '%', label: 'Satisfaction Rate' },

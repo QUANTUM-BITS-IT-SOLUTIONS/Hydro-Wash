@@ -16,8 +16,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
     { icon: Facebook, href: 'https://www.facebook.com/share/1JRg7C1eYW/', label: 'Facebook' },
-    { icon: Youtube, href: 'https://youtube.com/hydrowashcarwash', label: 'YouTube' },
-    { icon: MapPin, href: 'https://maps.app.goo.gl/NnZwDGryAvLZ5FvEA', label: 'Google Maps' },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,10 +35,10 @@ const Footer = () => {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
             <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-              <span className="text-gold-gradient">HydroWash</span> Car Wash
+              <span className="text-gold-gradient">HydroWash</span><br />Car Wash & Detailing Studio
             </h3>
             <p className="text-muted-foreground max-w-md mb-5 sm:mb-6 mx-auto sm:mx-0 text-sm sm:text-base">
-             Because exceptional machines deserve nothing less.
+             Voted as the best car wash in the town.
             </p>
 
             {/* Social Links */}
