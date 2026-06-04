@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  Shield, 
-  Droplets, 
-  Sparkles, 
-  Layers, 
-  Sun, 
-  Car, 
-  Brush, 
-  Gem, 
+import {
+  ArrowRight,
+  Shield,
+  Droplets,
+  Sparkles,
+  Layers,
+  Sun,
+  Car,
+  Brush,
+  Gem,
   SprayCan,
   Check,
   Clock,
@@ -66,12 +66,12 @@ const ServicesList = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      
+
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-background to-background" />
-          
+
           <div className="section-container relative z-10">
             <div className="max-w-3xl">
               <span className="micro-label mb-4 block">All Services</span>
@@ -80,7 +80,7 @@ const ServicesList = () => {
                 <br />Services
               </h1>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-                From protective coatings and paint correction to deep interior restoration, 
+                From protective coatings and paint correction to deep interior restoration,
                 we offer comprehensive automotive care using industry-leading products and master craftsmanship.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -110,14 +110,21 @@ const ServicesList = () => {
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="micro-label mb-3 block">Why Car Wash Studio</span>
+                <span className="micro-label mb-3 block">About HYDROWASH</span>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Professional <span className="text-gold-gradient">Automotive Care</span>
+                  Premium <span className="text-gold-gradient">Automotive Care</span>
                 </h2>
+                <p className="text-muted-foreground mb-6">
+                  At HYDROWASH, we are passionate about delivering premium automotive care that goes beyond a normal car wash. As a specialized premium car wash and detailing studio, we focus on enhancing, restoring, and protecting vehicles through industry-leading detailing solutions and advanced surface protection technologies.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  Our expertise includes Paint Protection Film (PPF), Ceramic Coating, Paint Correction, Interior Detailing, and comprehensive vehicle care treatments designed to maintain your vehicle's appearance and value. Every service is performed with precision, attention to detail, and a commitment to excellence.
+                </p>
                 <p className="text-muted-foreground mb-8">
-                  We combine advanced techniques, premium products, and master craftsmanship 
-                  to deliver results that exceed expectations. Every vehicle receives personalized 
-                  attention and care.
+                  We understand that your vehicle is more than just transportation—it's an investment and a reflection of your personality. That's why we use premium-grade products, professional techniques, and a customer-first approach to deliver results that meet the highest standards of quality.
+                </p>
+                <p className="text-muted-foreground mb-8">
+                  Whether you own a luxury car, performance vehicle, SUV, motorcycle, or daily driver, HYDROWASH is dedicated to providing unmatched protection, superior finish, and long-lasting shine.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -172,7 +179,7 @@ const ServicesList = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => {
                 const Icon = iconMap[service.mainIcon] || Shield;
-                
+
                 return (
                   <Link
                     key={service.id}
@@ -190,7 +197,7 @@ const ServicesList = () => {
                     <h3 className="text-xl font-semibold mb-3 group-hover:text-gold transition-colors">
                       {service.title}
                     </h3>
-                    
+
                     <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
                       {service.shortDescription}
                     </p>
@@ -249,7 +256,7 @@ const ServicesList = () => {
                   icon: Droplets
                 }
               ].map((category, index) => (
-                <div 
+                <div
                   key={index}
                   className="p-6 rounded-xl border border-border/30 bg-background hover:border-gold/30 transition-all duration-300"
                 >
@@ -340,13 +347,13 @@ const ServicesList = () => {
             <div className="relative rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/5" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,162,39,0.15),transparent_50%)]" />
-              
+
               <div className="relative p-8 md:p-12 lg:p-16 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Not Sure What You Need?
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                  Our experts can assess your vehicle and recommend the perfect services 
+                  Our experts can assess your vehicle and recommend the perfect services
                   for your needs and budget. Get a free consultation today.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">

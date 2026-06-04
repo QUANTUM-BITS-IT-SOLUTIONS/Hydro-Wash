@@ -1,15 +1,15 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
-import { 
-  ArrowLeft, 
-  Check, 
-  Clock, 
-  Shield, 
-  Sparkles, 
-  Droplets, 
-  Sun, 
-  Gem, 
-  Zap, 
+import {
+  ArrowLeft,
+  Check,
+  Clock,
+  Shield,
+  Sparkles,
+  Droplets,
+  Sun,
+  Gem,
+  Zap,
   Wind,
   Award,
   Diamond,
@@ -126,7 +126,7 @@ const BeforeAfterComparison = ({ image }: { image: BeforeAfterImage }) => {
           </div>
         </div>
       </div>
-      
+
       {/* Caption */}
       <p className="text-center text-sm text-muted-foreground font-medium">
         {image.caption}
@@ -246,15 +246,15 @@ const ServiceDetail = () => {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      
+
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-background to-background" />
-          
+
           <div className="section-container relative z-10">
-            <Link 
-              to="/services" 
+            <Link
+              to="/services"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-gold transition-colors mb-8"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -265,14 +265,14 @@ const ServiceDetail = () => {
               <div>
                 <span className="micro-label mb-4 block">Professional Service</span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
-                  {service.title.split(' ').map((word, i) => 
-                    i === 0 ? <span key={i}>{word} </span> : 
-                    <span key={i} className="text-gold-gradient">{word} </span>
+                  {service.title.split(' ').map((word, i) =>
+                    i === 0 ? <span key={i}>{word} </span> :
+                      <span key={i} className="text-gold-gradient">{word} </span>
                   )}
                 </h1>
                 <p className="text-xl text-muted-foreground mb-6">{service.subtitle}</p>
                 <p className="text-muted-foreground leading-relaxed mb-8">{service.fullDescription}</p>
-                
+
                 <div className="flex flex-wrap gap-4">
                   <a
                     href="https://wa.me/918888899936"
@@ -304,7 +304,7 @@ const ServiceDetail = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="mt-6 pt-6 border-t border-border/30">
                   <p className="text-sm text-muted-foreground mb-2">Starting from</p>
                   <p className="text-3xl font-bold text-gold">{service.packages[0]?.price || 'Custom Quote'}</p>
@@ -403,8 +403,8 @@ const ServiceDetail = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.whyChoose.map((reason, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-start gap-4 p-6 rounded-xl border border-border/30 bg-card/30 hover:border-gold/30 transition-colors"
                 >
                   <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
@@ -429,7 +429,7 @@ const ServiceDetail = () => {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.benefits.map((benefit, index) => (
-                <div 
+                <div
                   key={index}
                   className="group p-8 rounded-xl border border-border/30 bg-background hover:border-gold/30 transition-all duration-300"
                 >
@@ -456,7 +456,7 @@ const ServiceDetail = () => {
                 <p className="text-muted-foreground mb-8">
                   Our services utilize industry-leading products and equipment, meeting the highest professional standards.
                 </p>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {service.specs.map((spec, index) => (
                     <div key={index} className="p-4 rounded-lg bg-card/50 border border-border/30">
@@ -508,8 +508,8 @@ const ServiceDetail = () => {
 
               <Accordion type="single" collapsible className="space-y-4">
                 {service.faqs.map((faq, index) => (
-                  <AccordionItem 
-                    key={index} 
+                  <AccordionItem
+                    key={index}
                     value={`item-${index}`}
                     className="border border-border/30 rounded-lg px-6 data-[state=open]:border-gold/30"
                   >
@@ -570,7 +570,7 @@ const ServiceDetail = () => {
             <div className="relative rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-gold/5" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,162,39,0.15),transparent_50%)]" />
-              
+
               <div className="relative p-8 md:p-12 lg:p-16 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Ready to Transform Your Vehicle?

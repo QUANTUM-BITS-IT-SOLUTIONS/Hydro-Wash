@@ -26,7 +26,7 @@ const Contact = () => {
     {
       icon: Clock,
       label: 'Working Hours',
-      value: 'Mon-Sat: 9AM - 7PM, Sun: 10AM - 5PM',
+      value: 'Mon-Sun: 9AM - 7PM',
     },
     {
       icon: Globe,

@@ -63,7 +63,9 @@ const Index = () => {
         <Testimonials />
         
         {/* Contact - Trust Section */}
-        <Contact />
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
       
       {/* Footer */}

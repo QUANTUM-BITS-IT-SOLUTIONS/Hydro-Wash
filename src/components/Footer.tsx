@@ -1,17 +1,30 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Instagram, Facebook, Youtube, Send, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
+  const location = useLocation();
 
   const quickLinks = [
-    { label: 'Services', href: '/services' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Services', href: '/services', isRoute: true },
+    { label: 'Gallery', href: '/gallery', isRoute: true },
+    { label: 'Process', href: '#process', isRoute: false },
+    { label: 'Contact', href: '#contact', isRoute: false },
   ];
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      window.location.href = '/' + href;
+    } else {
+      const element = document.getElementById(href.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/hydrowash__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
@@ -34,9 +47,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
-            <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-              <span className="text-gold-gradient">HydroWash</span><br />Car Wash & Detailing Studio
-            </h3>
+            <img
+              src="/Logo.png"
+              alt="HydroWash Logo"
+              className="h-16 sm:h-20 mb-3 sm:mb-4 mx-auto sm:mx-0"
+            />
             <p className="text-muted-foreground max-w-md mb-5 sm:mb-6 mx-auto sm:mx-0 text-sm sm:text-base">
              Voted as the best car wash in the town.
             </p>
@@ -64,12 +79,22 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleAnchorClick(e, link.href)}
+                      className="text-muted-foreground hover:text-gold transition-colors duration-300 text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

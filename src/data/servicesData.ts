@@ -95,24 +95,24 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     packages: [
       {
-        name: "Partial Front",
-        price: "₹24,999",
-        duration: "1 Day",
-        features: ["Partial hood coverage", "Front bumper", "Side mirrors", "Headlights"],
-        warranty: "5 Years"
-      },
-      {
-        name: "Full Front",
-        price: "₹34,999",
-        duration: "1-2 Days",
-        features: ["Full hood coverage", "Full front bumper", "Front fenders", "Side mirrors", "Headlights"],
-        warranty: "7 Years",
+        name: "Full Vehicle (Hatchback)",
+        price: "₹49,999",
+        duration: "3-4 Days",
+        features: ["All painted panels", "Full hood & bumpers", "All fenders", "Doors & pillars", "Roof option available"],
+        warranty: "10 Years",
         recommended: true
       },
       {
-        name: "Full Vehicle",
-        price: "₹49,999",
-        duration: "3-5 Days",
+        name: "Full Vehicle (Sedan)",
+        price: "₹59,999",
+        duration: "3-4 Days",
+        features: ["All painted panels", "Full hood & bumpers", "All fenders", "Doors & pillars", "Roof option available"],
+        warranty: "10 Years"
+      },
+      {
+        name: "Full Vehicle (SUV/Luxury)",
+        price: "₹69,999",
+        duration: "4-5 Days",
         features: ["All painted panels", "Full hood & bumpers", "All fenders", "Doors & pillars", "Roof option available"],
         warranty: "10 Years"
       }
@@ -173,14 +173,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Lite 9H",
-        price: "₹9,999",
+        price: "₹14,999",
         duration: "4-6 Hours",
-        features: ["Entry-level protection", "1-layer application", "1-year durability", "Basic gloss enhancement"],
-        warranty: "1 Year"
+        features: ["Entry-level protection", "1-layer application", "2-year durability", "Basic gloss enhancement"],
+        warranty: "2 Years"
       },
       {
         name: "Trinity 9H",
-        price: "₹14,999",
+        price: "₹19,999",
         duration: "6-8 Hours",
         features: ["3-layer system", "Paint correction included", "5-year durability", "Superior hydrophobicity"],
         warranty: "5 Years",
@@ -188,7 +188,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Pentagon 10H",
-        price: "₹19,999",
+        price: "₹24,999",
         duration: "8-10 Hours",
         features: ["5-layer system", "Advanced paint correction", "7-year durability", "Maximum hardness"],
         warranty: "7 Years"
@@ -325,19 +325,19 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     packages: [
       {
-        name: "Studio Access",
-        price: "Custom Quote",
-        duration: "Per Service",
-        features: ["Any detailing service", "Climate-controlled environment", "Professional equipment", "Master technician"],
-        warranty: "Per Service Terms"
-      },
-      {
         name: "Premium Detailing",
         price: "₹1,999",
         duration: "4-6 Hours",
         features: ["Complete interior detail", "Full exterior correction", "Basic protection", "Engine bay detail"],
         warranty: "Satisfaction Guaranteed",
         recommended: true
+      },
+      {
+        name: "Studio Access",
+        price: "Custom Quote",
+        duration: "Per Service",
+        features: ["Any detailing service", "Climate-controlled environment", "Professional equipment", "Master technician"],
+        warranty: "Per Service Terms"
       },
       {
         name: "Ultimate Protection",
@@ -555,14 +555,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Single Stage Polish",
-        price: "₹2,499",
+        price: "₹4,499",
         duration: "3-4 Hours",
         features: ["Light swirl removal", "Gloss enhancement", "All painted panels"],
         warranty: "Satisfaction Guaranteed"
       },
       {
         name: "Two Stage Correction",
-        price: "₹4,499",
+        price: "₹6,499",
         duration: "5-6 Hours",
         features: ["Compound + polish", "Moderate defect removal", "Paint thickness check", "All exterior panels"],
         warranty: "Satisfaction Guaranteed",
@@ -570,7 +570,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       },
       {
         name: "Three Stage Concours",
-        price: "₹7,999",
+        price: "₹8,999",
         duration: "7-8 Hours",
         features: ["Heavy cutting", "Refining polish", "Jeweling finish", "Coating preparation"],
         warranty: "Showroom Finish Guaranteed"
@@ -631,19 +631,19 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     packages: [
       {
+        name: "Hydrowash + Wax",
+        price: "₹1,199",
+        duration: "1.5 Hours",
+        features: ["Complete hand wash", "Premium carnauba wax", "Tire dressing", "Glass cleaning"],
+        warranty: "2 Month Protection",
+        recommended: true
+      },
+      {
         name: "Hydrowash Express",
         price: "₹599",
         duration: "45 Minutes",
         features: ["High-pressure wash", "Quick dry", "Spray wax sealant"],
         warranty: "Satisfaction Guaranteed"
-      },
-      {
-        name: "Hydrowash + Wax",
-        price: "₹1,299",
-        duration: "1.5 Hours",
-        features: ["Complete hand wash", "Premium carnauba wax", "Tire dressing", "Glass cleaning"],
-        warranty: "2 Month Protection",
-        recommended: true
       },
       {
         name: "Hydrowash Deluxe",
@@ -708,14 +708,14 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Standard",
-        price: "₹3,999",
+        price: "₹4,499",
         duration: "4 Hours",
         features: ["Chassis coating", "Wheel wells", "3-year warranty"],
         warranty: "3 Years"
       },
       {
         name: "Premium",
-        price: "₹4,499",
+        price: "₹5,499",
         duration: "5 Hours",
         features: ["Full undercarriage", "Door cavities", "Fender areas", "5-year warranty"],
         warranty: "5 Years",
@@ -1121,6 +1121,82 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Is wrap cheaper than paint?", answer: "Yes, a quality wrap is typically 30-50% less expensive than a professional repaint, and it protects your original paint." }
     ],
     relatedServices: ["paint-protection-film", "ceramic-coating", "graphene-coating"],
+    beforeAfterImages: []
+  },
+
+  "steam-wash": {
+    id: "steam-wash",
+    title: "Steam Wash",
+    subtitle: "Eco-Friendly Deep Cleaning with High-Pressure Steam",
+    mainIcon: "Wind",
+    shortDescription: "Advanced steam cleaning technology using high-temperature steam to deep clean, sanitize, and restore your vehicle's exterior and interior.",
+    fullDescription: "Our Steam Wash service utilizes cutting-edge steam cleaning technology to deliver an eco-friendly, chemical-free deep clean for your vehicle. High-temperature steam (up to 180°C) penetrates deep into surfaces, dissolving grease, grime, and bacteria without harsh chemicals. This method is safe for all vehicle surfaces, environmentally friendly, and delivers superior cleaning results while conserving water.",
+    whatIsIt: "Steam washing uses pressurized, high-temperature steam to clean and sanitize vehicle surfaces. The steam's heat breaks down dirt and grease, while the pressure lifts contaminants away. Unlike traditional washing that uses gallons of water and chemical cleaners, steam cleaning uses minimal water and no harsh chemicals, making it environmentally responsible and safe for all finishes.",
+    whyChoose: [
+      "Uses 90% less water than traditional car washing",
+      "Chemical-free cleaning safe for all surfaces",
+      "High-temperature steam kills 99.9% of bacteria and germs",
+      "Safe for paint, chrome, glass, and all interior materials",
+      "Eco-friendly and environmentally responsible"
+    ],
+    benefits: [
+      { icon: "Wind", title: "Deep Cleaning", description: "Steam penetrates deep for thorough cleaning" },
+      { icon: "Droplets", title: "Water Efficient", description: "Uses 90% less water than traditional wash" },
+      { icon: "Shield", title: "Chemical Free", description: "No harsh chemicals, safe for all surfaces" },
+      { icon: "Sparkles", title: "Sanitized", description: "Kills 99.9% of bacteria and germs" },
+      { icon: "Sun", title: "Eco Friendly", description: "Environmentally responsible cleaning method" },
+      { icon: "Gem", title: "Safe Finish", description: "Gentle on paint, chrome, and interior" }
+    ],
+    specs: [
+      { label: "Steam Temperature", value: "Up to 180°C" },
+      { label: "Water Usage", value: "90% Less Than Traditional" },
+      { label: "Chemicals", value: "None Required" },
+      { label: "Sanitization", value: "99.9% Bacteria Kill" },
+      { label: "Surface Safe", value: "All Vehicle Materials" },
+      { label: "Duration", value: "1-2 Hours" },
+      { label: "Drying Time", value: "15-30 Minutes" },
+      { label: "Environmental Impact", value: "Minimal" }
+    ],
+    process: [
+      { step: 1, title: "Pre-Inspection", description: "Assess vehicle condition and identify areas requiring special attention" },
+      { step: 2, title: "Steam Pre-Soak", description: "Apply steam to loosen dirt and grime on all surfaces" },
+      { step: 3, title: "Exterior Steam Clean", description: "High-pressure steam cleaning of paint, glass, chrome, and wheels" },
+      { step: 4, title: "Interior Steam Sanitize", description: "Steam cleaning of dashboard, seats, carpets, and all interior surfaces" },
+      { step: 5, title: "Detail & Wipe", description: "Microfiber wipe-down to remove loosened contaminants" },
+      { step: 6, title: "Ventilation", description: "Air circulation to dry steam-cleaned surfaces" },
+      { step: 7, title: "Final Inspection", description: "Quality check to ensure thorough cleaning and sanitization" }
+    ],
+    packages: [
+      {
+        name: "Express Steam Wash",
+        price: "₹799",
+        duration: "45 Minutes",
+        features: ["Exterior steam clean", "Wheel cleaning", "Glass cleaning", "Quick dry"],
+        warranty: "Satisfaction Guaranteed"
+      },
+      {
+        name: "Complete Steam Wash",
+        price: "₹1,499",
+        duration: "1.5 Hours",
+        features: ["Full exterior steam", "Interior steam sanitize", "Dashboard & console", "All glass cleaned"],
+        warranty: "Satisfaction Guaranteed",
+        recommended: true
+      },
+      {
+        name: "Premium Steam Detail",
+        price: "₹2,499",
+        duration: "2 Hours",
+        features: ["Everything in Complete", "Leather steam clean", "Carpet extraction", "Air freshener"],
+        warranty: "Satisfaction Guaranteed"
+      }
+    ],
+    faqs: [
+      { question: "Is steam washing safe for my car's paint?", answer: "Yes, steam washing is completely safe for paint when done professionally. The temperature and pressure are controlled to prevent any damage. In fact, it's gentler than traditional pressure washing." },
+      { question: "How much water does steam washing use?", answer: "Steam washing uses up to 90% less water than traditional car washing. A typical steam wash uses only 5-10 liters of water compared to 100+ liters for conventional washing." },
+      { question: "Can steam cleaning damage leather seats?", answer: "No, steam cleaning is safe for leather when done correctly. The steam temperature and moisture are controlled, and we follow up with leather conditioning to keep seats supple." },
+      { question: "Is steam washing effective for heavily soiled vehicles?", answer: "Yes, steam is highly effective at breaking down heavy dirt, grease, and grime. The heat dissolves contaminants that water alone can't remove, making it excellent for neglected vehicles." }
+    ],
+    relatedServices: ["hydrowash-wax", "interior-detailing", "premium-detailing"],
     beforeAfterImages: []
   }
 };

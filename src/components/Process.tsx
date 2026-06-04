@@ -9,26 +9,30 @@ const Process = () => {
     {
       icon: Search,
       number: '01',
-      label: 'Inspect',
-      description: 'Comprehensive vehicle assessment to identify every detail requiring attention',
+      label: 'Evaluate',
+      title: 'Comprehensive Vehicle Assessment',
+      description: 'Every vehicle begins with a detailed inspection to evaluate its condition, identify areas requiring attention, and recommend the most effective care and protection solutions.',
     },
     {
       icon: Brush,
       number: '02',
-      label: 'Prepare',
-      description: 'Meticulous surface preparation including decontamination and cleaning',
+      label: 'Refine',
+      title: 'Surface Preparation & Enhancement',
+      description: 'Through meticulous cleaning, decontamination, and preparation, we create the ideal foundation for premium detailing, restoration, and protection treatments.',
     },
     {
       icon: Sparkles,
       number: '03',
-      label: 'Treat',
-      description: 'Expert application of premium products with precision techniques',
+      label: 'Protect',
+      title: 'Advanced Treatment & Preservation',
+      description: "Using industry-leading products and expert techniques, we enhance and safeguard your vehicle's finish, ensuring lasting beauty, durability, and protection.",
     },
     {
       icon: ThumbsUp,
       number: '04',
-      label: 'Perfect',
-      description: 'Final inspection ensuring flawless results that exceed expectations',
+      label: 'Deliver',
+      title: 'Quality Assurance & Final Presentation',
+      description: 'A thorough final inspection ensures every detail meets our exacting standards before your vehicle is presented with an exceptional finish and showroom-worthy appearance.',
     },
   ];
 
@@ -51,7 +55,7 @@ const Process = () => {
             The <span className="text-gold-gradient">HydroWash</span> Process
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base">
-            A systematic approach perfected over years to deliver exceptional results every time
+            A meticulous four-stage process engineered to enhance, protect, and preserve your vehicle to the highest standards.
           </p>
         </div>
 
@@ -117,6 +121,7 @@ const Process = () => {
                           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{step.label}</h3>
                         </div>
                       </div>
+                      <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3">{step.title}</h4>
                       <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{step.description}</p>
                     </div>
                   </div>

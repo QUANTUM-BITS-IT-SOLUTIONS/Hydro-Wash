@@ -1,5 +1,6 @@
 import { useScrollReveal, useCountUp } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
+import { Award, Car, Users, BadgeCheck } from 'lucide-react';
 
 interface StatProps {
   value: number;
@@ -7,17 +8,24 @@ interface StatProps {
   label: string;
   isVisible: boolean;
   delay: number;
+  icon: React.ElementType;
 }
 
-const StatCounter = ({ value, suffix, label, isVisible, delay }: StatProps) => {
+const StatCounter = ({ value, suffix, label, isVisible, delay, icon: Icon }: StatProps) => {
   const count = useCountUp(value, 2500, delay, isVisible);
 
   return (
-    <div className="text-center px-6 md:px-10 py-6">
+    <div className="text-center px-6 md:px-10 py-10 flex flex-col items-center group">
+      {/* Dynamic Animated Icon Container */}
+      <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center mb-6 text-gold transition-all duration-500 ease-premium group-hover:bg-gold/20 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(201,162,39,0.3)]">
+        <Icon className="w-6 h-6" />
+      </div>
       <div className="text-4xl md:text-5xl font-bold text-foreground mb-2 tabular-nums">
         {count}<span className="text-gold">{suffix}</span>
       </div>
-      <div className="text-sm text-muted-foreground uppercase tracking-wider">{label}</div>
+      <div className="text-xs md:text-sm text-muted-foreground uppercase tracking-wider font-semibold transition-colors duration-300 group-hover:text-foreground">
+        {label}
+      </div>
     </div>
   );
 };
@@ -26,10 +34,10 @@ const Stats = () => {
   const { ref, isVisible } = useScrollReveal({ threshold: 0.3 });
 
   const stats = [
-    { value: 10, suffix: '+', label: 'Years Experience' },
-    { value: 5000, suffix: '+', label: 'Vehicles Detailed' },
-    { value: 4500, suffix: '+', label: 'Happy Clients' },
-    { value: 100, suffix: '%', label: 'Satisfaction Rate' },
+    { value: 10, suffix: '+', label: 'Years Experience', icon: Award },
+    { value: 5000, suffix: '+', label: 'Vehicles Detailed', icon: Car },
+    { value: 4500, suffix: '+', label: 'Happy Clients', icon: Users },
+    { value: 100, suffix: '%', label: 'Satisfaction Rate', icon: BadgeCheck },
   ];
 
   return (
@@ -38,7 +46,7 @@ const Stats = () => {
         {/* Section Header */}
         <div
           className={cn(
-            "text-center mb-12 transition-all duration-700 ease-premium",
+            "text-center mb-16 transition-all duration-700 ease-premium",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           )}
         >
@@ -59,7 +67,7 @@ const Stats = () => {
             <div
               key={stat.label}
               className={cn(
-                "border-border/40",
+                "border-border/40 transition-all duration-500 hover:bg-card/20",
                 // Right border for left column items
                 index % 2 === 0 && "border-r",
                 // Bottom border for top row items on mobile
