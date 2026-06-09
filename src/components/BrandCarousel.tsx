@@ -1,26 +1,11 @@
 import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
-
-const brandList = [
-  { name: '3M', file: '3m.jpeg' },
-  { name: 'Menzerna', file: 'Menzerna.jpeg' },
-  { name: 'Angelwax', file: 'angelwax.jpeg' },
-  { name: 'CarPro', file: 'carpro.jpeg' },
-  { name: 'Exo', file: 'exo.jpeg' },
-  { name: 'Gtechniq', file: 'gtechiqe.jpeg' },
-  { name: 'Kärcher', file: 'karcher.jpeg' },
-  { name: 'LLumar', file: 'llumar.jpeg' },
-  { name: 'Ma-Fra', file: 'ma fra.jpeg' },
-  { name: 'Meguiar\'s', file: 'megquires.jpeg' },
-  { name: 'Norton', file: 'norton.jpeg' },
-  { name: 'Rupes', file: 'rupes.jpeg' },
-  { name: 'The Detailing Mafia', file: 'the detailing mafia.jpeg' },
-  { name: 'Würth', file: 'wurth.jpeg' },
-];
+import { dynamicBrandImages } from '@/data/brandImagesAuto';
 
 const BrandCarousel = ({ logos }: { logos?: string[] }) => {
   const { ref, isVisible } = useScrollReveal();
+  const brandList = dynamicBrandImages;
 
   return (
     <section className="w-full overflow-hidden bg-background py-20 md:py-28">
@@ -33,7 +18,7 @@ const BrandCarousel = ({ logos }: { logos?: string[] }) => {
         >
           {/* Section Header */}
           <div className="mb-16 text-center md:mb-20">
-            <span className="micro-label mb-3 block text-red-500 uppercase tracking-widest font-bold">Our Partners</span>
+            <span className="micro-label mb-3 block">Our Partners</span>
             <h2 className="headline-lg mb-4">
               Premium <span className="text-gold-gradient">Brands We Use</span>
             </h2>
@@ -48,13 +33,13 @@ const BrandCarousel = ({ logos }: { logos?: string[] }) => {
             {brandList.map((brand, index) => (
               <div
                 key={brand.name}
-                className="aspect-square rounded-2xl flex flex-col items-center justify-center bg-[#121c22] shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(201,162,39,0.18)] hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden"
+                className="aspect-square rounded-2xl flex flex-col items-center justify-center bg-black shadow-[0_0_15px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25),0_0_50px_rgba(255,255,255,0.15)] hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden border border-white/10"
                 style={{
                   transitionDelay: `${(index % 5) * 60}ms`
                 }}
               >
                 <img
-                  src={`/brands/${brand.file}`}
+                  src={brand.url}
                   alt={brand.name}
                   className="w-full h-full object-contain p-4 sm:p-6 transition-all duration-500 group-hover:scale-105"
                   loading="lazy"

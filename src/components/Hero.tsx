@@ -172,7 +172,7 @@ const Hero = () => {
             transform: `translateY(${scrollY * 0.2}px)` 
           }}
         >
-          Est. 2016
+          Hydro-Wash
         </span>
         <div 
           className="w-[1px] h-24 bg-gradient-to-b from-transparent via-gold/50 to-transparent"

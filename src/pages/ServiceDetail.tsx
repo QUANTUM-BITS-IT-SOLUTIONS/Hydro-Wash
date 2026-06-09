@@ -395,9 +395,9 @@ const ServiceDetail = () => {
         <section className="py-16 md:py-24">
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <span className="micro-label mb-3 block">Our Difference</span>
+              <span className="micro-label mb-3 block">Experience the Difference</span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Why Choose <span className="text-gold-gradient">Car Wash Studio</span>?
+                Why Choose <span className="text-gold-gradient">HydroWash</span>?
               </h2>
             </div>
 

@@ -8,7 +8,8 @@ const Footer = () => {
   const location = useLocation();
 
   const quickLinks = [
-    { label: 'Services', href: '/services', isRoute: true },
+    { label: 'About', href: '/services#about', isRoute: true },
+    { label: 'Services', href: '/services#services', isRoute: true },
     { label: 'Gallery', href: '/gallery', isRoute: true },
     { label: 'Process', href: '#process', isRoute: false },
     { label: 'Contact', href: '#contact', isRoute: false },
@@ -143,13 +144,8 @@ const Footer = () => {
                 Qbits
               </a>
             </p>
-            <span className="hidden sm:inline text-border">|</span>
-            <p>© 2026 HydroWash Car Wash & Detailing Studio. All rights reserved.</p>
           </div>
-          <p>
-            Crafted with precision in{' '}
-            <span className="text-gold">Alwar, Rajasthan</span>
-          </p>
+          <p>© 2026 HydroWash Car Wash & Detailing Studio. All rights reserved.</p>
         </div>
       </div>
     </footer>

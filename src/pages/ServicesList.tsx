@@ -106,7 +106,7 @@ const ServicesList = () => {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-16 md:py-24 bg-card/30">
+        <section id="about" className="py-16 md:py-24 bg-card/30">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -164,7 +164,7 @@ const ServicesList = () => {
         </section>
 
         {/* Services Grid */}
-        <section className="py-16 md:py-24">
+        <section id="services" className="py-16 md:py-24">
           <div className="section-container">
             <div className="text-center mb-12">
               <span className="micro-label mb-3 block">Our Offerings</span>

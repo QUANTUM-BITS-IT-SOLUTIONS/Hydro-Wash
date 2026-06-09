@@ -939,7 +939,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Basic AC Treatment",
-        price: "₹1,299",
+        price: "₹1,199",
         duration: "1 Hour",
         features: ["Vent sanitization", "Antimicrobial foam", "Ozone treatment"],
         warranty: "3 Month Freshness"
@@ -1169,7 +1169,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Express Steam Wash",
-        price: "₹799",
+        price: "₹1,199",
         duration: "45 Minutes",
         features: ["Exterior steam clean", "Wheel cleaning", "Glass cleaning", "Quick dry"],
         warranty: "Satisfaction Guaranteed"
@@ -1197,6 +1197,130 @@ export const servicesData: Record<string, ServiceDetail> = {
       { question: "Is steam washing effective for heavily soiled vehicles?", answer: "Yes, steam is highly effective at breaking down heavy dirt, grease, and grime. The heat dissolves contaminants that water alone can't remove, making it excellent for neglected vehicles." }
     ],
     relatedServices: ["hydrowash-wax", "interior-detailing", "premium-detailing"],
+    beforeAfterImages: []
+  },
+
+  "trim-restoration": {
+    id: "trim-restoration",
+    title: "Trim Restoration",
+    subtitle: "Restore Your Vehicle's Exterior Trim to Like-New Condition",
+    mainIcon: "Sparkles",
+    shortDescription: "Professional restoration of faded, discolored exterior trim using specialized products and techniques for lasting results.",
+    fullDescription: "Our Trim Restoration service transforms faded, discolored, and weathered exterior trim back to its original beauty. Using specialized trim restoration products and professional techniques, we restore black plastic, chrome, and painted trim pieces that have been damaged by UV exposure, road grime, and environmental factors. This service dramatically improves your vehicle's overall appearance and protects trim from future deterioration.",
+    whatIsIt: "Exterior trim restoration is a specialized treatment that addresses the common problem of faded and discolored plastic, rubber, and chrome trim. UV rays, road chemicals, and oxidation cause trim to turn gray, chalky, or discolored over time. Our restoration process cleans, treats, and protects these surfaces, restoring their original color and providing UV protection to prevent future fading.",
+    whyChoose: [
+      "Restores original color and appearance of faded trim",
+      "UV protection prevents future fading and deterioration",
+      "Professional-grade products for lasting results",
+      "Works on black plastic, chrome, and painted trim",
+      "Dramatically improves overall vehicle appearance"
+    ],
+    benefits: [
+      { icon: "Sparkles", title: "Like-New Appearance", description: "Restores trim to original condition" },
+      { icon: "Sun", title: "UV Protection", description: "Prevents future fading and discoloration" },
+      { icon: "Shield", title: "Long Lasting", description: "Results last 6-12 months with proper care" },
+      { icon: "Gem", title: "Versatile", description: "Works on all trim types" },
+      { icon: "Wallet", title: "Cost Effective", description: "Affordable alternative to trim replacement" },
+      { icon: "Eye", title: "Visual Impact", description: "Dramatically improves vehicle aesthetics" }
+    ],
+    specs: [
+      { label: "Treatment Type", value: "Specialized Trim Restoration" },
+      { label: "UV Protection", value: "Yes, UV Blockers Included" },
+      { label: "Durability", value: "6-12 Months" },
+      { label: "Trim Types", value: "Plastic, Chrome, Painted" },
+      { label: "Application Time", value: "2-3 Hours" },
+      { label: "Drying Time", value: "1-2 Hours" },
+      { label: "Coverage", value: "All Exterior Trim" },
+      { label: "Maintenance", value: "Regular washing recommended" }
+    ],
+    process: [
+      { step: 1, title: "Trim Inspection", description: "Assess condition of all exterior trim pieces" },
+      { step: 2, title: "Deep Clean", description: "Thorough cleaning to remove dirt, grime, and oxidation" },
+      { step: 3, title: "Surface Prep", description: "Light abrasion to remove surface oxidation" },
+      { step: 4, title: "Restoration Application", description: "Apply specialized restoration product evenly" },
+      { step: 5, title: "Work In", description: "Buff and work product into trim surface" },
+      { step: 6, title: "UV Protection", description: "Apply UV protectant for long-lasting results" },
+      { step: 7, title: "Final Inspection", description: "Quality check of all restored trim pieces" }
+    ],
+    packages: [
+      {
+        name: "Basic Trim Restoration",
+        price: "₹3,999",
+        duration: "2-3 Hours",
+        features: ["All exterior trim", "Deep cleaning", "Restoration treatment", "UV protection"],
+        warranty: "6 Month Protection",
+        recommended: true
+      }
+    ],
+    faqs: [
+      { question: "How long does trim restoration last?", answer: "Our professional trim restoration lasts 6-12 months depending on sun exposure and maintenance. Regular washing helps maintain the results." },
+      { question: "Will it work on severely faded trim?", answer: "Yes, our restoration process works on even severely faded and discolored trim. However, trim that is physically damaged or cracked may need replacement." },
+      { question: "Is it safe for all trim types?", answer: "Yes, our products are safe for black plastic, chrome, and painted trim. We use specialized products for each type to ensure optimal results." },
+      { question: "Can I wash my car after restoration?", answer: "Wait 24 hours before washing to allow the UV protection to fully cure. After that, normal washing is safe and recommended." }
+    ],
+    relatedServices: ["rubbing-polishing", "ceramic-coating", "hydrowash-wax"],
+    beforeAfterImages: []
+  },
+
+  "chrome-restoration": {
+    id: "chrome-restoration",
+    title: "Chrome Restoration",
+    subtitle: "Bring Back the Shine to Your Chrome Trim",
+    mainIcon: "Gem",
+    shortDescription: "Professional chrome polishing and restoration to remove oxidation, rust, and restore mirror-like shine.",
+    fullDescription: "Our Chrome Restoration service brings dull, oxidized, and rusted chrome trim back to life. Using specialized metal polishes, rust removers, and protective sealants, we remove years of oxidation, water spots, and surface rust to restore the brilliant mirror-like shine of your vehicle's chrome accents. This service is essential for maintaining the premium appearance of chrome bumpers, grilles, trim, and wheels.",
+    whatIsIt: "Chrome restoration is a metal polishing and treatment process specifically designed for chrome-plated surfaces. Chrome plating can become dull and oxidized over time due to exposure to moisture, road salt, and environmental contaminants. Our restoration process uses progressively finer metal polishes to remove oxidation and rust, followed by protective sealants to maintain the shine and prevent future deterioration.",
+    whyChoose: [
+      "Restores mirror-like shine to dull chrome",
+      "Removes surface rust and oxidation",
+      "Protective sealant prevents future tarnishing",
+      "Safe for all chrome-plated surfaces",
+      "Dramatically enhances vehicle's premium appearance"
+    ],
+    benefits: [
+      { icon: "Gem", title: "Mirror Shine", description: "Restores brilliant chrome appearance" },
+      { icon: "Shield", title: "Rust Removal", description: "Eliminates surface rust and oxidation" },
+      { icon: "Sparkles", title: "Protection", description: "Sealant prevents future tarnishing" },
+      { icon: "Sun", title: "UV Resistant", description: "Protects against environmental damage" },
+      { icon: "Wallet", title: "Cost Effective", description: "Much cheaper than chrome replacement" },
+      { icon: "Eye", title: "Premium Look", description: "Enhances vehicle's luxury appearance" }
+    ],
+    specs: [
+      { label: "Treatment Type", value: "Metal Polishing & Sealing" },
+      { label: "Polish Grades", value: "Multi-Stage Metal Polish" },
+      { label: "Rust Removal", value: "Yes, Surface Rust" },
+      { label: "Protection", value: "Chrome Sealant" },
+      { label: "Durability", value: "6-12 Months" },
+      { label: "Application Time", value: "1-2 Hours" },
+      { label: "Coverage", value: "All Chrome Surfaces" },
+      { label: "Safe For", value: "All Chrome-Plated Parts" }
+    ],
+    process: [
+      { step: 1, title: "Chrome Inspection", description: "Assess condition of all chrome surfaces" },
+      { step: 2, title: "Deep Clean", description: "Remove dirt, grime, and contaminants" },
+      { step: 3, title: "Rust Treatment", description: "Apply rust remover to affected areas" },
+      { step: 4, title: "Metal Polishing", description: "Multi-stage polishing to remove oxidation" },
+      { step: 5, title: "Fine Polish", description: "Final polish for mirror-like shine" },
+      { step: 6, title: "Sealant Application", description: "Apply protective chrome sealant" },
+      { step: 7, title: "Final Buff", description: "Buff to reveal brilliant shine" }
+    ],
+    packages: [
+      {
+        name: "Chrome Restoration",
+        price: "₹1,999",
+        duration: "1-2 Hours",
+        features: ["All chrome surfaces", "Rust removal", "Multi-stage polishing", "Protective sealant"],
+        warranty: "6 Month Protection",
+        recommended: true
+      }
+    ],
+    faqs: [
+      { question: "How long does chrome restoration last?", answer: "With proper care and our protective sealant, chrome restoration lasts 6-12 months. Regular maintenance helps maintain the shine." },
+      { question: "Can severely rusted chrome be restored?", answer: "Surface rust and oxidation can be removed. However, chrome that has pitted deeply or flaked off may need replating or replacement." },
+      { question: "Is it safe for all chrome parts?", answer: "Yes, our process is safe for all chrome-plated surfaces including bumpers, grilles, trim, and wheels. We use products specifically formulated for chrome." },
+      { question: "Will this prevent future rust?", answer: "Our protective sealant provides excellent protection against future oxidation and rust. However, regular cleaning and maintenance are still recommended." }
+    ],
+    relatedServices: ["trim-restoration", "rubbing-polishing", "alloy-treatment"],
     beforeAfterImages: []
   }
 };

@@ -122,7 +122,7 @@ const Process = () => {
                         </div>
                       </div>
                       <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3">{step.title}</h4>
-                      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{step.description}</p>
+                      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base text-justify hyphens-auto">{step.description}</p>
                     </div>
                   </div>
 
