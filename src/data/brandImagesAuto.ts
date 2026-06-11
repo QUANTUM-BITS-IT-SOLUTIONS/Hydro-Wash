@@ -1,59 +1,56 @@
-// Dynamic Brand Image Loader
-// Automatically loads images from public/brands/ folder
-// Supports .webp, .jpg, .jpeg, .png files
-
-// Get all brand images by scanning the public folder at build time
-const imageModules = import.meta.glob('/public/brands/**/*.{webp,jpg,jpeg,png}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+// Static Brand Image List with all brands from public/brands
+// Map of brand filenames to their website links
+const brandLinks: Record<string, string> = {
+  '3m.jpeg': 'https://www.3mindia.in/3M/en_IN/company-in/',
+  'Menzerna.jpeg': 'https://www.menzerna.com/',
+  'carpro.jpeg': 'https://carpro.global/',
+  'gtechiqe.jpeg': 'https://www.gtechniq.com/',
+  'karcher.jpeg': 'https://www.kaercher.com/in/',
+  'llumar.jpeg': 'https://www.llumar.com/',
+  'ma fra.jpeg': 'https://www.mafraindia.com/',
+  'norton.jpeg': 'https://www.nortonabrasives.com/',
+  'rupes.jpeg': 'https://www.rupes.com/',
+  'wurth.jpeg': 'https://www.wuerth.com/',
+  'Tint-Orange-Logo.png': 'https://tintandorange.com/',
+  'annovi-reverberi.png': 'https://www.annovireverberi.it/en/' ,
+  'bigfoot.jpeg': 'https://www.bigfootdetailing.co.za/',
+  'chemical-guys.png': 'https://www.chemicalguys.com/',
+  'narppf.png': 'https://www.narppf.com/',
+  'megquires.jpeg': 'https://www.meguiars.com/#/'
+};
 
 interface BrandImage {
   name: string;
   file: string;
   url: string;
+  link?: string;
 }
 
-function getBrandImages(): BrandImage[] {
-  const brands: BrandImage[] = [];
+// All brands from public/brands folder
+const allBrands: BrandImage[] = [
+  { name: '3M', file: '3m.jpeg', url: '/brands/3m.jpeg', link: brandLinks['3m.jpeg'] },
+  { name: 'Annovi Reverberi', file: 'annovi-reverberi.png', url: '/brands/annovi-reverberi.png', link: brandLinks['annovi-reverberi.png'] },
+  { name: 'Bigfoot', file: 'bigfoot.jpeg', url: '/brands/bigfoot.jpeg', link: brandLinks['bigfoot.jpeg'] },
+  { name: 'CarPro', file: 'carpro.jpeg', url: '/brands/carpro.jpeg', link: brandLinks['carpro.jpeg'] },
+  { name: 'Chemical Guys', file: 'chemical-guys.png', url: '/brands/chemical-guys.png', link: brandLinks['chemical-guys.png'] },
+  { name: 'Gtechniq', file: 'gtechiqe.jpeg', url: '/brands/gtechiqe.jpeg', link: brandLinks['gtechiqe.jpeg'] },
+  { name: 'Kärcher', file: 'karcher.jpeg', url: '/brands/karcher.jpeg', link: brandLinks['karcher.jpeg'] },
+  { name: 'LLumar', file: 'llumar.jpeg', url: '/brands/llumar.jpeg', link: brandLinks['llumar.jpeg'] },
+  { name: 'Ma Fra', file: 'ma fra.jpeg', url: '/brands/ma fra.jpeg', link: brandLinks['ma fra.jpeg'] },
+  { name: 'Menzerna', file: 'Menzerna.jpeg', url: '/brands/Menzerna.jpeg', link: brandLinks['Menzerna.jpeg'] },
+  { name: 'NAR PPF', file: 'narppf.png', url: '/brands/narppf.png', link: brandLinks['narppf.png'] },
+  { name: 'Norton', file: 'norton.jpeg', url: '/brands/norton.jpeg', link: brandLinks['norton.jpeg'] },
+  { name: 'Rupes', file: 'rupes.jpeg', url: '/brands/rupes.jpeg', link: brandLinks['rupes.jpeg'] },
+  { name: 'Tint Orange', file: 'Tint-Orange-Logo.png', url: '/brands/Tint-Orange-Logo.png', link: brandLinks['Tint-Orange-Logo.png'] },
+  { name: 'Würth', file: 'wurth.jpeg', url: '/brands/wurth.jpeg', link: brandLinks['wurth.jpeg'] },
+  { name: 'Megquires', file: 'megquires.jpeg', url: '/brands/megquires.jpeg', link: brandLinks['megquires.jpeg'] },
+];
 
-  Object.entries(imageModules).forEach(([path, url]) => {
-    let urlString = url as string;
-    // Remove /public prefix from URL - public assets are served at root
-    urlString = urlString.replace('/public/', '/');
-    // Also remove ?url query param if present
-    urlString = urlString.replace('?url', '');
-    
-    // Extract filename from path: /public/brands/3m.jpeg -> 3m.jpeg
-    const match = path.match(/\/brands\/([^/]+)$/);
-    if (match) {
-      const filename = match[1];
-      // Generate brand name from filename (remove extension and format)
-      const name = filename
-        .replace(/\.(webp|jpg|jpeg|png)$/i, '')
-        .replace(/-/g, ' ')
-        .replace(/_/g, ' ')
-        .replace(/\b\w/g, (c) => c.toUpperCase());
-      
-      brands.push({
-        name,
-        file: filename,
-        url: urlString
-      });
-    }
-  });
+// Sort brands alphabetically by name
+allBrands.sort((a, b) => a.name.localeCompare(b.name));
 
-  // Sort brands alphabetically by name
-  brands.sort((a, b) => a.name.localeCompare(b.name));
+export const brandImages = allBrands;
 
-  return brands;
-}
-
-// Export the dynamically loaded brand images
-export const dynamicBrandImages: BrandImage[] = getBrandImages();
-
-// Debug: Log the generated brands to console
-if (typeof window !== 'undefined') {
-  console.log('Brand Images:', dynamicBrandImages);
-}
+// Keep dynamic and fallback for compatibility but use static list
+export const dynamicBrandImages: BrandImage[] = allBrands;
+export const fallbackBrandImages: BrandImage[] = allBrands;

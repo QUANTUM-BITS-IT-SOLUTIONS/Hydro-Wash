@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
   useEffect(() => {
@@ -39,8 +40,8 @@ const Navbar = () => {
       const element = document.querySelector(link.href);
       element?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // Navigate to home page with hash
-      window.location.href = '/' + link.href;
+      // Navigate to home page with hash using React Router
+      navigate(link.href);
     }
   };
 
@@ -85,6 +86,9 @@ const Navbar = () => {
                 </button>
               )
             ))}
+            <span className="text-sm uppercase tracking-wider text-gold font-medium">
+              E-warranty 
+            </span>
             <a
               href="https://wa.me/918888899936"
               target="_blank"

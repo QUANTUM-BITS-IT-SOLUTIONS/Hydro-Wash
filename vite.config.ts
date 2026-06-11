@@ -11,10 +11,18 @@ export default defineConfig(() => ({
       overlay: false,
     },
   },
+  preview: {
+    host: "::",
+    port: 8080,
+  },
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
   },
 }));

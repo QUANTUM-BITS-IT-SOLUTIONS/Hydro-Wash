@@ -53,7 +53,7 @@ export interface ServiceDetail {
 export const servicesData: Record<string, ServiceDetail> = {
   "paint-protection-film": {
     id: "paint-protection-film",
-    title: "PPF Paint Protection Film",
+    title: "PPF (Paint Protection Film)",
     subtitle: "The Ultimate Invisible Shield for Your Vehicle",
     mainIcon: "Shield",
     shortDescription: "Self-healing urethane film that protects your paint from stone chips, scratches, and environmental damage.",
@@ -745,7 +745,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     subtitle: "Ceramic Protection for Your Wheels",
     mainIcon: "CircleDot",
     shortDescription: "Specialized ceramic coating for alloy wheels that prevents brake dust buildup and makes cleaning effortless.",
-    fullDescription: "Our Alloy Treatment service applies a specialized ceramic coating specifically formulated for wheels. This heat-resistant coating creates a protective barrier against brake dust, road salt, and corrosion while making future cleaning effortless. The coating withstands high brake temperatures and maintains a brilliant shine for months.",
+    fullDescription: "Our Alloy Treatment service applies a specialized alloy coating specifically formulated for wheels. This heat-resistant coating creates a protective barrier against brake dust, road salt, and corrosion while making future cleaning effortless. The coating withstands high brake temperatures and maintains a brilliant shine for months.",
     whatIsIt: "Alloy wheel coating is a ceramic-based treatment designed specifically for the harsh environment wheels face. Brake dust is corrosive and can etch into wheel finish if not removed promptly. Our coating creates a hydrophobic, heat-resistant barrier that prevents brake dust adhesion and protects against road chemicals, making wheel maintenance significantly easier.",
     whyChoose: [
       "Ceramic coating resists brake dust and heat up to 400°C",

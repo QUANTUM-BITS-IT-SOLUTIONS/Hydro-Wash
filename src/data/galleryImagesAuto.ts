@@ -184,5 +184,5 @@ export const fallbackGalleryImages: GalleryImage[] = [
 
 // Combine dynamic images with fallback images
 // This ensures that even if some folders are empty, the gallery has content
-export const autoGalleryImages = [...dynamicGalleryImages, ...fallbackGalleryImages];
+export const autoGalleryImages = dynamicGalleryImages.length > 0 ? dynamicGalleryImages : fallbackGalleryImages;
 

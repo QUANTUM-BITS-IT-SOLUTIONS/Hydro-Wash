@@ -1,11 +1,12 @@
 import React from 'react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
-import { dynamicBrandImages } from '@/data/brandImagesAuto';
+import { brandImages } from '@/data/brandImagesAuto';
 
 const BrandCarousel = ({ logos }: { logos?: string[] }) => {
   const { ref, isVisible } = useScrollReveal();
-  const brandList = dynamicBrandImages;
+  const brandList = brandImages;
+  console.log('Brand List in Carousel:', brandList);
 
   return (
     <section className="w-full overflow-hidden bg-background py-20 md:py-28">
@@ -29,22 +30,42 @@ const BrandCarousel = ({ logos }: { logos?: string[] }) => {
           </div>
 
           {/* Grid Blocks Layout */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
             {brandList.map((brand, index) => (
-              <div
-                key={brand.name}
-                className="aspect-square rounded-2xl flex flex-col items-center justify-center bg-black shadow-[0_0_15px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25),0_0_50px_rgba(255,255,255,0.15)] hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden border border-white/10"
-                style={{
-                  transitionDelay: `${(index % 5) * 60}ms`
-                }}
-              >
-                <img
-                  src={brand.url}
-                  alt={brand.name}
-                  className="w-full h-full object-contain p-4 sm:p-6 transition-all duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
+              brand.link ? (
+                <a
+                  key={brand.name}
+                  href={brand.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-square rounded-2xl flex flex-col items-center justify-center bg-black shadow-[0_0_15px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25),0_0_50px_rgba(255,255,255,0.15)] hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden border border-white/10"
+                  style={{
+                    transitionDelay: `${(index % 4) * 60}ms`
+                  }}
+                >
+                  <img
+                    src={brand.url}
+                    alt={brand.name}
+                    className="w-full h-full object-contain p-4 sm:p-6 transition-all duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </a>
+              ) : (
+                <div
+                  key={brand.name}
+                  className="aspect-square rounded-2xl flex flex-col items-center justify-center bg-black shadow-[0_0_15px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.25),0_0_50px_rgba(255,255,255,0.15)] hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden border border-white/10"
+                  style={{
+                    transitionDelay: `${(index % 5) * 60}ms`
+                  }}
+                >
+                  <img
+                    src={brand.url}
+                    alt={brand.name}
+                    className="w-full h-full object-contain p-4 sm:p-6 transition-all duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )
             ))}
           </div>
         </div>

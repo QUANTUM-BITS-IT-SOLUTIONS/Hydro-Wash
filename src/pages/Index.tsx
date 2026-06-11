@@ -43,10 +43,14 @@ const Index = () => {
         />
         
         {/* Our Work - Featured Projects */}
-        <OurWork />
+        <section id="work">
+          <OurWork />
+        </section>
         
         {/* Pricing - Transparent Packages */}
-        <Pricing />
+        <section id="pricing">
+          <Pricing />
+        </section>
         
         {/* Stats - Why Choose Us */}
         <Stats />
