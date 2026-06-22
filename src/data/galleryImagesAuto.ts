@@ -32,11 +32,13 @@ function getGalleryImages(): GalleryImage[] {
 
   Object.entries(imageModules).forEach(([path, url]) => {
     let urlString = url as string;
-    // Remove /public prefix from URL - public assets are served at root
-    urlString = urlString.replace('/public/', '/');
     // Also remove ?url query param if present
     urlString = urlString.replace('?url', '');
-    // Extract category from path: /public/images/gallery/engine-ac/image.webp -> engine-ac
+    // If Vite resolved the URL with '/public' prefix (since files are in public folder), remove it
+    if (urlString.startsWith('/public')) {
+      urlString = urlString.substring(7);
+    }
+    // Extract category from path: /images/gallery/engine-ac/image.webp -> engine-ac
     const match = path.match(/\/gallery\/([\w-]+)\/([^/]+)$/);
     if (match) {
       const category = match[1] as Category;
@@ -182,7 +184,8 @@ export const fallbackGalleryImages: GalleryImage[] = [
   }
 ];
 
-// Combine dynamic images with fallback images
-// This ensures that even if some folders are empty, the gallery has content
-export const autoGalleryImages = dynamicGalleryImages.length > 0 ? dynamicGalleryImages : fallbackGalleryImages;
+// Use dynamic images if found in folders, otherwise fall back to placeholders
+export const autoGalleryImages = dynamicGalleryImages.length > 0
+  ? dynamicGalleryImages
+  : fallbackGalleryImages;
 

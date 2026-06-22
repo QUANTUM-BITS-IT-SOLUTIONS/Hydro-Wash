@@ -11,6 +11,7 @@ const Footer = () => {
     { label: 'About', href: '/services#about', isRoute: true },
     { label: 'Services', href: '/services#services', isRoute: true },
     { label: 'Gallery', href: '/gallery', isRoute: true },
+    { label: 'Blog', href: '/blog', isRoute: true },
     { label: 'Process', href: '#process', isRoute: false },
     { label: 'Contact', href: '#contact', isRoute: false },
   ];

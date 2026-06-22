@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ContactFormTrigger } from '@/components/ContactFormModal';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,6 +26,7 @@ const Navbar = () => {
     { label: 'Our Work', href: '#work', type: 'anchor' as const },
     { label: 'Pricing', href: '#pricing', type: 'anchor' as const },
     { label: 'Gallery', href: '/gallery', type: 'route' as const },
+    { label: 'Blog', href: '/blog', type: 'route' as const },
     { label: 'Contact', href: '#contact', type: 'anchor' as const },
   ];
 
@@ -41,7 +44,7 @@ const Navbar = () => {
       element?.scrollIntoView({ behavior: 'smooth' });
     } else {
       // Navigate to home page with hash using React Router
-      navigate(link.href);
+      navigate('/' + link.href);
     }
   };
 
@@ -86,17 +89,19 @@ const Navbar = () => {
                 </button>
               )
             ))}
-            <span className="text-sm uppercase tracking-wider text-gold font-medium">
-              E-warranty 
-            </span>
-            <a
-              href="https://wa.me/918888899936"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2 rounded-full border border-gold/30 text-gold text-sm uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300"
+            <button
+              onClick={() => {
+                window.open("https://wa.me/918888899936?text=Hello,%20I%20would%20like%20to%20inquire%20about%20my%20vehicle's%20E-warranty.", "_blank", "noopener,noreferrer");
+              }}
+              className="text-sm uppercase tracking-wider text-gold font-medium hover:text-gold/80 transition-colors duration-300 bg-transparent p-0 border-0 cursor-pointer"
             >
-              Book Now
-            </a>
+              E-warranty
+            </button>
+            <ContactFormTrigger>
+              <Button variant="outline" className="px-6 py-2 rounded-full border border-gold/30 text-gold text-sm uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300 bg-transparent">
+                Book Now
+              </Button>
+            </ContactFormTrigger>
           </div>
 
           {/* Mobile Menu Button */}
@@ -145,18 +150,33 @@ const Navbar = () => {
               </button>
             )
           ))}
-          <a
-            href="https://wa.me/918888899936"
-            target="_blank"
-            rel="noopener noreferrer"
+          
+          {/* E-warranty link for mobile */}
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.open("https://wa.me/918888899936?text=Hello,%20I%20would%20like%20to%20inquire%20about%20my%20vehicle's%20E-warranty.", "_blank", "noopener,noreferrer");
+            }}
             className={cn(
-              "btn-gold mt-2 sm:mt-4 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 transition-all duration-300",
+              "text-xl sm:text-2xl font-bold text-gold hover:text-gold/80 transition-all duration-300 active:scale-95",
               isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
-            style={{ transitionDelay: '400ms' }}
+            style={{ transitionDelay: `${navLinks.length * 100}ms` }}
           >
-            Book Now
-          </a>
+            E-warranty
+          </button>
+
+          <ContactFormTrigger onClick={() => setIsMobileMenuOpen(false)}>
+            <Button
+              className={cn(
+                "btn-gold mt-2 sm:mt-4 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 transition-all duration-300 bg-gold hover:bg-gold/90 text-black",
+                isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}
+              style={{ transitionDelay: '400ms' }}
+            >
+              Book Now
+            </Button>
+          </ContactFormTrigger>
         </div>
       </div>
     </>

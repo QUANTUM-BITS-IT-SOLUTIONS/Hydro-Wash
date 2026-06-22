@@ -6,7 +6,6 @@ import { brandImages } from '@/data/brandImagesAuto';
 const BrandCarousel = ({ logos }: { logos?: string[] }) => {
   const { ref, isVisible } = useScrollReveal();
   const brandList = brandImages;
-  console.log('Brand List in Carousel:', brandList);
 
   return (
     <section className="w-full overflow-hidden bg-background py-20 md:py-28">
@@ -30,7 +29,7 @@ const BrandCarousel = ({ logos }: { logos?: string[] }) => {
           </div>
 
           {/* Grid Blocks Layout */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto px-4">
             {brandList.map((brand, index) => (
               brand.link ? (
                 <a

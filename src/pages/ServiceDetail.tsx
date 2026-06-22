@@ -28,7 +28,8 @@ import {
   Wrench,
   CircleDot,
   Cog,
-  Waves
+  Waves,
+  Car
 } from 'lucide-react';
 import { getServiceById, getRelatedServices, type BeforeAfterImage } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
@@ -161,6 +162,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   CircleDot,
   Cog,
   Waves,
+  Car,
 };
 
 

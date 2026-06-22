@@ -1322,6 +1322,107 @@ export const servicesData: Record<string, ServiceDetail> = {
     ],
     relatedServices: ["trim-restoration", "rubbing-polishing", "alloy-treatment"],
     beforeAfterImages: []
+  },
+
+  "interior-pre-cut": {
+    id: "interior-pre-cut",
+    title: "Interior Pre Cut",
+    subtitle: "Precision Interior Protection Film",
+    mainIcon: "Car",
+    shortDescription: "Professional interior protection film for high-wear areas with pre-cut patterns for perfect fit.",
+    fullDescription: "Our Interior Pre Cut service provides precision-cut protective film for high-wear interior areas like door panels, center console, and frequently touched surfaces. The pre-cut patterns ensure perfect fit and easy installation, protecting against scratches, spills, and wear, keeping your interior looking new.",
+    whatIsIt: "Interior pre-cut film is a transparent protective film designed specifically for interior surfaces, cut to exact specifications using computer patterns for perfect fit.",
+    whyChoose: [
+      "Pre-cut patterns for perfect fit",
+      "Protects high-wear interior surfaces",
+      "Easy to clean and maintain",
+      "Transparent, doesn't alter interior appearance"
+    ],
+    benefits: [
+      { icon: "Car", title: "Precision Fit", description: "Computer-cut for perfect fit" },
+      { icon: "Shield", title: "Scratch Protection", description: "Protects against scratches and wear" },
+      { icon: "Sparkles", title: "Invisible", description: "Transparent, doesn't alter appearance" },
+      { icon: "Droplets", title: "Easy Clean", description: "Makes cleaning easier" }
+    ],
+    specs: [
+      { label: "Material", value: "Transparent Protective Film" },
+      { label: "Coverage", value: "Pre-cut Patterns" },
+      { label: "Durability", value: "Long-lasting" },
+      { label: "Application Time", value: "2-3 Hours" }
+    ],
+    process: [
+      { step: 1, title: "Surface Prep", description: "Clean and prepare interior surfaces" },
+      { step: 2, title: "Pattern Selection", description: "Choose pre-cut patterns for your vehicle" },
+      { step: 3, title: "Application", description: "Apply protective film to surfaces" },
+      { step: 4, title: "Finishing", description: "Smooth and ensure perfect fit" }
+    ],
+    packages: [
+      {
+        name: "Interior Pre Cut",
+        price: "₹4,999",
+        duration: "2-3 Hours",
+        features: ["Pre-cut patterns", "Full interior coverage", "Perfect fit", "Scratch protection"],
+        warranty: "1 Year"
+      }
+    ],
+    faqs: [
+      { question: "What areas does interior pre-cut cover?", answer: "It covers high-wear interior areas like door panels, center console, and frequently touched surfaces." },
+      { question: "Is the film visible?", answer: "No, the film is transparent and doesn't alter your interior's original appearance." },
+      { question: "Can it be removed?", answer: "Yes, the film can be safely removed without damaging the interior surfaces." }
+    ],
+    relatedServices: ["interior-detailing", "leather"],
+    beforeAfterImages: []
+  },
+
+  "leather": {
+    id: "leather",
+    title: "Car Leather (Conditioning And Protection)",
+    subtitle: "Professional Leather Care & Protection",
+    mainIcon: "Gem",
+    shortDescription: "Complete leather cleaning, conditioning, and protection to keep leather surfaces soft, supple, and looking new.",
+    fullDescription: "Our Leather service provides comprehensive care for leather seats and interior leather surfaces. We clean, condition, and protect leather to keep it soft, supple, and protected from wear, spills, and UV damage, maintaining a luxurious feel.",
+    whatIsIt: "Leather care involves cleaning, conditioning, and protecting leather surfaces to maintain their appearance and longevity.",
+    whyChoose: [
+      "Cleans and conditions leather",
+      "Protects against spills and UV damage",
+      "Keeps leather soft and supple",
+      "Maintains luxurious appearance"
+    ],
+    benefits: [
+      { icon: "Gem", title: "Deep Clean", description: "Removes dirt and stains from leather" },
+      { icon: "Sparkles", title: "Conditioning", description: "Keeps leather soft and supple" },
+      { icon: "Shield", title: "Protection", description: "Protects against spills and UV damage" },
+      { icon: "Sun", title: "Longevity", description: "Extends life of leather surfaces" }
+    ],
+    specs: [
+      { label: "Treatment Type", value: "Clean + Condition + Protect" },
+      { label: "Products Used", value: "Premium Leather Products" },
+      { label: "Duration", value: "1-2 Hours" },
+      { label: "Durability", value: "3-6 Months" }
+    ],
+    process: [
+      { step: 1, title: "Cleaning", description: "Deep clean leather surfaces" },
+      { step: 2, title: "Conditioning", description: "Apply leather conditioner" },
+      { step: 3, title: "Protection", description: "Apply protective coating" },
+      { step: 4, title: "Finishing", description: "Buff to a luxurious shine" }
+    ],
+    packages: [
+      {
+        name: "Leather Care",
+        price: "₹1,999",
+        duration: "1-2 Hours",
+        features: ["Deep cleaning", "Leather conditioning", "Protective coating", "UV protection"],
+        warranty: "3 Months",
+        recommended: true
+      }
+    ],
+    faqs: [
+      { question: "How often should I get leather care?", answer: "Every 3-6 months is recommended to keep leather in top condition." },
+      { question: "Will it work on all leather types?", answer: "Yes, our products are safe for all types of leather interiors." },
+      { question: "Does it protect against spills?", answer: "Yes, the protective coating helps repel spills and makes cleaning easier." }
+    ],
+    relatedServices: ["interior-detailing", "interior-pre-cut"],
+    beforeAfterImages: []
   }
 };
 
