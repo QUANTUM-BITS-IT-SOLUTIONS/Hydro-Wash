@@ -189,32 +189,21 @@ const ContactFormDialog: React.FC = () => {
   const onSubmit = async (values: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/send-brochure', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-          service: values.service || 'General Inquiry',
-        }),
-      });
+      const serviceName = values.service || 'General Inquiry';
+      const message = `Hello HydroWash! I'm interested in your services.\n\nName: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\nService: ${serviceName}\n\nPlease send me the brochure.`;
+      const whatsappUrl = `https://wa.me/918888899936?text=${encodeURIComponent(message)}`;
 
-      if (!response.ok) {
-        throw new Error('Failed to send brochure');
-      }
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
       toast({
-        title: 'Thank you!',
-        description: "We've sent the brochure to your email. Please check your inbox (and spam folder if needed).",
+        title: 'Redirecting to WhatsApp',
+        description: 'Opening WhatsApp to send your request.',
       });
       setOpen(false);
       setShowForm(false);
       form.reset();
     } catch (error) {
-      console.error('Error sending brochure:', error);
+      console.error('Error redirecting to WhatsApp:', error);
       toast({
         title: 'Error!',
         description: 'Something went wrong. Please try again later.',
