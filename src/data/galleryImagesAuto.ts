@@ -9,12 +9,39 @@ import type { GalleryImage } from './galleryData';
 const categoryFolders = ['ppf', 'ceramic', 'graphene', 'detailing', 'interior', 'exterior', 'wash', 'polishing', 'rust-protection', 'alloy', 'underbody', 'engine-ac', 'headlight', 'restoration'] as const;
 type Category = typeof categoryFolders[number];
 
-// Get all gallery images by scanning the public folder at build time
-const imageModules = import.meta.glob('/public/images/gallery/**/*.{webp,jpg,jpeg,png}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
-});
+// Manual image list - Vite's import.meta.glob doesn't work with public folder
+// Add your images here manually
+const manualImageList: { path: string; category: Category }[] = [
+  // Restoration images
+  { path: '/images/gallery/restoration/1.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/2.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/3.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/4.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/5.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/6.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/7.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/8.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/9.webp', category: 'restoration' },
+  { path: '/images/gallery/restoration/11.JPG', category: 'restoration' },
+  { path: '/images/gallery/restoration/17.JPG', category: 'restoration' },
+  { path: '/images/gallery/restoration/18.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/19.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/20.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/21.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/22.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/23.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/24.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/25.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/27.jpg', category: 'restoration' },
+  { path: '/images/gallery/restoration/28.jpg', category: 'restoration' },
+  // Alloy images
+  { path: '/images/gallery/alloy/1.webp', category: 'alloy' },
+  { path: '/images/gallery/alloy/1-before.webp', category: 'alloy' },
+  // Engine AC images
+  { path: '/images/gallery/engine-ac/1.webp', category: 'engine-ac' },
+  { path: '/images/gallery/engine-ac/1-before.webp', category: 'engine-ac' },
+  // Add more images from other folders as needed
+];
 
 interface ImageFile {
   path: string;
@@ -23,30 +50,16 @@ interface ImageFile {
   category: Category;
 }
 
-function getGalleryImages(): GalleryImage[] {
+function galleryImages(): GalleryImage[] {
   const images: GalleryImage[] = [];
   let id = 1;
 
-  // Process each image file
+  // Process each image file from manual list
   const files: ImageFile[] = [];
 
-  Object.entries(imageModules).forEach(([path, url]) => {
-    let urlString = url as string;
-    // Also remove ?url query param if present
-    urlString = urlString.replace('?url', '');
-    // If Vite resolved the URL with '/public' prefix (since files are in public folder), remove it
-    if (urlString.startsWith('/public')) {
-      urlString = urlString.substring(7);
-    }
-    // Extract category from path: /images/gallery/engine-ac/image.webp -> engine-ac
-    const match = path.match(/\/gallery\/([\w-]+)\/([^/]+)$/);
-    if (match) {
-      const category = match[1] as Category;
-      const filename = match[2];
-      if (categoryFolders.includes(category)) {
-        files.push({ path, url: urlString, filename, category });
-      }
-    }
+  manualImageList.forEach(({ path, category }) => {
+    const filename = path.split('/').pop() || '';
+    files.push({ path, url: path, filename, category });
   });
 
   // Group by category
@@ -111,11 +124,12 @@ function formatAltText(filename: string): string {
 }
 
 // Export the dynamically loaded images
-export const dynamicGalleryImages: GalleryImage[] = getGalleryImages();
+export const dynamicGalleryImages: GalleryImage[] = galleryImages();
 
 // Debug: Log the generated images to console
 if (typeof window !== 'undefined') {
   console.log('Gallery Images:', dynamicGalleryImages);
+  console.log('Dynamic Gallery Length:', dynamicGalleryImages.length);
 }
 
 // Fallback images if no images found in folders

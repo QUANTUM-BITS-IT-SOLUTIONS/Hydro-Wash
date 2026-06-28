@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -27,30 +27,10 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { getAllServices } from '@/data/servicesData';
-import emailjs from '@emailjs/browser';
-import type { EmailJSResponseStatus } from '@emailjs/browser';
 import { Loader2, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const CONTACT_POPUP_ENABLED = false;
-
-const getEmailJsConfig = () => ({
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined,
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined,
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined,
-});
-
-const getEmailErrorMessage = (error: unknown) => {
-  if (error && typeof error === 'object' && 'text' in error) {
-    return String((error as EmailJSResponseStatus).text);
-  }
-
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Something went wrong. Please try again later.';
-};
+export const CONTACT_POPUP_ENABLED = true;
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -62,9 +42,7 @@ const formSchema = z.object({
   phone: z.string().min(10, {
     message: 'Please enter a valid phone number.',
   }),
-  service: z.string().min(1, {
-    message: 'Please select a service.',
-  }),
+  service: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -88,6 +66,17 @@ export const ContactFormProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (CONTACT_POPUP_ENABLED) {
+      // Auto-open popup after 2 seconds
+      const timer = setTimeout(() => {
+        setOpen(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <ContactFormContext.Provider value={{ open, setOpen }}>
@@ -200,49 +189,35 @@ const ContactFormDialog: React.FC = () => {
   const onSubmit = async (values: FormData) => {
     setIsSubmitting(true);
     try {
-      const { publicKey, serviceId, templateId } = getEmailJsConfig();
+      const response = await fetch('/api/send-brochure', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          service: values.service || 'General Inquiry',
+        }),
+      });
 
-      if (!publicKey || !serviceId || !templateId) {
-        toast({
-          title: 'EmailJS not configured',
-          description: 'Add VITE_EMAILJS_* values to your .env file and restart the dev server.',
-          variant: 'destructive',
-        });
-        return;
+      if (!response.ok) {
+        throw new Error('Failed to send brochure');
       }
 
-      emailjs.init({ publicKey });
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: values.name,
-          from_name: values.name,
-          user_name: values.name,
-          email: values.email,
-          user_email: values.email,
-          reply_to: values.email,
-          phone: values.phone,
-          user_phone: values.phone,
-          service: values.service,
-          message: `Booking request for ${values.service}`,
-        },
-        { publicKey }
-      );
-
       toast({
-        title: 'Success!',
-        description: 'Your form has been submitted. We will contact you shortly!',
+        title: 'Thank you!',
+        description: "We've sent the brochure to your email. Please check your inbox (and spam folder if needed).",
       });
       setOpen(false);
       setShowForm(false);
       form.reset();
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending brochure:', error);
       toast({
         title: 'Error!',
-        description: getEmailErrorMessage(error),
+        description: 'Something went wrong. Please try again later.',
         variant: 'destructive',
       });
     } finally {
