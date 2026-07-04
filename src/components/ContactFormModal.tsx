@@ -189,21 +189,37 @@ const ContactFormDialog: React.FC = () => {
   const onSubmit = async (values: FormData) => {
     setIsSubmitting(true);
     try {
-      const serviceName = values.service || 'General Inquiry';
-      const message = `Hello HydroWash! I'm interested in your services.\n\nName: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\nService: ${serviceName}\n\nPlease send me the brochure.`;
-      const whatsappUrl = `https://wa.me/918888899936?text=${encodeURIComponent(message)}`;
+      // Use local API server for development, relative path for production
+      const apiUrl = import.meta.env.DEV
+        ? 'http://localhost:3001/api/send-brochure'
+        : '/api/send-brochure';
 
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          service: values.service || 'General Inquiry',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send brochure');
+      }
 
       toast({
-        title: 'Redirecting to WhatsApp',
-        description: 'Opening WhatsApp to send your request.',
+        title: 'Thank you!',
+        description: "We've sent the brochure to your email. Please check your inbox (and spam folder if needed).",
       });
       setOpen(false);
       setShowForm(false);
       form.reset();
     } catch (error) {
-      console.error('Error redirecting to WhatsApp:', error);
+      console.error('Error sending brochure:', error);
       toast({
         title: 'Error!',
         description: 'Something went wrong. Please try again later.',
@@ -245,21 +261,21 @@ const ContactFormDialog: React.FC = () => {
             )}
           >
             <DialogTitle className="mb-3 text-center text-2xl font-bold leading-tight text-white sm:text-3xl">
-              Book your <span className="text-yellow-400">Car Detailing</span> now!
+              Get Your <span className="text-yellow-400">Free Brochure</span> Now!
             </DialogTitle>
 
             <DialogDescription className="mb-3 text-center text-sm text-white/90 sm:text-base">
-              Do a premium detailing service and give your car the shine it deserves.
+              Download our comprehensive service brochure and discover premium car detailing packages.
             </DialogDescription>
 
             <p className="mb-6 text-center text-sm text-white/80">
-              Fill in your details — we&apos;ll contact you instantly.
+              Fill in your details — we&apos;ll send the brochure to your email instantly.
             </p>
 
             {!showForm && (
               <>
                 <p className="mb-6 text-center text-lg font-semibold text-white sm:text-xl">
-                  Schedule Your Premium Detailing
+                  Discover Our Premium Services
                 </p>
 
                 <div className="flex justify-center">
@@ -268,7 +284,7 @@ const ContactFormDialog: React.FC = () => {
                     onClick={() => setShowForm(true)}
                     className="h-12 min-w-[220px] rounded-full bg-lime-400 px-8 text-sm font-bold uppercase tracking-wider text-black hover:bg-lime-300"
                   >
-                    Book Now
+                    Get Brochure
                   </Button>
                 </div>
               </>

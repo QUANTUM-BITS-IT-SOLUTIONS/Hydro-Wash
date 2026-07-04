@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, User } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import {
@@ -8,13 +8,6 @@ import {
   getRelatedBlogPosts,
 } from '@/data/blogData';
 import { cn } from '@/lib/utils';
-
-const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
 
 const BlogDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -58,10 +51,6 @@ const BlogDetail = () => {
                   <span className="inline-flex items-center gap-2">
                     <User className="w-4 h-4 text-gold" />
                     {post.author}
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-gold" />
-                    {formatDate(post.date)}
                   </span>
                   <span className="inline-flex items-center gap-2">
                     <Clock className="w-4 h-4 text-gold" />

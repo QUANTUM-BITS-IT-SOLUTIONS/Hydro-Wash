@@ -1,16 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getAllBlogPosts } from '@/data/blogData';
 import { cn } from '@/lib/utils';
-
-const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  });
 
 const BlogList = () => {
   const posts = getAllBlogPosts();
@@ -59,10 +52,6 @@ const BlogList = () => {
 
                   <div className="p-6">
                     <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {formatDate(post.date)}
-                      </span>
                       <span className="inline-flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
                         {post.readTime}

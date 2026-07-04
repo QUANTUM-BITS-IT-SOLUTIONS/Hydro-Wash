@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ContactFormTrigger } from '@/components/ContactFormModal';
 import { Button } from '@/components/ui/button';
+import BubbleEffect from '@/components/BubbleEffect';
 
 const HERO_IMAGES = {
   mobile: '/Hero-Mobile.png',
@@ -54,6 +55,7 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className="relative h-screen w-full overflow-hidden pt-20">
+      <BubbleEffect />
       {/* Multi-layer Parallax Background */}
       <div className="absolute inset-0">
         {/* Base image layer — mobile vs laptop/desktop */}

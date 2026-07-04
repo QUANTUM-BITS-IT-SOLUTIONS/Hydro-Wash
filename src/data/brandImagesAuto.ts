@@ -37,10 +37,10 @@ interface BrandImage {
 
 // All brands from public/brands folder
 const allBrands: BrandImage[] = [
-  { name: '3M', file: '3m.jpeg', url: '/brands/3m.jpeg', link: brandLinks['3m.jpeg'] },
+  { name: '3M', file: '3m.png', url: '/brands/3m.png', link: brandLinks['3m.png'] },
   { name: 'Annovi Reverberi', file: 'annovi-reverberi.png', url: '/brands/annovi-reverberi.png', link: brandLinks['annovi-reverberi.png'] },
   { name: 'Bigfoot', file: 'bigfoot.jpeg', url: '/brands/bigfoot.jpeg', link: brandLinks['bigfoot.jpeg'] },
-  { name: 'CarPro', file: 'carpro.jpeg', url: '/brands/carpro.jpeg', link: brandLinks['carpro.jpeg'] },
+  { name: 'CarPro', file: 'carpro.png', url: '/brands/carpro.png', link: brandLinks['carpro.png'] },
   { name: 'Chemical Guys', file: 'chemical-guys.png', url: '/brands/chemical-guys.png', link: brandLinks['chemical-guys.png'] },
   { name: 'Gtechniq', file: 'gtechiqe.jpeg', url: '/brands/gtechiqe.jpeg', link: brandLinks['gtechiqe.jpeg'] },
   { name: 'GSWF', file: 'GSWF.webp', url: '/brands/GSWF.webp', link: brandLinks['GSWF.webp'] },
@@ -59,8 +59,8 @@ const allBrands: BrandImage[] = [
   { name: 'Sehool', file: 'Sehool.webp', url: '/brands/Sehool.webp', link: brandLinks['Sehool.webp'] },
   { name: 'Stek', file: 'stek.webp', url: '/brands/stek.webp', link: brandLinks['stek.webp'] },
   { name: 'Tint Orange', file: 'Tint-Orange-Logo.png', url: '/brands/Tint-Orange-Logo.png', link: brandLinks['Tint-Orange-Logo.png'] },
-  { name: 'Würth', file: 'wurth.jpeg', url: '/brands/wurth.jpeg', link: brandLinks['wurth.jpeg'] },
-  { name: 'XPEL', file: 'xpel.png', url: '/brands/xpel.png', link: brandLinks['xpel.png'] },
+  { name: 'Würth', file: 'wurth.png', url: '/brands/wurth.png', link: brandLinks['wurth.png'] },
+  { name: 'XPEL', file: 'xpel.webp', url: '/brands/xpel.webp', link: brandLinks['xpel.webp'] },
   { name: 'Megquires', file: 'megquires.jpeg', url: '/brands/megquires.jpeg', link: brandLinks['megquires.jpeg'] },
 ];
 

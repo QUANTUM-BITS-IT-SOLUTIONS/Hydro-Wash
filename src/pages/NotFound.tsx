@@ -31,7 +31,7 @@ const NotFound = () => {
     } else {
       setSuggestions([]);
     }
-  }, [searchTerm]);
+  }, [searchTerm, services]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

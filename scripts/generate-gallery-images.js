@@ -1,4 +1,44 @@
-// Dynamic Gallery Image Loader
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const galleryDir = path.join(__dirname, '../public/images/gallery');
+const outputFile = path.join(__dirname, '../src/data/galleryImagesAuto.ts');
+
+const categoryFolders = ['ppf', 'ceramic', 'graphene', 'detailing', 'interior', 'exterior', 'wash', 'polishing', 'rust-protection', 'alloy', 'underbody', 'engine-ac', 'headlight', 'restoration'];
+
+function scanGalleryFolder() {
+  const manualImageList = [];
+
+  categoryFolders.forEach(category => {
+    const categoryPath = path.join(galleryDir, category);
+    
+    if (!fs.existsSync(categoryPath)) {
+      console.log(`Category folder not found: ${category}`);
+      return;
+    }
+
+    const files = fs.readdirSync(categoryPath);
+    
+    files.forEach(file => {
+      const ext = path.extname(file).toLowerCase();
+      if (['.webp', '.jpg', '.jpeg', '.png'].includes(ext)) {
+        const imagePath = `/images/gallery/${category}/${file}`;
+        manualImageList.push({ path: imagePath, category });
+      }
+    });
+  });
+
+  return manualImageList;
+}
+
+function generateGalleryImagesFile(imageList) {
+  const sortedList = imageList.sort((a, b) => a.path.localeCompare(b.path));
+  
+  const fileContent = `// Dynamic Gallery Image Loader
 // Automatically loads images from public/images/gallery/ folders
 // Supports .webp, .jpg, .jpeg, .png files
 // For before/after pairs, name them: image-name.webp and image-name-before.webp
@@ -12,34 +52,7 @@ type Category = typeof categoryFolders[number];
 
 // Manual image list - Auto-generated from public/images/gallery/
 const manualImageList: { path: string; category: Category }[] = [
-  { path: '/images/gallery/alloy/1-before.webp', category: 'alloy' },
-  { path: '/images/gallery/alloy/1.webp', category: 'alloy' },
-  { path: '/images/gallery/engine-ac/1-before.webp', category: 'engine-ac' },
-  { path: '/images/gallery/engine-ac/1.webp', category: 'engine-ac' },
-  { path: '/images/gallery/restoration/11.JPG', category: 'restoration' },
-  { path: '/images/gallery/restoration/2.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/3.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/5.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/6.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/7.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/8.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/9.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_1057.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_1061.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_1381.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_1389.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_1392.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_3742.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_4283.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_4415.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_4714.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_6461.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_6536.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_6544.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_8844.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_8871.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_9223.webp', category: 'restoration' },
-  { path: '/images/gallery/restoration/IMG_9344.webp', category: 'restoration' },
+${sortedList.map(item => `  { path: '${item.path}', category: '${item.category}' },`).join('\n')}
 ];
 
 interface ImageFile {
@@ -76,7 +89,7 @@ function galleryImages(): GalleryImage[] {
 
     items.forEach(({ url, filename }) => {
       // Remove extension
-      const nameWithoutExt = filename.replace(/\.(webp|jpg|jpeg|png)$/i, '');
+      const nameWithoutExt = filename.replace(/\\.(webp|jpg|jpeg|png)$/i, '');
       // Check if it's a "before" image
       const isBefore = /-before$|-b4$/i.test(nameWithoutExt);
       // Get base name (remove -before suffix)
@@ -119,7 +132,7 @@ function formatAltText(filename: string): string {
   return filename
     .replace(/-/g, ' ')
     .replace(/_/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+    .replace(/\\b\\w/g, (c) => c.toUpperCase());
 }
 
 // Export the dynamically loaded images
@@ -201,3 +214,13 @@ export const fallbackGalleryImages: GalleryImage[] = [
 export const autoGalleryImages = dynamicGalleryImages.length > 0
   ? dynamicGalleryImages
   : fallbackGalleryImages;
+`;
+
+  fs.writeFileSync(outputFile, fileContent, 'utf-8');
+  console.log(`Generated gallery images file with ${sortedList.length} images`);
+}
+
+// Run the script
+const imageList = scanGalleryFolder();
+generateGalleryImagesFile(imageList);
+console.log('Gallery image generation complete!');

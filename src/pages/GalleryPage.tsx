@@ -26,7 +26,7 @@ const GalleryPage = () => {
     index 
   }: { 
     image: GalleryImage; 
-    config: any; 
+    config: { type: string; gridClass: string; label: string }; 
     isVisible: boolean; 
     index: number;
   }) => {
