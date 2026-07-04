@@ -1,7 +1,8 @@
 import { Resend } from 'resend';
+import fs from 'fs';
+import path from 'path';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -14,7 +15,22 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY environment variable is not defined');
+      return res.status(500).json({ error: 'Email service is not configured (missing API key)' });
+    }
+
+    const resend = new Resend(apiKey);
     const serviceName = service || 'General Inquiry';
+
+    // Construct path to brochure and read it as a Buffer
+    const filePath = path.join(process.cwd(), 'public', 'HydroWash-Brochure.pdf');
+    if (!fs.existsSync(filePath)) {
+      console.error(`Brochure file not found at path: ${filePath}`);
+      return res.status(500).json({ error: 'Service brochure file is missing' });
+    }
+    const fileBuffer = fs.readFileSync(filePath);
 
     // Send email to customer with brochure attachment
     await resend.emails.send({
@@ -39,7 +55,7 @@ export default async function handler(req: any, res: any) {
       attachments: [
         {
           filename: 'HydroWash-Brochure.pdf',
-          path: './public/HydroWash-Brochure.pdf',
+          content: fileBuffer,
         },
       ],
     });
