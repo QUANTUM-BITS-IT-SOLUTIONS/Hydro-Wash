@@ -2,22 +2,23 @@
 import { describe, it, expect, vi } from 'vitest';
 import handler from '../../api/send-brochure';
 
-vi.mock('resend', () => {
-  return {
-    Resend: vi.fn().mockImplementation(() => {
-      return {
-        emails: {
-          send: vi.fn().mockResolvedValue({ id: 'mock-email-id' }),
-        },
-      };
-    }),
-  };
-});
+vi.mock('nodemailer', () => ({
+  default: {
+    createTransport: vi.fn().mockImplementation(() => ({
+      sendMail: vi.fn().mockResolvedValue({ messageId: 'mock-message-id' }),
+    })),
+  },
+  createTransport: vi.fn().mockImplementation(() => ({
+    sendMail: vi.fn().mockResolvedValue({ messageId: 'mock-message-id' }),
+  })),
+}));
 
 describe('send-brochure API handler', () => {
-  it('should successfully read brochure and trigger Resend email sending', async () => {
-    // Setup env variable
-    process.env.RESEND_API_KEY = 're_test_key_12345';
+  it('should successfully read brochure and trigger nodemailer email sending', async () => {
+    // Setup env variables
+    process.env.GMAIL_EMAIL = 'test@gmail.com';
+    process.env.GMAIL_APP_PASSWORD = 'test_app_password';
+    process.env.BUSINESS_EMAIL = 'business@example.com';
 
     const req = {
       method: 'POST',
@@ -50,6 +51,10 @@ describe('send-brochure API handler', () => {
   });
 
   it('should return 400 when name is missing', async () => {
+    // Setup env variables
+    process.env.GMAIL_EMAIL = 'test@gmail.com';
+    process.env.GMAIL_APP_PASSWORD = 'test_app_password';
+
     const req = {
       method: 'POST',
       body: {
@@ -78,9 +83,11 @@ describe('send-brochure API handler', () => {
     expect(jsonVal.error).toContain('Missing required fields');
   });
 
-  it('should return 500 when RESEND_API_KEY is not defined', async () => {
-    const originalKey = process.env.RESEND_API_KEY;
-    delete process.env.RESEND_API_KEY;
+  it('should return 500 when GMAIL_EMAIL or GMAIL_APP_PASSWORD are not defined', async () => {
+    const originalGmail = process.env.GMAIL_EMAIL;
+    const originalPassword = process.env.GMAIL_APP_PASSWORD;
+    delete process.env.GMAIL_EMAIL;
+    delete process.env.GMAIL_APP_PASSWORD;
 
     const req = {
       method: 'POST',
@@ -110,6 +117,7 @@ describe('send-brochure API handler', () => {
     expect(statusVal).toBe(500);
     expect(jsonVal.error).toContain('Email service is not configured');
 
-    process.env.RESEND_API_KEY = originalKey;
+    process.env.GMAIL_EMAIL = originalGmail;
+    process.env.GMAIL_APP_PASSWORD = originalPassword;
   });
 });
