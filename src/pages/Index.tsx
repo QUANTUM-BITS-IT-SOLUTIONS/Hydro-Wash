@@ -8,6 +8,7 @@ import Pricing from '@/components/Pricing';
 import Stats from '@/components/Stats';
 import Gallery from '@/components/Gallery';
 import Process from '@/components/Process';
+import InstagramTopPicks from '@/components/InstagramTopPicks';
 import Testimonials from '@/components/Testimonials';
 import StudioVideo from '@/components/StudioVideo';
 import Contact from '@/components/Contact';
@@ -66,6 +67,9 @@ const Index = () => {
         <section id="process">
           <Process />
         </section>
+        
+        {/* Instagram Top Picks */}
+        <InstagramTopPicks />
         
         {/* Testimonials - Premium Reviews */}
         <Testimonials />

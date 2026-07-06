@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
@@ -12,6 +12,43 @@ const Gallery = () => {
   const [filter, setFilter] = useState<FilterCategory>('all');
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   const [comparePosition, setComparePosition] = useState(50);
+  const [imageDimensions, setImageDimensions] = useState<Record<number, { width: number; height: number; aspectRatio: number }>>({});
+
+  // Load image dimensions
+  useEffect(() => {
+    const loadDimensions = async () => {
+      const dimensions: Record<number, { width: number; height: number; aspectRatio: number }> = {};
+      
+      const promises = autoGalleryImages.map((image) => {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            dimensions[image.id] = {
+              width: img.naturalWidth,
+              height: img.naturalHeight,
+              aspectRatio: img.naturalWidth / img.naturalHeight
+            };
+            resolve();
+          };
+          img.onerror = () => {
+            // Fallback dimensions if image fails to load
+            dimensions[image.id] = {
+              width: 800,
+              height: 600,
+              aspectRatio: 1.33
+            };
+            resolve();
+          };
+          img.src = image.src;
+        });
+      });
+
+      await Promise.all(promises);
+      setImageDimensions(dimensions);
+    };
+
+    loadDimensions();
+  }, []);
 
   const filteredImages = filter === 'all'
     ? autoGalleryImages.slice(0, 8)
@@ -33,6 +70,9 @@ const Gallery = () => {
     isVisible: boolean; 
     index: number;
   }) => {
+    const isWide = config.type === 'wide';
+    const isTall = config.type === 'tall';
+    const isStandard = config.type === 'standard';
     const isLargeCinematic = config.type === 'cinematic';
     const isCraftsmanship = config.type === 'craftsmanship';
     const isVerticalReel = config.type === 'reel';
@@ -64,27 +104,29 @@ const Gallery = () => {
         {/* Dynamic caption based on tile type */}
         <div className={cn(
           "absolute bottom-0 left-0 right-0 transition-all duration-500 ease-premium",
-          isLargeCinematic || isLuxuryShowcase ? "p-4 sm:p-6 lg:p-8" : "p-3 sm:p-4 lg:p-6",
-          isLargeCinematic || isLuxuryShowcase || isVerticalReel ? "translate-y-0" : "translate-y-full sm:translate-y-full sm:group-hover:translate-y-0"
+          isWide || isTall || isLargeCinematic || isLuxuryShowcase ? "p-4 sm:p-6 lg:p-8" : "p-3 sm:p-4 lg:p-6",
+          isWide || isTall || isLargeCinematic || isLuxuryShowcase || isVerticalReel ? "translate-y-0" : "translate-y-full sm:translate-y-full sm:group-hover:translate-y-0"
         )}>
           <div className={cn(
             "backdrop-blur-lg border rounded-lg",
-            isLargeCinematic || isLuxuryShowcase ? "bg-black/60 border-white/10 p-3 sm:p-4 lg:p-6" : "bg-black/60 sm:bg-white/10 border-white/10 sm:border-white/20 p-2 sm:p-3 lg:p-4"
+            isWide || isTall || isLargeCinematic || isLuxuryShowcase ? "bg-black/60 border-white/10 p-3 sm:p-4 lg:p-6" : "bg-black/60 sm:bg-white/10 border-white/10 sm:border-white/20 p-2 sm:p-3 lg:p-4"
           )}>
             <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
               <div className={cn(
                 "rounded-full bg-gold shadow-gold",
-                isLargeCinematic || isLuxuryShowcase ? "w-2 h-2 sm:w-3 sm:h-3" : "w-1.5 h-1.5 sm:w-2 sm:h-2"
+                isWide || isTall || isLargeCinematic || isLuxuryShowcase ? "w-2 h-2 sm:w-3 sm:h-3" : "w-1.5 h-1.5 sm:w-2 sm:h-2"
               )} />
               <span className={cn(
                 "micro-label text-gold font-semibold tracking-wider",
-                isLargeCinematic || isLuxuryShowcase ? "text-[10px] sm:text-xs lg:text-sm" : "text-[9px] sm:text-[10px] lg:text-xs"
+                isWide || isTall || isLargeCinematic || isLuxuryShowcase ? "text-[10px] sm:text-xs lg:text-sm" : "text-[9px] sm:text-[10px] lg:text-xs"
               )}>
                 {image.category.toUpperCase()}
                 {isBeforeAfter && " • BEFORE/AFTER"}
                 {isVerticalReel && " • REEL"}
                 {isLuxuryShowcase && " • LUXURY SHOWCASE"}
                 {isCraftsmanship && " • CRAFTSMANSHIP"}
+                {isWide && " • WIDE"}
+                {isTall && " • PORTRAIT"}
               </span>
             </div>
             {image.before && (
@@ -180,48 +222,16 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Unified Gallery Layout */}
+        {/* Unified Gallery Layout - Bento Grid */}
         <div className="w-full px-0 sm:px-4 md:px-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 h-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 h-full auto-rows-[200px]">
             {filteredImages.map((image, index) => {
-              // Define unified grid pattern
-              const getUnifiedGridConfig = (idx: number) => {
-                const patterns = [
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                  { 
-                    gridClass: 'col-span-1', 
-                    type: 'standard', 
-                    label: 'DETAIL' 
-                  },
-                ];
-                return patterns[idx % patterns.length];
+              // Standard grid pattern - all tiles same size
+              const getBentoConfig = (idx: number) => {
+                return { gridClass: 'col-span-1 row-span-1', type: 'standard', label: 'DETAIL' };
               };
               
-              const config = getUnifiedGridConfig(index);
+              const config = getBentoConfig(index);
               
               return (
                 <div
@@ -230,7 +240,7 @@ const Gallery = () => {
                     "group relative overflow-hidden cursor-pointer transition-all duration-700 ease-premium",
                     "active:scale-95",
                     config.gridClass,
-                    config.type === 'featured' || config.type === 'wide' ? "rounded-2xl" : "rounded-xl",
+                    config.type === 'luxury' || config.type === 'cinematic' || config.type === 'wide' ? "rounded-2xl" : "rounded-xl",
                     "shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/20",
                     "transform hover:scale-[1.02] hover:-translate-y-1",
                     "bg-gradient-to-br from-card/50 to-card/80 hover:from-gold/5 hover:to-gold/10",
@@ -253,20 +263,7 @@ const Gallery = () => {
                   
                   {/* Gallery Navigation Buttons */}
                   <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
-                      setLightboxImage(filteredImages[nextIndex]);
-                    }}
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                  
-                  <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 z-20"
                     onClick={(e) => {
                       e.stopPropagation();
                       const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
@@ -275,6 +272,19 @@ const Gallery = () => {
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  <button
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 z-20"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
+                      setLightboxImage(filteredImages[nextIndex]);
+                    }}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
                 </div>
@@ -390,12 +400,12 @@ const Gallery = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     const index = filteredImages.findIndex(img => img.id === lightboxImage?.id);
-                    const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
-                    setLightboxImage(filteredImages[nextIndex]);
+                    const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
+                    setLightboxImage(filteredImages[prevIndex]);
                   }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 
@@ -404,12 +414,12 @@ const Gallery = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     const index = filteredImages.findIndex(img => img.id === lightboxImage?.id);
-                    const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
-                    setLightboxImage(filteredImages[prevIndex]);
+                    const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
+                    setLightboxImage(filteredImages[nextIndex]);
                   }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
                 

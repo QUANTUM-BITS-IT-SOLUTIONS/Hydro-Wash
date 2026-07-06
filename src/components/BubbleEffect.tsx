@@ -9,8 +9,8 @@ const BubbleEffect = () => {
       id: i,
       size: Math.random() * 80 + 30,
       left: Math.random() * 100,
-      duration: Math.random() * 8 + 6,
-      delay: Math.random() * 8,
+      duration: 10,
+      delay: Math.random() * 2,
     }));
     setBubbles(newBubbles);
   }, []);

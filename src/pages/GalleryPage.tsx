@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
@@ -13,6 +13,43 @@ const GalleryPage = () => {
   const [filter, setFilter] = useState<FilterCategory>('all');
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   const [comparePosition, setComparePosition] = useState(50);
+  const [imageDimensions, setImageDimensions] = useState<Record<number, { width: number; height: number; aspectRatio: number }>>({});
+
+  // Load image dimensions
+  useEffect(() => {
+    const loadDimensions = async () => {
+      const dimensions: Record<number, { width: number; height: number; aspectRatio: number }> = {};
+      
+      const promises = autoGalleryImages.map((image) => {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            dimensions[image.id] = {
+              width: img.naturalWidth,
+              height: img.naturalHeight,
+              aspectRatio: img.naturalWidth / img.naturalHeight
+            };
+            resolve();
+          };
+          img.onerror = () => {
+            // Fallback dimensions if image fails to load
+            dimensions[image.id] = {
+              width: 800,
+              height: 600,
+              aspectRatio: 1.33
+            };
+            resolve();
+          };
+          img.src = image.src;
+        });
+      });
+
+      await Promise.all(promises);
+      setImageDimensions(dimensions);
+    };
+
+    loadDimensions();
+  }, []);
 
   const filteredImages = filter === 'all'
     ? autoGalleryImages
@@ -184,49 +221,17 @@ const GalleryPage = () => {
           </div>
         </div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - Bento Grid */}
         <div className="section-container pb-16 sm:pb-24 md:pb-32">
           <div className="w-full px-0 sm:px-4 md:px-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3 md:gap-4 lg:gap-6 h-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 h-full auto-rows-[200px]">
               {filteredImages.map((image, index) => {
-                // Define unified grid pattern
-                const getUnifiedGridConfig = (idx: number) => {
-                  const patterns = [
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                    { 
-                      gridClass: 'col-span-1', 
-                      type: 'standard', 
-                      label: 'DETAIL' 
-                    },
-                  ];
-                  return patterns[idx % patterns.length];
+                // Standard grid pattern - all tiles same size
+                const getBentoConfig = (idx: number) => {
+                  return { gridClass: 'col-span-1 row-span-1', type: 'standard', label: 'DETAIL' };
                 };
                 
-                const config = getUnifiedGridConfig(index);
+                const config = getBentoConfig(index);
                 
                 return (
                   <div
@@ -235,7 +240,7 @@ const GalleryPage = () => {
                       "group relative overflow-hidden cursor-pointer transition-all duration-700 ease-premium",
                       "active:scale-95",
                       config.gridClass,
-                      config.type === 'featured' || config.type === 'wide' ? "rounded-2xl" : "rounded-xl",
+                      config.type === 'luxury' || config.type === 'cinematic' || config.type === 'wide' ? "rounded-2xl" : "rounded-xl",
                       "shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/20",
                       "transform hover:scale-[1.02] hover:-translate-y-1",
                       "bg-gradient-to-br from-card/50 to-card/80 hover:from-gold/5 hover:to-gold/10",
@@ -261,12 +266,12 @@ const GalleryPage = () => {
                       className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20"
                       onClick={(e) => {
                         e.stopPropagation();
-                        const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
-                        setLightboxImage(filteredImages[nextIndex]);
+                        const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
+                        setLightboxImage(filteredImages[prevIndex]);
                       }}
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
                     
@@ -274,12 +279,12 @@ const GalleryPage = () => {
                       className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-md rounded-full text-white hover:bg-black/80 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20"
                       onClick={(e) => {
                         e.stopPropagation();
-                        const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
-                        setLightboxImage(filteredImages[prevIndex]);
+                        const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
+                        setLightboxImage(filteredImages[nextIndex]);
                       }}
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                   </div>
@@ -349,12 +354,12 @@ const GalleryPage = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     const index = filteredImages.findIndex(img => img.id === lightboxImage?.id);
-                    const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
-                    setLightboxImage(filteredImages[nextIndex]);
+                    const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
+                    setLightboxImage(filteredImages[prevIndex]);
                   }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 
@@ -363,12 +368,12 @@ const GalleryPage = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     const index = filteredImages.findIndex(img => img.id === lightboxImage?.id);
-                    const prevIndex = index > 0 ? index - 1 : filteredImages.length - 1;
-                    setLightboxImage(filteredImages[prevIndex]);
+                    const nextIndex = index < filteredImages.length - 1 ? index + 1 : 0;
+                    setLightboxImage(filteredImages[nextIndex]);
                   }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
                 

@@ -1,6 +1,6 @@
 import { useScrollReveal, useCountUp } from '@/hooks/useScrollAnimations';
 import { cn } from '@/lib/utils';
-import { Award, Car, Users, BadgeCheck } from 'lucide-react';
+import { Award, Car, Users, BadgeCheck, Shield, Star } from 'lucide-react';
 
 interface StatProps {
   value: number;
@@ -54,6 +54,28 @@ const Stats = () => {
           <h2 className="headline-lg">
             Trusted by <span className="text-gold-gradient">Thousands</span>
           </h2>
+          
+          {/* Badges */}
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-6 justify-center">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <Award className="w-4 h-4 text-gold" />
+              <span className="text-sm text-muted-foreground">IDA Certificate</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <Shield className="w-4 h-4 text-gold" />
+              <span className="text-sm text-muted-foreground">9H Ceramic</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+              <div className="flex">
+                <Star className="w-3 h-3 text-gold fill-gold" />
+                <Star className="w-3 h-3 text-gold fill-gold" />
+                <Star className="w-3 h-3 text-gold fill-gold" />
+                <Star className="w-3 h-3 text-gold fill-gold" />
+                <Star className="w-3 h-3 text-gold fill-gold" />
+              </div>
+              <span className="text-sm text-muted-foreground">5 Star Rated</span>
+            </div>
+          </div>
         </div>
 
         {/* Stats Row */}
