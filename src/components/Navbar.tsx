@@ -69,13 +69,13 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-5 lg:gap-6 ml-auto">
             {navLinks.map((link) => (
               link.type === 'route' ? (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className="text-sm uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
+                  className="text-xs uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
@@ -83,7 +83,7 @@ const Navbar = () => {
                 <button
                   key={link.label}
                   onClick={() => handleNavClick(link)}
-                  className="text-sm uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
+                  className="text-xs uppercase tracking-wider text-muted-foreground hover:text-gold transition-colors duration-300"
                 >
                   {link.label}
                 </button>
@@ -93,12 +93,12 @@ const Navbar = () => {
               onClick={() => {
                 window.open("https://wa.me/918888899936?text=Hello,%20I%20would%20like%20to%20inquire%20about%20my%20vehicle's%20E-warranty.", "_blank", "noopener,noreferrer");
               }}
-              className="text-sm uppercase tracking-wider text-gold font-medium hover:text-gold/80 transition-colors duration-300 bg-transparent p-0 border-0 cursor-pointer"
+              className="text-xs uppercase tracking-wider text-gold font-medium hover:text-gold/80 transition-colors duration-300 bg-transparent p-0 border-0 cursor-pointer"
             >
               E-warranty
             </button>
             <ContactFormTrigger>
-              <Button variant="outline" className="px-6 py-2 rounded-full border border-gold/30 text-gold text-sm uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300 bg-transparent">
+              <Button variant="outline" size="sm" className="px-3 py-1 rounded-full border border-gold/30 text-gold text-xs uppercase tracking-wider hover:bg-gold/10 hover:border-gold transition-all duration-300 bg-transparent h-auto">
                 Book Now
               </Button>
             </ContactFormTrigger>
