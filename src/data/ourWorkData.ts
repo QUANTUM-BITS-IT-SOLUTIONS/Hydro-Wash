@@ -30,8 +30,8 @@ export const workCategories: WorkCategory[] = [
     title: 'Paint Protection Film',
     icon: Shield,
     description: 'Invisible armor that shields your paint from rock chips, scratches, and environmental damage with self-healing technology.',
-    beforeImage: '/images/Before%20PPF.png',
-    afterImage: '/images/After%20PPF.png',
+    beforeImage: '/images/Before%20PPF.webp',
+    afterImage: '/images/After%20PPF.webp',
     stats: [
       { value: '150+', label: 'PPF Jobs' },
       { value: '5yr', label: 'Warranty' },
@@ -44,8 +44,8 @@ export const workCategories: WorkCategory[] = [
     icon: Droplets,
     description: 'Professional-grade 9H ceramic coating that provides years of hydrophobic protection with a stunning mirror-like finish.',
     // Update these paths with your Ceramic before/after images
-    beforeImage: '/images/Before%20CC.png',
-    afterImage: '/images/After%20CC.png',
+    beforeImage: '/images/Before%20CC.webp',
+    afterImage: '/images/After%20CC.webp',
     stats: [
       { value: '450+', label: 'Coatings' },
       { value: '2yr', label: 'Protection' },
@@ -58,8 +58,8 @@ export const workCategories: WorkCategory[] = [
     icon: Sparkles,
     description: 'Complete interior and exterior restoration service that brings your vehicle back to showroom condition.',
     // Update these paths with your Detailing before/after images
-    beforeImage: '/images/Before%20DC.png',
-    afterImage: '/images/After%20DC.png',
+    beforeImage: '/images/Before%20DC.webp',
+    afterImage: '/images/After%20DC.webp',
     stats: [
       { value: '800+', label: 'Cars Detailed' },
       { value: '4.9★', label: 'Rating' },

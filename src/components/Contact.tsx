@@ -28,12 +28,6 @@ const Contact = () => {
       label: 'Working Hours',
       value: 'Mon-Sun: 9AM - 7PM',
     },
-    {
-      icon: Globe,
-      label: 'Website',
-      value: 'www.hydrowash.in',
-      href: 'https://www.hydrowash.in',
-    },
   ];
 
   return (

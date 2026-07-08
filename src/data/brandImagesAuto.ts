@@ -1,31 +1,31 @@
 // Static Brand Image List with all brands from public/brands
 // Map of brand filenames to their website links
 const brandLinks: Record<string, string> = {
-  '3m.jpeg': 'https://www.3mindia.in/3M/en_IN/company-in/',
+  '3m.png': 'https://www.3mindia.in/',
   'Menzerna.jpeg': 'https://www.menzerna.com/',
-  'carpro.jpeg': 'https://carpro.global/',
+  'carpro.png': 'https://carpro.global/',
   'gtechiqe.jpeg': 'https://www.gtechniq.com/',
   'karcher.jpeg': 'https://www.kaercher.com/in/',
   'llumar.jpeg': 'https://www.llumar.com/',
   'ma fra.jpeg': 'https://www.mafraindia.com/',
   'norton.jpeg': 'https://www.nortonabrasives.com/',
   'rupes.jpeg': 'https://www.rupes.com/',
-  'wurth.jpeg': 'https://www.wuerth.com/',
+  'wurth.png': 'https://www.wuerth.in/',
   'Tint-Orange-Logo.png': 'https://tintandorange.com/',
   'annovi-reverberi.png': 'https://www.annovireverberi.it/en/' ,
   'bigfoot.jpeg': 'https://www.bigfootdetailing.co.za/',
   'chemical-guys.png': 'https://www.chemicalguys.com/',
   'narppf.png': 'https://www.narppf.com/',
   'megquires.jpeg': 'https://www.meguiars.com/#/',
-  'GSWF.webp': '#',
+  'GSWF.webp': 'https://gswf.com/',
   'Malco.jpeg': 'https://www.malcoproducts.com/',
-  'Puris.webp': '#',
-  'Quanta.webp': '#',
-  'Sehool.webp': '#',
-  'maxshine.png': 'https://www.maxshineus.com/',
-  'rodim.png': '#',
+  'Puris.webp': 'https://teampuris.com/',
+  'Quanta.webp': 'https://www.quantappf.com/',
+  'Sehool.webp': 'https://www.schollconcepts.com/en/',
+  'maxshine.png': 'https://maxshineusa.com/',
+  'rodim.png': 'https://rodim.in/',
   'stek.webp': 'https://stekautomotive.com/',
-  'xpel.png': 'https://www.xpel.com/'
+  'xpel.webp': 'https://www.xpel.com/'
 };
 
 interface BrandImage {

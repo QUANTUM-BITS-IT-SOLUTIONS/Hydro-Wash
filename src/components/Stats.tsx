@@ -59,11 +59,7 @@ const Stats = () => {
           <div className="flex flex-wrap gap-3 sm:gap-4 mt-6 justify-center">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
               <Award className="w-4 h-4 text-gold" />
-              <span className="text-sm text-muted-foreground">IDA Certificate</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
-              <Shield className="w-4 h-4 text-gold" />
-              <span className="text-sm text-muted-foreground">9H Ceramic</span>
+              <span className="text-sm text-muted-foreground">IDA Certified</span>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
               <div className="flex">
